@@ -1,0 +1,214 @@
+﻿using ElectroGest.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ElectroGest.Forms
+{
+    public partial class Dashboard : Form
+    {
+        // Declara la variable de clase aquí
+        private Usuario _usuario;
+        public bool CerrandoSesion { get; private set; } = false;
+        private Form formularioActivo = null;
+
+        public Dashboard(Usuario usuario)
+        {
+            InitializeComponent();
+
+            _usuario = usuario;
+            welcomeuser.Text = $"Bienvenido {_usuario.IdNavigation.Nombre}";
+            userrol.Text = $"({_usuario.Rol.Nombre})";
+        }
+        private void VerificarPanel()
+        {
+            MessageBox.Show($"Panel contenedor:\n" +
+                           $"Size: {panelContenedor.Size}\n" +
+                           $"Visible: {panelContenedor.Visible}\n" +
+                           $"Dock: {panelContenedor.Dock}\n" +
+                           $"Controls count: {panelContenedor.Controls.Count}",
+                           "Debug Panel");
+        }
+
+        // Llama este método en el Load del Dashboard
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            //VerificarPanel();  //Temporal para debug
+            btnInicio.PerformClick();
+            // Ocultar todos los botones primero
+            OcultarTodosBotones();
+
+            // Mostrar botones según el rol
+            switch (_usuario.Rol.Nombre)
+            {
+                case "Supervisor":
+                    btnReportes.Visible = true;
+                    btnUsuarios.Visible = true;
+                    btnBackup.Visible = true;
+                    btnClientes.Visible = true;
+                    btnInicio.Visible = true;
+                    btnProductos.Visible = true;
+                    btnVentas.Visible = true;
+                    break;
+                case "Administrador":
+                    //btnProductos.Visible = true;
+
+                    //btnVentas.Visible = true;
+                    //btnReportesAdmin.Visible = true;
+                    //btnClientes.Visible = true;
+                    break;
+                case "Vendedor":
+                    //btnGestionProductos.Visible = true;
+                    //btnGestionClientes.Visible = true;
+                    //btnListaProductos.Visible = true;
+                    break;
+            }
+        }
+
+
+        private void OcultarTodosBotones()
+        {
+            btnReportes.Visible = false;
+            btnUsuarios.Visible = false;
+            btnBackup.Visible = false;
+            btnProductos.Visible = false;
+
+            btnVentas.Visible = false;
+            // ... ocultar todos los botones
+        }
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+        private void CerrarSesion()
+        {
+            DialogResult result = MessageBox.Show("¿Está seguro que desea cerrar sesión?",
+                                                "Cerrar Sesión",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                CerrandoSesion = true;
+                this.Close(); // Cierra el dashboard
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (!CerrandoSesion && e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true; // Cancelar temporalmente el cierre
+
+                MostrarOpcionesCierre();
+            }
+
+            base.OnFormClosing(e);
+        }
+
+        private void MostrarOpcionesCierre()
+        {
+            DialogResult result = MessageBox.Show("¿Qué acción desea realizar?\n\n" +
+                                                "• Sí: Cerrar sesión y volver al login\n" +
+                                                "• No: Salir completamente de la aplicación\n" +
+                                                "• Cancelar: Permanecer en la aplicación",
+                                                "Cerrar aplicación",
+                                                MessageBoxButtons.YesNoCancel,
+                                                MessageBoxIcon.Question);
+
+            switch (result)
+            {
+
+
+                case DialogResult.Yes:
+                    CerrandoSesion = false;
+                    Application.Exit();
+                    break;
+
+                case DialogResult.Cancel:
+                    // No hacer nada, ya se canceló el cierre
+                    break;
+            }
+        }
+        private void AbrirFormulario(Form formHijo)
+        {
+            // Cerrar formulario activo si existe
+            if (formularioActivo != null)
+            {
+                formularioActivo.Close();
+                formularioActivo.Dispose();
+            }
+
+            formularioActivo = formHijo;
+            formHijo.TopLevel = false;
+            formHijo.FormBorderStyle = FormBorderStyle.None;
+            formHijo.Dock = DockStyle.Fill;
+
+            // Limpiar controles existentes antes de agregar nuevo
+            panelContenedor.Controls.Clear();
+            panelContenedor.Controls.Add(formHijo);
+
+            formHijo.BringToFront();
+            formHijo.Show();
+        }
+
+
+        private void ResaltarBoton(Button botonActivo)
+        {
+            foreach (Control control in panelSidebar.Controls)
+            {
+                if (control is Button btn)
+                {
+
+                    btn.ForeColor = Color.Gainsboro;
+                }
+            }
+
+            botonActivo.ForeColor = Color.White;
+        }
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new GestionUsuarios());
+            ResaltarBoton(btnUsuarios);
+        }
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new GestionProductos());
+            ResaltarBoton(btnProductos);
+        }
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new PanelForm());
+            ResaltarBoton(btnInicio);
+        }
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new ReportesForm());
+            ResaltarBoton(btnReportes);
+        }
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new GestionClientes());
+            ResaltarBoton(btnClientes);
+        }
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new VentasForm());
+            ResaltarBoton(btnVentas);
+        }
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new BackupForm());
+            ResaltarBoton(btnBackup);
+        }
+       
+
+
+    }
+}
