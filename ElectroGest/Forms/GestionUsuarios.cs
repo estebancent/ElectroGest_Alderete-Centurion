@@ -20,12 +20,16 @@ namespace ElectroGest.Forms
 
 
 
-        private  RepositoriosUsuarios _repo;
+        private RepositoriosUsuarios _repo;
 
         public GestionUsuarios()
         {
             InitializeComponent();
             _repo = new RepositoriosUsuarios();
+
+            dgvUsuarios.AutoGenerateColumns = true; // esto permite que se generen las columnas automáticamente
+
+
         }
 
         private void GestionUsuarios_Load(object sender, EventArgs e)
@@ -33,11 +37,12 @@ namespace ElectroGest.Forms
             CargarUsuarios();
             CargarRoles();
             LimpiarCampos();
-
         }
+
         // Cargar lista de usuarios en el DataGridView
         private void CargarUsuarios()
         {
+            // Pedimos los usuarios directamente desde el repositorio
             var lista = _repo.ObtenerUsuarios()
                 .Select(u => new
                 {
@@ -45,33 +50,46 @@ namespace ElectroGest.Forms
                     Nombre = u.IdNavigation != null ? u.IdNavigation.Nombre : "(Sin nombre)",
                     Email = u.IdNavigation != null ? u.IdNavigation.Email : "",
                     Telefono = u.IdNavigation != null ? u.IdNavigation.Telefono : "",
+                    Tipo = u.IdNavigation != null ? u.IdNavigation.Tipo : "N/A",
                     Rol = u.Rol != null ? u.Rol.Nombre : "N/A",
                     RolId = u.RolId,
-                    Activo = u.Activo.HasValue ? u.Activo.Value : false
+                    Activo = u.Activo ?? false
                 })
                 .ToList();
 
-            dgvUsuarios.AutoGenerateColumns = true;   // que genere columnas automáticas
+            // Auto-generar columnas
+            dgvUsuarios.AutoGenerateColumns = true;
+
+            // Asignar la lista al DataSource
             dgvUsuarios.DataSource = lista;
 
-            // Ocultar columna RolId, solo sirve para SelectedValue del ComboBox
+            // Ocultar columna RolId (solo se usa para ComboBox)
             if (dgvUsuarios.Columns["RolId"] != null)
                 dgvUsuarios.Columns["RolId"].Visible = false;
 
-            dgvUsuarios.ClearSelection(); // ninguna fila seleccionada al inicio
+            // Refrescar para asegurar que se renderice
+            dgvUsuarios.Refresh();
+
+            // Limpiar selección inicial
+            dgvUsuarios.ClearSelection();
+        }
+
+        private void btnProbar_Click(object sender, EventArgs e)
+        {
+            CargarUsuarios();
         }
 
         // Cargar lista de roles en el ComboBox
         private void CargarRoles()
         {
-            var repo = new RepositoriosUsuarios();
-            var lista = repo.ObtenerRoles();
+            var lista = _repo.ObtenerRoles();
 
             CbmRol.DataSource = lista;
-            CbmRol.DisplayMember = "Nombre"; // qué mostrar
-            CbmRol.ValueMember = "Id";       // el valor real
+            CbmRol.DisplayMember = "Nombre"; // muestra el nombre del rol
+            CbmRol.ValueMember = "Id";       // guarda el ID del rol
             CbmRol.SelectedIndex = -1;       // ninguno seleccionado al inicio
         }
+
 
 
         private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -96,9 +114,9 @@ namespace ElectroGest.Forms
         // Agregar
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Text) ||
+            if (string.IsNullOrWhiteSpace(BoxNombre.Text) ||
+                string.IsNullOrWhiteSpace(BoxEmail.Text) ||
+                string.IsNullOrWhiteSpace(BoxPassword.Text) ||
                 CbmRol.SelectedIndex == -1)
             {
                 MessageBox.Show("Todos los campos son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -115,7 +133,7 @@ namespace ElectroGest.Forms
                     Tipo = "Usuario"
                 },
                 RolId = (int)CbmRol.SelectedValue,
-                PasswordHash = PasswordHasher.HashPassword(txtPassword.Text),
+                PasswordHash = PasswordHasher.HashPassword(BoxPassword.Text),
                 Activo = true
             };
 
@@ -145,7 +163,7 @@ namespace ElectroGest.Forms
             btnEditar.Enabled = false;
             btnEliminar.Enabled = false;
 
-            txtNombre.Focus();
+            BoxNombre.Focus();
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -169,7 +187,7 @@ namespace ElectroGest.Forms
                 usuario.RolId = (int)CbmRol.SelectedValue;
 
                 if (!string.IsNullOrWhiteSpace(txtPassword.Text))
-                    usuario.PasswordHash = PasswordHasher.HashPassword(txtPassword.Text);
+                    usuario.PasswordHash = PasswordHasher.HashPassword(BoxPassword.Text);
 
                 _repo.ActualizarUsuario(usuario);
                 CargarUsuarios();
@@ -189,9 +207,6 @@ namespace ElectroGest.Forms
             CargarUsuarios();
         }
 
-        private void usuarioBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

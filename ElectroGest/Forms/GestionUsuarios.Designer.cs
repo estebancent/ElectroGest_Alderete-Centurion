@@ -48,9 +48,14 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             dgvUsuarios = new DataGridView();
             CbmRol = new ComboBox();
+            personaBindingSource1 = new BindingSource(components);
+            personaBindingSource = new BindingSource(components);
+            btnProbar = new Button();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)personaBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)personaBindingSource).BeginInit();
             SuspendLayout();
             // 
             // txtNombre
@@ -129,12 +134,11 @@
             // usuarioBindingSource
             // 
             usuarioBindingSource.DataSource = typeof(Models.Usuario);
-            usuarioBindingSource.CurrentChanged += usuarioBindingSource_CurrentChanged;
             // 
             // chkActivo
             // 
             chkActivo.AutoSize = true;
-            chkActivo.Location = new Point(304, 197);
+            chkActivo.Location = new Point(304, 195);
             chkActivo.Name = "chkActivo";
             chkActivo.Size = new Size(60, 19);
             chkActivo.TabIndex = 12;
@@ -218,15 +222,12 @@
             // 
             // dgvUsuarios
             // 
-            dgvUsuarios.BackgroundColor = SystemColors.ButtonFace;
+            dgvUsuarios.BackgroundColor = SystemColors.ActiveCaption;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Location = new Point(0, 305);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.Size = new Size(939, 150);
             dgvUsuarios.TabIndex = 18;
-            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
-            dgvUsuarios.CellContentClick += dgvUsuarios_CellClick;
-            dgvUsuarios.CellContentDoubleClick += dgvUsuarios_CellClick;
             // 
             // CbmRol
             // 
@@ -236,12 +237,31 @@
             CbmRol.Size = new Size(154, 23);
             CbmRol.TabIndex = 19;
             // 
+            // personaBindingSource1
+            // 
+            personaBindingSource1.DataSource = typeof(Models.Persona);
+            // 
+            // personaBindingSource
+            // 
+            personaBindingSource.DataSource = typeof(Models.Persona);
+            // 
+            // btnProbar
+            // 
+            btnProbar.Location = new Point(412, 165);
+            btnProbar.Name = "btnProbar";
+            btnProbar.Size = new Size(75, 23);
+            btnProbar.TabIndex = 20;
+            btnProbar.Text = "Probar tabla";
+            btnProbar.UseVisualStyleBackColor = true;
+            btnProbar.Click += btnProbar_Click;
+            // 
             // GestionUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(939, 490);
+            Controls.Add(btnProbar);
             Controls.Add(CbmRol);
             Controls.Add(dgvUsuarios);
             Controls.Add(flowLayoutPanel1);
@@ -257,9 +277,13 @@
             Controls.Add(txtNombre);
             Name = "GestionUsuarios";
             Text = "GestionUsuarios";
+            Load += GestionUsuarios_Load;
+            Click += GestionUsuarios_Load;
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)personaBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)personaBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -283,5 +307,8 @@
         private BindingSource usuarioBindingSource;
         private DataGridView dgvUsuarios;
         private ComboBox CbmRol;
+        private BindingSource personaBindingSource1;
+        private BindingSource personaBindingSource;
+        private Button btnProbar;
     }
 }

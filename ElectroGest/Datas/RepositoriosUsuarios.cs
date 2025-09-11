@@ -1,7 +1,7 @@
 ﻿using ElectroGest.Models;
 using ElectroGest.Utils;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using System.Linq; 
 using System.Text;
 
 namespace ElectroGest.Datas
@@ -10,16 +10,12 @@ namespace ElectroGest.Datas
     {
         private readonly SistemaVentasContext _context;
 
-        public RepositoriosUsuarios(SistemaVentasContext context)
-        {
-            _context = context;
-        }
-
+  
 
         // Listar todos los usuarios con su Rol y Persona
 
         public RepositoriosUsuarios()
-        {
+        {    
             _context = new SistemaVentasContext(); // Asume que el constructor por defecto de tu DbContext está configurado con connection string
         }
 
@@ -171,7 +167,7 @@ namespace ElectroGest.Datas
         //}
 
         // Validar login
-        // En RepositorioUsuarios, cambia el método:
+   
         public Usuario ValidarLogin(string credencial, string password)
         {
             // Buscar por EMAIL o NOMBRE
