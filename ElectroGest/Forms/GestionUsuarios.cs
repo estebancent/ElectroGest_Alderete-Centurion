@@ -181,12 +181,12 @@ namespace ElectroGest.Forms
 
             if (usuario != null)
             {
-                usuario.IdNavigation.Nombre = txtNombre.Text;
-                usuario.IdNavigation.Email = txtEmail.Text;
-                usuario.IdNavigation.Telefono = txtTelefono.Text;
+                usuario.IdNavigation.Nombre = BoxNombre.Text;
+                usuario.IdNavigation.Email = BoxEmail.Text;
+                usuario.IdNavigation.Telefono = BoxTelefono.Text;
                 usuario.RolId = (int)CbmRol.SelectedValue;
 
-                if (!string.IsNullOrWhiteSpace(txtPassword.Text))
+                if (!string.IsNullOrWhiteSpace(BoxPassword.Text))
                     usuario.PasswordHash = PasswordHasher.HashPassword(BoxPassword.Text);
 
                 _repo.ActualizarUsuario(usuario);

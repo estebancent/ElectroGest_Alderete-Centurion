@@ -228,6 +228,7 @@
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.Size = new Size(939, 150);
             dgvUsuarios.TabIndex = 18;
+            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             // 
             // CbmRol
             // 
