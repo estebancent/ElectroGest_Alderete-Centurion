@@ -248,11 +248,11 @@
             // 
             // btnProbar
             // 
-            btnProbar.Location = new Point(412, 165);
+            btnProbar.Location = new Point(417, 242);
             btnProbar.Name = "btnProbar";
-            btnProbar.Size = new Size(75, 23);
+            btnProbar.Size = new Size(75, 37);
             btnProbar.TabIndex = 20;
-            btnProbar.Text = "Probar tabla";
+            btnProbar.Text = "Refresh";
             btnProbar.UseVisualStyleBackColor = true;
             btnProbar.Click += btnProbar_Click;
             // 

@@ -15,21 +15,14 @@ namespace ElectroGest.Forms
 {
     public partial class GestionUsuarios : Form
     {
-
         private int _usuarioSeleccionadoId = 0;
-
-
-
         private RepositoriosUsuarios _repo;
 
         public GestionUsuarios()
         {
             InitializeComponent();
             _repo = new RepositoriosUsuarios();
-
             dgvUsuarios.AutoGenerateColumns = true; // esto permite que se generen las columnas automáticamente
-
-
         }
 
         private void GestionUsuarios_Load(object sender, EventArgs e)
@@ -44,18 +37,28 @@ namespace ElectroGest.Forms
         {
             // Pedimos los usuarios directamente desde el repositorio
             var lista = _repo.ObtenerUsuarios()
-                .Select(u => new
-                {
-                    u.Id,
-                    Nombre = u.IdNavigation != null ? u.IdNavigation.Nombre : "(Sin nombre)",
-                    Email = u.IdNavigation != null ? u.IdNavigation.Email : "",
-                    Telefono = u.IdNavigation != null ? u.IdNavigation.Telefono : "",
-                    Tipo = u.IdNavigation != null ? u.IdNavigation.Tipo : "N/A",
-                    Rol = u.Rol != null ? u.Rol.Nombre : "N/A",
-                    RolId = u.RolId,
-                    Activo = u.Activo ?? false
-                })
-                .ToList();
+               .Select(u => new
+               {
+                   u.Id,
+                   Nombre = u.IdNavigation != null ? u.IdNavigation.Nombre : "(Sin nombre)",
+                   Email = u.IdNavigation != null ? u.IdNavigation.Email : "",
+                   Telefono = u.IdNavigation != null ? u.IdNavigation.Telefono : "",
+                   Tipo = u.IdNavigation != null ? u.IdNavigation.Tipo : "N/A",
+                   Rol = u.Rol != null ? u.Rol.Nombre : "N/A",
+                   RolId = u.RolId,
+                   Activo = u.Activo ?? false,
+
+                   // 👉 Mostrar fechas
+                   FechaCreacion = u.FechaCreacion.HasValue
+                            ? u.FechaCreacion.Value.ToString("dd/MM/yyyy HH:mm")
+                            : "No registrada",
+
+                   FechaModificacion = u.FechaModificacion.HasValue
+                            ? u.FechaModificacion.Value.ToString("dd/MM/yyyy HH:mm")
+                            : "No modificado"
+               })
+                    .ToList();
+
 
             // Auto-generar columnas
             dgvUsuarios.AutoGenerateColumns = true;
@@ -89,9 +92,6 @@ namespace ElectroGest.Forms
             CbmRol.ValueMember = "Id";       // guarda el ID del rol
             CbmRol.SelectedIndex = -1;       // ninguno seleccionado al inicio
         }
-
-
-
         private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -141,9 +141,6 @@ namespace ElectroGest.Forms
             CargarUsuarios();
             LimpiarCampos();
         }
-
-
-
         private void LimpiarCampos()
         {
             _usuarioSeleccionadoId = 0;
@@ -169,8 +166,6 @@ namespace ElectroGest.Forms
         {
             LimpiarCampos();
         }
-
-
         // Editar
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -189,12 +184,16 @@ namespace ElectroGest.Forms
                 if (!string.IsNullOrWhiteSpace(BoxPassword.Text))
                     usuario.PasswordHash = PasswordHasher.HashPassword(BoxPassword.Text);
 
+                // 👉 Registrar fecha de modificación
+                usuario.FechaModificacion = DateTime.Now;
+
+                usuario.Activo = chkActivo.Checked;
+
                 _repo.ActualizarUsuario(usuario);
                 CargarUsuarios();
                 LimpiarCampos();
             }
         }
-
 
         // Eliminar (baja lógica)
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -207,6 +206,14 @@ namespace ElectroGest.Forms
             CargarUsuarios();
         }
 
-        
+        private void but(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

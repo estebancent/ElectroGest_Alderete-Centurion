@@ -29,11 +29,32 @@ namespace ElectroGest.Forms
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-         
+            timerError.Interval = 5000; // 5 segundos (5000 ms)
+            pnlError.Visible = false;
             string debugInfo = _repoUsuarios.GetDebugInfo();
             MessageBox.Show(debugInfo, "Debug - Usuarios en BD",
                            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        private void TimerError_Tick(object sender, EventArgs e)
+        {
+            pnlError.Visible = false;
+            timerError.Stop(); // detener el timer
+        }
+
+        private void MostrarError(string mensaje)
+        {
+
+            lblError.Text = mensaje;
+            pnlError.Visible = true;
+
+            timerError.Stop(); // reinicia 
+            timerError.Start();
+        }
+        private void btnCerrarError_Click(object sender, EventArgs e)
+        {
+            pnlError.Visible = false;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string usuarioIngresado = txtUsuario.Text.Trim();
@@ -51,21 +72,35 @@ namespace ElectroGest.Forms
             {
                 MessageBox.Show($"Bienvenido {usuario.IdNavigation.Nombre} - Rol: {usuario.Rol.Nombre}", "Login Exitoso");
 
-           
+
                 UsuarioAutenticado = usuario;
                 this.DialogResult = DialogResult.OK; // ← Importante
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+                MostrarError("* Usuario o contraseña incorrectos.");
+                return;
+              //  MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnVisible_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.UseSystemPasswordChar)
+            {
+                // Mostrar la contraseña
+                txtPassword.UseSystemPasswordChar = false;
+                btnVisible.Image = Properties.Resources.icons8_visible_24; // cambia a "visible"
+            }
+            else
+            {
+                // Ocultar la contraseña
+                txtPassword.UseSystemPasswordChar = true;
+                btnVisible.Image = Properties.Resources.icons8_invisible_24; // cambia a "oculto"
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

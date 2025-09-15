@@ -10,10 +10,6 @@ namespace ElectroGest.Datas
     {
         private readonly SistemaVentasContext _context;
 
-  
-
-        // Listar todos los usuarios con su Rol y Persona
-
         public RepositoriosUsuarios()
         {    
             _context = new SistemaVentasContext(); // Asume que el constructor por defecto de tu DbContext está configurado con connection string
