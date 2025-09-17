@@ -146,7 +146,7 @@
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(25, 59);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(77, 55);
+            pictureBox4.Size = new Size(46, 49);
             pictureBox4.TabIndex = 19;
             pictureBox4.TabStop = false;
             // 
@@ -270,18 +270,20 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(34, 149);
+            txtPassword.Location = new Point(37, 149);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(228, 23);
             txtPassword.TabIndex = 9;
             txtPassword.UseSystemPasswordChar = true;
+            txtPassword.KeyDown += TextBoxes_KeyDown;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(31, 77);
+            txtUsuario.Location = new Point(37, 77);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(228, 23);
             txtUsuario.TabIndex = 8;
+            txtUsuario.KeyDown += TextBoxes_KeyDown;
             // 
             // label3
             // 

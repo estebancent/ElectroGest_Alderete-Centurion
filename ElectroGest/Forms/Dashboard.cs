@@ -23,7 +23,7 @@ namespace ElectroGest.Forms
             InitializeComponent();
 
             _usuario = usuario;
-            welcomeuser.Text = $"Bienvenido {_usuario.IdNavigation.Nombre}";
+            welcomeuser.Text = $"{_usuario.IdNavigation.Nombre}";
             userrol.Text = $"({_usuario.Rol.Nombre})";
         }
         private void VerificarPanel()
@@ -36,10 +36,10 @@ namespace ElectroGest.Forms
                            "Debug Panel");
         }
 
-        // Llama este método en el Load del Dashboard
+        //  Load del Dashboard
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            //VerificarPanel();  //Temporal para debug
+            //VerificarPanel();  //Temporal debug
             btnInicio.PerformClick();
             // Ocultar todos los botones primero
             OcultarTodosBotones();
@@ -51,10 +51,11 @@ namespace ElectroGest.Forms
                     btnReportes.Visible = true;
                     btnUsuarios.Visible = true;
                     btnBackup.Visible = true;
-                    btnClientes.Visible = true;
+
+                    btnClientes.Enabled = false;
                     btnInicio.Visible = true;
-                    btnProductos.Visible = true;
-                    btnVentas.Visible = true;
+                    btnProductos.Enabled = false;
+                    btnVentas.Enabled = false;
                     break;
                 case "Administrador":
                     //btnProductos.Visible = true;
@@ -77,9 +78,7 @@ namespace ElectroGest.Forms
             btnReportes.Visible = false;
             btnUsuarios.Visible = false;
             btnBackup.Visible = false;
-            btnProductos.Visible = false;
 
-            btnVentas.Visible = false;
             // ... ocultar todos los botones
         }
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -207,8 +206,7 @@ namespace ElectroGest.Forms
             AbrirFormulario(new BackupForm());
             ResaltarBoton(btnBackup);
         }
+
        
-
-
     }
 }

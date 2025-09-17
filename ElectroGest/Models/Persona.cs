@@ -15,6 +15,8 @@ public partial class Persona
 
     public string Tipo { get; set; } = null!;
 
+    public int? Dni { get; set; }
+
     public virtual Cliente? Cliente { get; set; }
 
     public virtual Usuario? Usuario { get; set; }

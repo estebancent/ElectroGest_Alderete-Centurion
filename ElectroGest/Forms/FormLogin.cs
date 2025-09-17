@@ -35,6 +35,15 @@ namespace ElectroGest.Forms
             MessageBox.Show(debugInfo, "Debug - Usuarios en BD",
                            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        private void TextBoxes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+            {
+                e.SuppressKeyPress = true; // evita que se escriba el espacio en el textbox
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+
         private void TimerError_Tick(object sender, EventArgs e)
         {
             pnlError.Visible = false;

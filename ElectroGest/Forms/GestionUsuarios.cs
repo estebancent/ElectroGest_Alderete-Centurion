@@ -41,6 +41,9 @@ namespace ElectroGest.Forms
                {
                    u.Id,
                    Nombre = u.IdNavigation != null ? u.IdNavigation.Nombre : "(Sin nombre)",
+                   Dni = u.IdNavigation != null && u.IdNavigation.Dni.HasValue
+                    ? u.IdNavigation.Dni.Value.ToString()
+                    : "",   // 👈 Mostrar el DNI si existe, sino vacío
                    Email = u.IdNavigation != null ? u.IdNavigation.Email : "",
                    Telefono = u.IdNavigation != null ? u.IdNavigation.Telefono : "",
                    Tipo = u.IdNavigation != null ? u.IdNavigation.Tipo : "N/A",
@@ -48,7 +51,7 @@ namespace ElectroGest.Forms
                    RolId = u.RolId,
                    Activo = u.Activo ?? false,
 
-                   // 👉 Mostrar fechas
+                   // Mostrar fechas
                    FechaCreacion = u.FechaCreacion.HasValue
                             ? u.FechaCreacion.Value.ToString("dd/MM/yyyy HH:mm")
                             : "No registrada",
@@ -100,6 +103,7 @@ namespace ElectroGest.Forms
             _usuarioSeleccionadoId = Convert.ToInt32(row.Cells["Id"].Value);
 
             BoxNombre.Text = row.Cells["Nombre"].Value.ToString();
+            BoxDni.Text = row.Cells["Dni"].Value.ToString();
             BoxEmail.Text = row.Cells["Email"].Value.ToString();
             BoxTelefono.Text = row.Cells["Telefono"].Value.ToString();
             CbmRol.SelectedValue = Convert.ToInt32(row.Cells["RolId"].Value);
@@ -123,29 +127,46 @@ namespace ElectroGest.Forms
                 return;
             }
 
+            // Validar DNI (opcional, pero recomendable)
+            int? dni = null;
+            if (!string.IsNullOrWhiteSpace(BoxDni.Text))
+            {
+                if (int.TryParse(BoxDni.Text, out int parsedDni))
+                    dni = parsedDni;
+                else
+                {
+                    MessageBox.Show("El DNI debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             var usuario = new Usuario
             {
                 IdNavigation = new Persona
                 {
                     Nombre = BoxNombre.Text,
+                    Dni = dni, // 👈 acá asignás el DNI
                     Email = BoxEmail.Text,
                     Telefono = BoxTelefono.Text,
                     Tipo = "Usuario"
                 },
                 RolId = (int)CbmRol.SelectedValue,
                 PasswordHash = PasswordHasher.HashPassword(BoxPassword.Text),
-                Activo = true
+                Activo = true,
+                FechaCreacion = DateTime.Now // 👈 de paso registrás la fecha de alta
             };
 
             _repo.AgregarUsuario(usuario);
             CargarUsuarios();
             LimpiarCampos();
         }
+
         private void LimpiarCampos()
         {
             _usuarioSeleccionadoId = 0;
 
             BoxNombre.Clear();
+            BoxDni.Clear();
             BoxEmail.Clear();
             BoxTelefono.Clear();
             BoxPassword.Clear();
@@ -177,6 +198,22 @@ namespace ElectroGest.Forms
             if (usuario != null)
             {
                 usuario.IdNavigation.Nombre = BoxNombre.Text;
+
+                // 👇 Conversión segura de DNI
+                if (string.IsNullOrWhiteSpace(BoxDni.Text))
+                {
+                    usuario.IdNavigation.Dni = null;
+                }
+                else if (int.TryParse(BoxDni.Text, out int dni))
+                {
+                    usuario.IdNavigation.Dni = dni;
+                }
+                else
+                {
+                    MessageBox.Show("El DNI ingresado no es válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 usuario.IdNavigation.Email = BoxEmail.Text;
                 usuario.IdNavigation.Telefono = BoxTelefono.Text;
                 usuario.RolId = (int)CbmRol.SelectedValue;
@@ -184,9 +221,8 @@ namespace ElectroGest.Forms
                 if (!string.IsNullOrWhiteSpace(BoxPassword.Text))
                     usuario.PasswordHash = PasswordHasher.HashPassword(BoxPassword.Text);
 
-                // 👉 Registrar fecha de modificación
+                // Registrar fecha de modificación
                 usuario.FechaModificacion = DateTime.Now;
-
                 usuario.Activo = chkActivo.Checked;
 
                 _repo.ActualizarUsuario(usuario);
@@ -194,6 +230,7 @@ namespace ElectroGest.Forms
                 LimpiarCampos();
             }
         }
+
 
         // Eliminar (baja lógica)
         private void btnEliminar_Click(object sender, EventArgs e)
