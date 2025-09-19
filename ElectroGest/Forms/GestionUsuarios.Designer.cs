@@ -61,12 +61,18 @@
             lblConfirmarPassword = new Label();
             BoxDni = new TextBox();
             lblDni = new Label();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)personaBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)personaBindingSource).BeginInit();
             panel1.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // txtNombre
@@ -233,7 +239,7 @@
             flowLayoutPanel1.Controls.Add(btnEliminar);
             flowLayoutPanel1.Controls.Add(btnLimpiar);
             flowLayoutPanel1.Controls.Add(btnProbar);
-            flowLayoutPanel1.Location = new Point(8, 264);
+            flowLayoutPanel1.Location = new Point(5, 264);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(490, 46);
             flowLayoutPanel1.TabIndex = 17;
@@ -257,7 +263,7 @@
             dgvUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvUsuarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvUsuarios.BackgroundColor = Color.FromArgb(45, 66, 91);
+            dgvUsuarios.BackgroundColor = Color.FromArgb(224, 224, 224);
             dgvUsuarios.BorderStyle = BorderStyle.None;
             dgvUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -269,8 +275,9 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvUsuarios.Cursor = Cursors.Hand;
+            dgvUsuarios.Enabled = false;
             dgvUsuarios.EnableHeadersVisualStyles = false;
-            dgvUsuarios.Location = new Point(8, 37);
+            dgvUsuarios.Location = new Point(3, 3);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -287,7 +294,7 @@
             dgvUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvUsuarios.RowTemplate.DefaultCellStyle.BackColor = SystemColors.ActiveCaption;
             dgvUsuarios.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvUsuarios.Size = new Size(919, 133);
+            dgvUsuarios.Size = new Size(920, 401);
             dgvUsuarios.TabIndex = 18;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             // 
@@ -320,7 +327,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(224, 224, 224);
+            panel1.BackColor = Color.LightGray;
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(lblConfirmarPassword);
             panel1.Controls.Add(BoxDni);
@@ -337,9 +344,10 @@
             panel1.Controls.Add(BoxPassword);
             panel1.Controls.Add(txt);
             panel1.Controls.Add(txtPassword);
-            panel1.Location = new Point(0, 176);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(939, 314);
+            panel1.Size = new Size(920, 448);
             panel1.TabIndex = 22;
             // 
             // textBox1
@@ -377,15 +385,46 @@
             lblDni.TabIndex = 20;
             lblDni.Text = "DNI:";
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(3, 11);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(934, 482);
+            tabControl1.TabIndex = 24;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(dgvUsuarios);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(926, 454);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Lista de Usuarios";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(panel1);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(926, 454);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Formulario ";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // GestionUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(939, 490);
-            Controls.Add(panel1);
+            Controls.Add(tabControl1);
             Controls.Add(label1);
-            Controls.Add(dgvUsuarios);
             Name = "GestionUsuarios";
             Text = "GestionUsuarios";
             Load += GestionUsuarios_Load;
@@ -397,6 +436,9 @@
             ((System.ComponentModel.ISupportInitialize)personaBindingSource).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -429,5 +471,8 @@
         private Label lblDni;
         private TextBox textBox1;
         private Label lblConfirmarPassword;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
     }
 }

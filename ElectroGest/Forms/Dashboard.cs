@@ -29,10 +29,10 @@ namespace ElectroGest.Forms
         private void VerificarPanel()
         {
             MessageBox.Show($"Panel contenedor:\n" +
-                           $"Size: {panelContenedor.Size}\n" +
-                           $"Visible: {panelContenedor.Visible}\n" +
-                           $"Dock: {panelContenedor.Dock}\n" +
-                           $"Controls count: {panelContenedor.Controls.Count}",
+                           $"Size: {panelPrimario.Size}\n" +
+                           $"Visible: {panelPrimario.Visible}\n" +
+                           $"Dock: {panelPrimario.Dock}\n" +
+                           $"Controls count: {panelPrimario.Controls.Count}",
                            "Debug Panel");
         }
 
@@ -40,7 +40,7 @@ namespace ElectroGest.Forms
         private void Dashboard_Load(object sender, EventArgs e)
         {
             //VerificarPanel();  //Temporal debug
-            btnInicio.PerformClick();
+            btnUsuarios.PerformClick();
             // Ocultar todos los botones primero
             OcultarTodosBotones();
 
@@ -150,8 +150,8 @@ namespace ElectroGest.Forms
             formHijo.Dock = DockStyle.Fill;
 
             // Limpiar controles existentes antes de agregar nuevo
-            panelContenedor.Controls.Clear();
-            panelContenedor.Controls.Add(formHijo);
+            panelPrimario.Controls.Clear();
+            panelPrimario.Controls.Add(formHijo);
 
             formHijo.BringToFront();
             formHijo.Show();

@@ -33,20 +33,21 @@
             bindingSource1 = new BindingSource(components);
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            label7 = new Label();
+            pictureBox5 = new PictureBox();
             pnlError = new Panel();
             btnCerrarError = new Button();
             lblError = new Label();
             label6 = new Label();
-            pictureBox4 = new PictureBox();
             label5 = new Label();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             btnVisible = new Button();
             label1 = new Label();
             label2 = new Label();
             btnLogin = new Button();
             linkLabel1 = new LinkLabel();
             pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
             txtPassword = new TextBox();
             txtUsuario = new TextBox();
             label3 = new Label();
@@ -56,11 +57,11 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             pnlError.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -78,11 +79,12 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImage = Properties.Resources.backgroundgreen;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(pictureBox5);
             panel1.Controls.Add(pnlError);
             panel1.Controls.Add(label6);
-            panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(label4);
@@ -91,6 +93,26 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(717, 411);
             panel1.TabIndex = 15;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.DarkSeaGreen;
+            label7.Location = new Point(76, 79);
+            label7.Name = "label7";
+            label7.Size = new Size(152, 15);
+            label7.TabIndex = 24;
+            label7.Text = "Electrogest Alderete Cent";
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = Properties.Resources.icons8_neo_cryptocurrency_48;
+            pictureBox5.Location = new Point(25, 57);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(212, 62);
+            pictureBox5.TabIndex = 23;
+            pictureBox5.TabStop = false;
             // 
             // pnlError
             // 
@@ -141,15 +163,6 @@
             label6.TabIndex = 20;
             label6.Text = "\"Todo lo que necesitás para organizar tus ventas\r\n y productos está aquí. Iniciá sesión para empezar.\"";
             // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(25, 59);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(46, 49);
-            pictureBox4.TabIndex = 19;
-            pictureBox4.TabStop = false;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -165,20 +178,31 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(100, 0, 0, 0);
+            panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(btnVisible);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(btnLogin);
             panel2.Controls.Add(linkLabel1);
             panel2.Controls.Add(pictureBox3);
-            panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(txtPassword);
             panel2.Controls.Add(txtUsuario);
             panel2.Controls.Add(label3);
-            panel2.Location = new Point(388, 59);
+            panel2.Location = new Point(386, 59);
             panel2.Name = "panel2";
-            panel2.Size = new Size(302, 295);
+            panel2.Size = new Size(304, 295);
             panel2.TabIndex = 17;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resources.icons8_contraseña_24;
+            pictureBox2.Location = new Point(3, 138);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(28, 38);
+            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox2.TabIndex = 21;
+            pictureBox2.TabStop = false;
             // 
             // btnVisible
             // 
@@ -186,13 +210,13 @@
             btnVisible.Cursor = Cursors.Hand;
             btnVisible.FlatAppearance.BorderSize = 0;
             btnVisible.FlatAppearance.MouseDownBackColor = Color.FromArgb(100, 0, 0, 0);
-            btnVisible.FlatAppearance.MouseOverBackColor = SystemColors.GrayText;
+            btnVisible.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, 0, 0, 0);
             btnVisible.FlatStyle = FlatStyle.Flat;
             btnVisible.ForeColor = SystemColors.ActiveCaption;
             btnVisible.Image = Properties.Resources.icons8_invisible_24;
-            btnVisible.Location = new Point(263, 149);
+            btnVisible.Location = new Point(262, 149);
             btnVisible.Name = "btnVisible";
-            btnVisible.Size = new Size(36, 23);
+            btnVisible.Size = new Size(37, 23);
             btnVisible.TabIndex = 20;
             btnVisible.UseVisualStyleBackColor = false;
             btnVisible.Click += btnVisible_Click;
@@ -227,6 +251,7 @@
             btnLogin.FlatAppearance.MouseDownBackColor = Color.DimGray;
             btnLogin.FlatAppearance.MouseOverBackColor = SystemColors.GrayText;
             btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = SystemColors.ActiveCaption;
             btnLogin.Location = new Point(64, 215);
             btnLogin.Name = "btnLogin";
@@ -250,23 +275,14 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(3, 77);
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.Image = Properties.Resources.icons8_user_24;
+            pictureBox3.Location = new Point(0, 67);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(25, 24);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.Size = new Size(31, 37);
+            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox3.TabIndex = 14;
             pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 148);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(25, 24);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 15;
-            pictureBox2.TabStop = false;
             // 
             // txtPassword
             // 
@@ -337,13 +353,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             pnlError.ResumeLayout(false);
             pnlError.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
         }
 
@@ -351,7 +367,6 @@
         private BindingSource bindingSource1;
         private PictureBox pictureBox1;
         private Panel panel1;
-        private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private Label label1;
         private Label label3;
@@ -362,7 +377,6 @@
         private LinkLabel linkLabel1;
         private Label label4;
         private Panel panel2;
-        private PictureBox pictureBox4;
         private Label label5;
         private Button btnVisible;
         private Label label6;
@@ -371,5 +385,8 @@
         private Panel pnlError;
         private Button btnCerrarError;
         private System.Windows.Forms.Timer timerError;
+        private Label label7;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox2;
     }
 }
