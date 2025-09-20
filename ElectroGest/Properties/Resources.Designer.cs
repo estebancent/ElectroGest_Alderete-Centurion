@@ -223,9 +223,29 @@ namespace ElectroGest.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_punto_y_final_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-punto-y-final-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_user_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-user-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_usuario_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-usuario-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +276,16 @@ namespace ElectroGest.Properties {
         internal static System.Drawing.Bitmap icons8_usuario_48__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-usuario-48 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_usuario_masculino_en_círculo_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-usuario-masculino-en-círculo-16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

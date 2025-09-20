@@ -23,7 +23,7 @@ namespace ElectroGest.Forms
             InitializeComponent();
 
             _usuario = usuario;
-            welcomeuser.Text = $"{_usuario.IdNavigation.Nombre}";
+            welcomeuser.Text = $"En linea:{_usuario.IdNavigation.Nombre}";
             userrol.Text = $"({_usuario.Rol.Nombre})";
         }
         private void VerificarPanel()
