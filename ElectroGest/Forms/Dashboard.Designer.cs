@@ -45,7 +45,6 @@
             pictureBox1 = new PictureBox();
             welcomeuser = new Label();
             userrol = new Label();
-            panel2 = new Panel();
             panel1 = new Panel();
             panelPrimario = new Panel();
             panelContenedor = new Panel();
@@ -295,15 +294,6 @@
             userrol.TabIndex = 0;
             userrol.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(45, 40, 40);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(976, 68);
-            panel2.TabIndex = 0;
-            // 
             // panel1
             // 
             panel1.AutoSize = true;
@@ -318,7 +308,6 @@
             // 
             panelPrimario.AutoSize = true;
             panelPrimario.Controls.Add(panelContenedor);
-            panelPrimario.Controls.Add(panel2);
             panelPrimario.Dock = DockStyle.Fill;
             panelPrimario.Location = new Point(218, 0);
             panelPrimario.Name = "panelPrimario";
@@ -327,9 +316,10 @@
             // 
             // panelContenedor
             // 
-            panelContenedor.Location = new Point(0, 132);
+            panelContenedor.Dock = DockStyle.Fill;
+            panelContenedor.Location = new Point(0, 0);
             panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(871, 579);
+            panelContenedor.Size = new Size(976, 626);
             panelContenedor.TabIndex = 1;
             // 
             // Dashboard
@@ -375,7 +365,6 @@
         private Label userrol;
         private Panel panelPrimario;
         private Button btnClientes;
-        private Panel panel2;
         private Label label1;
         private PictureBox pictureBox2;
         private Panel panel3;
