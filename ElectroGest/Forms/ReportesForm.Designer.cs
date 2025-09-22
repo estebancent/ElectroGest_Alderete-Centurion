@@ -52,6 +52,7 @@
             label6 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            button4 = new Button();
             tabPage2 = new TabPage();
             pictureBox3 = new PictureBox();
             button2 = new Button();
@@ -84,7 +85,8 @@
             comboBox3 = new ComboBox();
             label13 = new Label();
             label14 = new Label();
-            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -146,7 +148,7 @@
             groupBox1.ForeColor = SystemColors.ButtonFace;
             groupBox1.Location = new Point(15, 70);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(155, 69);
+            groupBox1.Size = new Size(172, 69);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cantidad de ventas:";
@@ -167,9 +169,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(15, 355);
+            pictureBox1.Location = new Point(15, 320);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(448, 219);
+            pictureBox1.Size = new Size(448, 254);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -177,9 +179,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(493, 355);
+            pictureBox2.Location = new Point(493, 320);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(414, 219);
+            pictureBox2.Size = new Size(414, 254);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
@@ -190,9 +192,9 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             groupBox2.ForeColor = SystemColors.ControlLightLight;
-            groupBox2.Location = new Point(214, 155);
+            groupBox2.Location = new Point(215, 70);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(155, 69);
+            groupBox2.Size = new Size(172, 69);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Cantidad de Clientes";
@@ -216,7 +218,7 @@
             groupBox3.ForeColor = SystemColors.ControlLightLight;
             groupBox3.Location = new Point(415, 70);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(155, 69);
+            groupBox3.Size = new Size(172, 69);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Ingresos totales";
@@ -240,9 +242,9 @@
             groupBox4.Controls.Add(label5);
             groupBox4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox4.ForeColor = SystemColors.ControlLightLight;
-            groupBox4.Location = new Point(407, 155);
+            groupBox4.Location = new Point(215, 155);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(161, 69);
+            groupBox4.Size = new Size(172, 69);
             groupBox4.TabIndex = 9;
             groupBox4.TabStop = false;
             groupBox4.Text = "Ganancia Total";
@@ -265,9 +267,9 @@
             groupBox6.Controls.Add(label7);
             groupBox6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox6.ForeColor = SystemColors.ControlLightLight;
-            groupBox6.Location = new Point(214, 70);
+            groupBox6.Location = new Point(415, 155);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(161, 69);
+            groupBox6.Size = new Size(172, 69);
             groupBox6.TabIndex = 11;
             groupBox6.TabStop = false;
             groupBox6.Text = "Dinero Invertido";
@@ -284,7 +286,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(769, 317);
+            button1.Location = new Point(746, 259);
             button1.Name = "button1";
             button1.Size = new Size(138, 32);
             button1.TabIndex = 12;
@@ -317,7 +319,7 @@
             groupBox5.ForeColor = SystemColors.ControlLightLight;
             groupBox5.Location = new Point(15, 155);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(161, 69);
+            groupBox5.Size = new Size(172, 69);
             groupBox5.TabIndex = 10;
             groupBox5.TabStop = false;
             groupBox5.Text = "Cantidad de productos";
@@ -370,8 +372,18 @@
             tabPage1.Text = "General";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            button4.Location = new Point(814, 16);
+            button4.Name = "button4";
+            button4.Size = new Size(93, 25);
+            button4.TabIndex = 15;
+            button4.Text = "Buscar";
+            button4.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(button5);
             tabPage2.Controls.Add(pictureBox3);
             tabPage2.Controls.Add(button2);
             tabPage2.Controls.Add(pictureBox4);
@@ -421,13 +433,12 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Cliente, Fecha, Vendedor, CantidadProd, Total });
-            dataGridView1.Location = new Point(20, 105);
+            dataGridView1.Location = new Point(6, 48);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(880, 51);
+            dataGridView1.Size = new Size(901, 51);
             dataGridView1.TabIndex = 21;
             // 
             // Cliente
@@ -457,7 +468,7 @@
             // 
             // dateTimePicker3
             // 
-            dateTimePicker3.Location = new Point(366, 27);
+            dateTimePicker3.Location = new Point(342, 8);
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(240, 23);
             dateTimePicker3.TabIndex = 16;
@@ -465,7 +476,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(612, 35);
+            label9.Location = new Point(588, 14);
             label9.Name = "label9";
             label9.Size = new Size(61, 15);
             label9.TabIndex = 20;
@@ -473,7 +484,7 @@
             // 
             // dateTimePicker4
             // 
-            dateTimePicker4.Location = new Point(73, 27);
+            dateTimePicker4.Location = new Point(54, 8);
             dateTimePicker4.Name = "dateTimePicker4";
             dateTimePicker4.Size = new Size(236, 23);
             dateTimePicker4.TabIndex = 15;
@@ -482,24 +493,25 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox2.Location = new Point(684, 27);
+            comboBox2.Location = new Point(652, 6);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(216, 23);
+            comboBox2.Size = new Size(162, 23);
             comboBox2.TabIndex = 19;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(20, 35);
+            label10.Location = new Point(6, 14);
             label10.Name = "label10";
             label10.Size = new Size(42, 15);
             label10.TabIndex = 17;
             label10.Text = "Desde:";
+            label10.Click += label10_Click;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(315, 35);
+            label11.Location = new Point(296, 14);
             label11.Name = "label11";
             label11.Size = new Size(40, 15);
             label11.TabIndex = 18;
@@ -507,6 +519,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(button6);
             tabPage3.Controls.Add(pictureBox5);
             tabPage3.Controls.Add(button3);
             tabPage3.Controls.Add(pictureBox6);
@@ -528,16 +541,16 @@
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(493, 368);
+            pictureBox5.Location = new Point(493, 317);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(414, 219);
+            pictureBox5.Size = new Size(414, 270);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 24;
             pictureBox5.TabStop = false;
             // 
             // button3
             // 
-            button3.Location = new Point(769, 330);
+            button3.Location = new Point(769, 279);
             button3.Name = "button3";
             button3.Size = new Size(138, 32);
             button3.TabIndex = 25;
@@ -547,9 +560,9 @@
             // pictureBox6
             // 
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(15, 368);
+            pictureBox6.Location = new Point(15, 317);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(448, 219);
+            pictureBox6.Size = new Size(448, 270);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox6.TabIndex = 23;
             pictureBox6.TabStop = false;
@@ -560,9 +573,9 @@
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dataGridView2.Location = new Point(15, 106);
+            dataGridView2.Location = new Point(6, 49);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(880, 51);
+            dataGridView2.Size = new Size(901, 51);
             dataGridView2.TabIndex = 22;
             // 
             // dataGridViewTextBoxColumn1
@@ -592,7 +605,7 @@
             // 
             // dateTimePicker5
             // 
-            dateTimePicker5.Location = new Point(361, 19);
+            dateTimePicker5.Location = new Point(333, 11);
             dateTimePicker5.Name = "dateTimePicker5";
             dateTimePicker5.Size = new Size(240, 23);
             dateTimePicker5.TabIndex = 16;
@@ -600,7 +613,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(607, 27);
+            label12.Location = new Point(579, 19);
             label12.Name = "label12";
             label12.Size = new Size(61, 15);
             label12.TabIndex = 20;
@@ -608,7 +621,7 @@
             // 
             // dateTimePicker6
             // 
-            dateTimePicker6.Location = new Point(68, 19);
+            dateTimePicker6.Location = new Point(45, 11);
             dateTimePicker6.Name = "dateTimePicker6";
             dateTimePicker6.Size = new Size(236, 23);
             dateTimePicker6.TabIndex = 15;
@@ -617,15 +630,15 @@
             // 
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox3.Location = new Point(679, 19);
+            comboBox3.Location = new Point(646, 11);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(216, 23);
+            comboBox3.Size = new Size(162, 23);
             comboBox3.TabIndex = 19;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(15, 27);
+            label13.Location = new Point(6, 19);
             label13.Name = "label13";
             label13.Size = new Size(42, 15);
             label13.TabIndex = 17;
@@ -634,20 +647,29 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(310, 27);
+            label14.Location = new Point(287, 19);
             label14.Name = "label14";
             label14.Size = new Size(40, 15);
             label14.TabIndex = 18;
             label14.Text = "Hasta:";
             // 
-            // button4
+            // button5
             // 
-            button4.Location = new Point(814, 16);
-            button4.Name = "button4";
-            button4.Size = new Size(93, 25);
-            button4.TabIndex = 15;
-            button4.Text = "Buscar";
-            button4.UseVisualStyleBackColor = true;
+            button5.Location = new Point(817, 6);
+            button5.Name = "button5";
+            button5.Size = new Size(93, 25);
+            button5.TabIndex = 25;
+            button5.Text = "Buscar";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(814, 9);
+            button6.Name = "button6";
+            button6.Size = new Size(93, 25);
+            button6.TabIndex = 26;
+            button6.Text = "Buscar";
+            button6.UseVisualStyleBackColor = true;
             // 
             // ReportesForm
             // 
@@ -747,5 +769,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Button button4;
+        private Button button5;
+        private Button button6;
     }
 }

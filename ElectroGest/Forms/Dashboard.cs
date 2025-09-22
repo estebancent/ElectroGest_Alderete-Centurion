@@ -51,7 +51,7 @@ namespace ElectroGest.Forms
                     btnReportes.Visible = true;
                     btnUsuarios.Visible = true;
                     btnBackup.Visible = true;
-
+                    btnProveedor.Enabled = false;
                     btnClientes.Enabled = false;
                     btnInicio.Visible = true;
                     btnProductos.Enabled = false;
@@ -61,23 +61,23 @@ namespace ElectroGest.Forms
                     btnReportes.Enabled = true;
                     btnUsuarios.Enabled = false;
                     btnBackup.Enabled = false;
-
+                    btnProveedor.Enabled = true;
                     btnClientes.Enabled = true;
                     btnInicio.Visible = true;
                     btnProductos.Enabled = true;
                     btnVentas.Enabled = true;
-                    
+
                     break;
                 case "Vendedor":
                     btnReportes.Enabled = false;
                     btnUsuarios.Enabled = false;
                     btnBackup.Enabled = false;
-
+                    btnProveedor.Enabled = true;
                     btnClientes.Enabled = true;
                     btnInicio.Visible = true;
                     btnProductos.Enabled = true;
                     btnVentas.Enabled = true;
-                    
+
                     break;
             }
         }
@@ -85,8 +85,8 @@ namespace ElectroGest.Forms
 
         private void OcultarTodosBotones()
         {
-           // btnReportes.Visible = false;
-           // btnUsuarios.Visible = false;
+            // btnReportes.Visible = false;
+            // btnUsuarios.Visible = false;
             //btnBackup.Visible = false;
 
             // ... ocultar todos los botones
@@ -213,6 +213,12 @@ namespace ElectroGest.Forms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnProveedor_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new ProveedoresForm());
+            ResaltarBoton(btnProveedor);
         }
     }
 }
