@@ -23,7 +23,7 @@ namespace ElectroGest.Forms
             InitializeComponent();
 
             _usuario = usuario;
-            welcomeuser.Text = $"En linea:{_usuario.IdNavigation.Nombre}";
+            welcomeuser.Text = $"En linea: {_usuario.IdNavigation.Nombre}";
             userrol.Text = $"({_usuario.Rol.Nombre})";
         }
         private void VerificarPanel()
@@ -58,16 +58,26 @@ namespace ElectroGest.Forms
                     btnVentas.Enabled = false;
                     break;
                 case "Administrador":
-                    //btnProductos.Visible = true;
+                    btnReportes.Enabled = true;
+                    btnUsuarios.Enabled = false;
+                    btnBackup.Enabled = false;
 
-                    //btnVentas.Visible = true;
-                    //btnReportesAdmin.Visible = true;
-                    //btnClientes.Visible = true;
+                    btnClientes.Enabled = true;
+                    btnInicio.Visible = true;
+                    btnProductos.Enabled = true;
+                    btnVentas.Enabled = true;
+                    
                     break;
                 case "Vendedor":
-                    //btnGestionProductos.Visible = true;
-                    //btnGestionClientes.Visible = true;
-                    //btnListaProductos.Visible = true;
+                    btnReportes.Enabled = false;
+                    btnUsuarios.Enabled = false;
+                    btnBackup.Enabled = false;
+
+                    btnClientes.Enabled = true;
+                    btnInicio.Visible = true;
+                    btnProductos.Enabled = true;
+                    btnVentas.Enabled = true;
+                    
                     break;
             }
         }
@@ -75,9 +85,9 @@ namespace ElectroGest.Forms
 
         private void OcultarTodosBotones()
         {
-            btnReportes.Visible = false;
-            btnUsuarios.Visible = false;
-            btnBackup.Visible = false;
+           // btnReportes.Visible = false;
+           // btnUsuarios.Visible = false;
+            //btnBackup.Visible = false;
 
             // ... ocultar todos los botones
         }
@@ -207,6 +217,9 @@ namespace ElectroGest.Forms
             ResaltarBoton(btnBackup);
         }
 
-       
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

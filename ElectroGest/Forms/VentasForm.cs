@@ -16,5 +16,10 @@ namespace ElectroGest.Forms
         {
             InitializeComponent();
         }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

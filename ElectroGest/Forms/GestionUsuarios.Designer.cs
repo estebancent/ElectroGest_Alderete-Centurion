@@ -47,39 +47,50 @@
             chkActivo = new CheckBox();
             btnAgregar = new Button();
             btnEditar = new Button();
-            btnEliminar = new Button();
             btnLimpiar = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            btnEliminar = new Button();
             btnProbar = new Button();
             dgvUsuarios = new DataGridView();
             CbmRol = new ComboBox();
             personaBindingSource1 = new BindingSource(components);
             personaBindingSource = new BindingSource(components);
-            label1 = new Label();
             panel1 = new Panel();
-            textBox1 = new TextBox();
-            lblConfirmarPassword = new Label();
+            panel2 = new Panel();
             BoxDni = new TextBox();
             lblDni = new Label();
+            panel3 = new Panel();
+            BoxConfirmarPassword = new TextBox();
+            lblConfirmarPassword = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
+            btnBuscar = new Button();
+            txtBuscarUsuario = new TextBox();
+            dtpHasta = new DateTimePicker();
+            dtpDesde = new DateTimePicker();
+            btnExportarPdf = new Button();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            btnExportarExcel = new Button();
+            flowLayoutPanel3 = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)personaBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)personaBindingSource).BeginInit();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
             // txtNombre
             // 
             txtNombre.AutoSize = true;
             txtNombre.ForeColor = SystemColors.ActiveCaptionText;
-            txtNombre.Location = new Point(3, 18);
+            txtNombre.Location = new Point(5, 9);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(112, 15);
             txtNombre.TabIndex = 1;
@@ -89,7 +100,7 @@
             // 
             txtEmail.AutoSize = true;
             txtEmail.ForeColor = SystemColors.ActiveCaptionText;
-            txtEmail.Location = new Point(5, 69);
+            txtEmail.Location = new Point(5, 66);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(115, 15);
             txtEmail.TabIndex = 2;
@@ -99,7 +110,7 @@
             // 
             txtTelefono.AutoSize = true;
             txtTelefono.ForeColor = SystemColors.ActiveCaptionText;
-            txtTelefono.Location = new Point(5, 116);
+            txtTelefono.Location = new Point(18, 9);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(55, 15);
             txtTelefono.TabIndex = 3;
@@ -108,8 +119,9 @@
             // txtPassword
             // 
             txtPassword.AutoSize = true;
+            txtPassword.BackColor = Color.Transparent;
             txtPassword.ForeColor = SystemColors.ActiveCaptionText;
-            txtPassword.Location = new Point(396, 15);
+            txtPassword.Location = new Point(18, 66);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(70, 15);
             txtPassword.TabIndex = 4;
@@ -119,7 +131,7 @@
             // 
             txt.AutoSize = true;
             txt.ForeColor = SystemColors.ActiveCaptionText;
-            txt.Location = new Point(5, 220);
+            txt.Location = new Point(8, 158);
             txt.Name = "txt";
             txt.Size = new Size(27, 15);
             txt.TabIndex = 5;
@@ -127,31 +139,39 @@
             // 
             // BoxNombre
             // 
-            BoxNombre.Location = new Point(38, 37);
+            BoxNombre.BackColor = Color.White;
+            BoxNombre.BorderStyle = BorderStyle.FixedSingle;
+            BoxNombre.Location = new Point(8, 28);
             BoxNombre.Name = "BoxNombre";
+            BoxNombre.PlaceholderText = "Ej: Juan ";
             BoxNombre.Size = new Size(277, 23);
-            BoxNombre.TabIndex = 6;
+            BoxNombre.TabIndex = 0;
             // 
             // BoxEmail
             // 
-            BoxEmail.Location = new Point(38, 87);
+            BoxEmail.Location = new Point(8, 84);
             BoxEmail.Name = "BoxEmail";
+            BoxEmail.PlaceholderText = "Ej: taller.2025@gmail.com";
             BoxEmail.Size = new Size(277, 23);
-            BoxEmail.TabIndex = 7;
+            BoxEmail.TabIndex = 1;
             // 
             // BoxTelefono
             // 
-            BoxTelefono.Location = new Point(38, 134);
+            BoxTelefono.Location = new Point(19, 27);
             BoxTelefono.Name = "BoxTelefono";
+            BoxTelefono.PlaceholderText = "Ej: 3794123456 (10–11 dígitos, sin espacios)";
             BoxTelefono.Size = new Size(277, 23);
-            BoxTelefono.TabIndex = 8;
+            BoxTelefono.TabIndex = 3;
+            BoxTelefono.KeyPress += BoxTelefono_KeyPress;
             // 
             // BoxPassword
             // 
-            BoxPassword.Location = new Point(394, 37);
+            BoxPassword.Location = new Point(19, 84);
             BoxPassword.Name = "BoxPassword";
-            BoxPassword.Size = new Size(220, 23);
-            BoxPassword.TabIndex = 9;
+            BoxPassword.PlaceholderText = "Mínimo 4 caracteres";
+            BoxPassword.Size = new Size(277, 23);
+            BoxPassword.TabIndex = 4;
+            BoxPassword.UseSystemPasswordChar = true;
             // 
             // usuarioBindingSource
             // 
@@ -160,8 +180,10 @@
             // chkActivo
             // 
             chkActivo.AutoSize = true;
+            chkActivo.FlatAppearance.BorderColor = Color.YellowGreen;
+            chkActivo.FlatAppearance.CheckedBackColor = Color.Lime;
             chkActivo.ForeColor = SystemColors.ActiveCaptionText;
-            chkActivo.Location = new Point(255, 220);
+            chkActivo.Location = new Point(19, 181);
             chkActivo.Name = "chkActivo";
             chkActivo.Size = new Size(60, 19);
             chkActivo.TabIndex = 12;
@@ -173,13 +195,14 @@
             btnAgregar.BackColor = Color.DarkSeaGreen;
             btnAgregar.FlatAppearance.BorderSize = 0;
             btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
+            btnAgregar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnAgregar.Image = Properties.Resources.icons8_añadir_32;
             btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
             btnAgregar.Location = new Point(3, 3);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(91, 34);
             btnAgregar.TabIndex = 13;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.Text = "Guardar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
@@ -189,6 +212,7 @@
             btnEditar.BackColor = Color.Goldenrod;
             btnEditar.FlatAppearance.BorderSize = 0;
             btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditar.Location = new Point(100, 3);
@@ -200,28 +224,13 @@
             btnEditar.UseVisualStyleBackColor = false;
             btnEditar.Click += btnEditar_Click;
             // 
-            // btnEliminar
-            // 
-            btnEliminar.BackColor = Color.IndianRed;
-            btnEliminar.FlatAppearance.BorderSize = 0;
-            btnEliminar.FlatStyle = FlatStyle.Flat;
-            btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
-            btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(197, 3);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(91, 34);
-            btnEliminar.TabIndex = 15;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.TextAlign = ContentAlignment.MiddleRight;
-            btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click;
-            // 
             // btnLimpiar
             // 
-            btnLimpiar.BackColor = Color.BurlyWood;
+            btnLimpiar.BackColor = Color.RosyBrown;
             btnLimpiar.FlatAppearance.BorderSize = 0;
             btnLimpiar.FlatStyle = FlatStyle.Flat;
-            btnLimpiar.Image = (Image)resources.GetObject("btnLimpiar.Image");
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnLimpiar.Image = Properties.Resources.icons8_limpiar_32;
             btnLimpiar.ImageAlign = ContentAlignment.MiddleLeft;
             btnLimpiar.Location = new Point(294, 3);
             btnLimpiar.Name = "btnLimpiar";
@@ -239,21 +248,39 @@
             flowLayoutPanel1.Controls.Add(btnEliminar);
             flowLayoutPanel1.Controls.Add(btnLimpiar);
             flowLayoutPanel1.Controls.Add(btnProbar);
-            flowLayoutPanel1.Location = new Point(5, 264);
+            flowLayoutPanel1.Location = new Point(38, 264);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(490, 46);
+            flowLayoutPanel1.Size = new Size(431, 46);
             flowLayoutPanel1.TabIndex = 17;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.IndianRed;
+            btnEliminar.FlatAppearance.BorderSize = 0;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
+            btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEliminar.Location = new Point(197, 3);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(91, 34);
+            btnEliminar.TabIndex = 15;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.TextAlign = ContentAlignment.MiddleRight;
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnProbar
             // 
-            btnProbar.BackColor = Color.FromArgb(192, 192, 255);
+            btnProbar.BackColor = Color.Silver;
             btnProbar.FlatAppearance.BorderSize = 0;
             btnProbar.FlatStyle = FlatStyle.Flat;
+            btnProbar.Image = Properties.Resources.icons8_emoji_de_flechas_en_sentido_contrario_a_las_agujas_del_reloj_48;
             btnProbar.Location = new Point(391, 3);
             btnProbar.Name = "btnProbar";
-            btnProbar.Size = new Size(75, 34);
+            btnProbar.Size = new Size(35, 34);
             btnProbar.TabIndex = 20;
-            btnProbar.Text = "Refresh";
+            btnProbar.TextAlign = ContentAlignment.MiddleRight;
             btnProbar.UseVisualStyleBackColor = false;
             btnProbar.Click += btnProbar_Click;
             // 
@@ -268,21 +295,21 @@
             dgvUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.Menu;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvUsuarios.Cursor = Cursors.Hand;
-            dgvUsuarios.Enabled = false;
+            dgvUsuarios.Dock = DockStyle.Fill;
             dgvUsuarios.EnableHeadersVisualStyles = false;
             dgvUsuarios.Location = new Point(3, 3);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = SystemColors.ScrollBar;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.ActiveCaption;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.Desktop;
@@ -294,17 +321,17 @@
             dgvUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvUsuarios.RowTemplate.DefaultCellStyle.BackColor = SystemColors.ActiveCaption;
             dgvUsuarios.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvUsuarios.Size = new Size(920, 401);
+            dgvUsuarios.Size = new Size(933, 227);
             dgvUsuarios.TabIndex = 18;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             // 
             // CbmRol
             // 
             CbmRol.FormattingEnabled = true;
-            CbmRol.Location = new Point(38, 218);
+            CbmRol.Location = new Point(8, 177);
             CbmRol.Name = "CbmRol";
             CbmRol.Size = new Size(166, 23);
-            CbmRol.TabIndex = 19;
+            CbmRol.TabIndex = 3;
             // 
             // personaBindingSource1
             // 
@@ -314,117 +341,203 @@
             // 
             personaBindingSource.DataSource = typeof(Models.Persona);
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(372, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(180, 25);
-            label1.TabIndex = 21;
-            label1.Text = "Gestion de Usuarios";
-            // 
             // panel1
             // 
             panel1.BackColor = Color.LightGray;
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(lblConfirmarPassword);
-            panel1.Controls.Add(BoxDni);
-            panel1.Controls.Add(lblDni);
-            panel1.Controls.Add(BoxNombre);
-            panel1.Controls.Add(BoxEmail);
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(panel3);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Controls.Add(txtNombre);
-            panel1.Controls.Add(CbmRol);
-            panel1.Controls.Add(txtEmail);
-            panel1.Controls.Add(chkActivo);
-            panel1.Controls.Add(BoxTelefono);
-            panel1.Controls.Add(txtTelefono);
-            panel1.Controls.Add(BoxPassword);
-            panel1.Controls.Add(txt);
-            panel1.Controls.Add(txtPassword);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(7, 305);
             panel1.Name = "panel1";
-            panel1.Size = new Size(920, 448);
+            panel1.Size = new Size(936, 334);
             panel1.TabIndex = 22;
             // 
-            // textBox1
+            // panel2
             // 
-            textBox1.Location = new Point(394, 87);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(220, 23);
-            textBox1.TabIndex = 23;
+            panel2.BackColor = Color.Silver;
+            panel2.Controls.Add(txtNombre);
+            panel2.Controls.Add(BoxNombre);
+            panel2.Controls.Add(BoxDni);
+            panel2.Controls.Add(CbmRol);
+            panel2.Controls.Add(txtEmail);
+            panel2.Controls.Add(lblDni);
+            panel2.Controls.Add(txt);
+            panel2.Controls.Add(BoxEmail);
+            panel2.Location = new Point(38, 18);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(352, 218);
+            panel2.TabIndex = 26;
+            // 
+            // BoxDni
+            // 
+            BoxDni.Location = new Point(8, 129);
+            BoxDni.Name = "BoxDni";
+            BoxDni.PlaceholderText = "Ej: 12345678 (8 dígitos)";
+            BoxDni.Size = new Size(277, 23);
+            BoxDni.TabIndex = 2;
+            BoxDni.KeyPress += BoxDni_KeyPress;
+            // 
+            // lblDni
+            // 
+            lblDni.AutoSize = true;
+            lblDni.ForeColor = SystemColors.ActiveCaptionText;
+            lblDni.Location = new Point(5, 114);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(30, 15);
+            lblDni.TabIndex = 20;
+            lblDni.Text = "DNI:";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Silver;
+            panel3.Controls.Add(txtPassword);
+            panel3.Controls.Add(BoxPassword);
+            panel3.Controls.Add(BoxConfirmarPassword);
+            panel3.Controls.Add(chkActivo);
+            panel3.Controls.Add(lblConfirmarPassword);
+            panel3.Controls.Add(BoxTelefono);
+            panel3.Controls.Add(txtTelefono);
+            panel3.Location = new Point(450, 18);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(352, 218);
+            panel3.TabIndex = 25;
+            // 
+            // BoxConfirmarPassword
+            // 
+            BoxConfirmarPassword.Location = new Point(18, 141);
+            BoxConfirmarPassword.Name = "BoxConfirmarPassword";
+            BoxConfirmarPassword.PlaceholderText = "Repite la contraseña";
+            BoxConfirmarPassword.Size = new Size(277, 23);
+            BoxConfirmarPassword.TabIndex = 5;
+            BoxConfirmarPassword.UseSystemPasswordChar = true;
             // 
             // lblConfirmarPassword
             // 
             lblConfirmarPassword.AutoSize = true;
             lblConfirmarPassword.BackColor = Color.Transparent;
             lblConfirmarPassword.ForeColor = SystemColors.ActiveCaptionText;
-            lblConfirmarPassword.Location = new Point(394, 68);
+            lblConfirmarPassword.Location = new Point(18, 114);
             lblConfirmarPassword.Name = "lblConfirmarPassword";
             lblConfirmarPassword.Size = new Size(127, 15);
             lblConfirmarPassword.TabIndex = 22;
             lblConfirmarPassword.Text = "Confirmar Contraseña:";
             // 
-            // BoxDni
-            // 
-            BoxDni.Location = new Point(38, 177);
-            BoxDni.Name = "BoxDni";
-            BoxDni.Size = new Size(277, 23);
-            BoxDni.TabIndex = 21;
-            // 
-            // lblDni
-            // 
-            lblDni.AutoSize = true;
-            lblDni.ForeColor = SystemColors.ActiveCaptionText;
-            lblDni.Location = new Point(5, 160);
-            lblDni.Name = "lblDni";
-            lblDni.Size = new Size(30, 15);
-            lblDni.TabIndex = 20;
-            lblDni.Text = "DNI:";
-            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(3, 11);
+            tabControl1.Location = new Point(3, 46);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(934, 482);
+            tabControl1.Size = new Size(947, 261);
             tabControl1.TabIndex = 24;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(dgvUsuarios);
+            tabPage1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tabPage1.ForeColor = Color.FromArgb(64, 64, 64);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(926, 454);
+            tabPage1.Size = new Size(939, 233);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Lista de Usuarios";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // btnBuscar
             // 
-            tabPage2.Controls.Add(panel1);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(926, 454);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Formulario ";
-            tabPage2.UseVisualStyleBackColor = true;
+            btnBuscar.Location = new Point(618, 3);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(75, 23);
+            btnBuscar.TabIndex = 19;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // txtBuscarUsuario
+            // 
+            txtBuscarUsuario.Location = new Point(3, 3);
+            txtBuscarUsuario.Name = "txtBuscarUsuario";
+            txtBuscarUsuario.PlaceholderText = "Buscar por dni, nombre, rol ...";
+            txtBuscarUsuario.Size = new Size(197, 23);
+            txtBuscarUsuario.TabIndex = 25;
+            txtBuscarUsuario.TextChanged += txtBuscarUsuario_TextChanged;
+            // 
+            // dtpHasta
+            // 
+            dtpHasta.Location = new Point(412, 3);
+            dtpHasta.Name = "dtpHasta";
+            dtpHasta.ShowCheckBox = true;
+            dtpHasta.Size = new Size(200, 23);
+            dtpHasta.TabIndex = 27;
+            // 
+            // dtpDesde
+            // 
+            dtpDesde.Location = new Point(206, 3);
+            dtpDesde.Name = "dtpDesde";
+            dtpDesde.ShowCheckBox = true;
+            dtpDesde.Size = new Size(200, 23);
+            dtpDesde.TabIndex = 26;
+            // 
+            // btnExportarPdf
+            // 
+            btnExportarPdf.Cursor = Cursors.Hand;
+            btnExportarPdf.FlatAppearance.BorderSize = 0;
+            btnExportarPdf.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnExportarPdf.FlatStyle = FlatStyle.Flat;
+            btnExportarPdf.Image = Properties.Resources.icons8_pdf_32;
+            btnExportarPdf.Location = new Point(3, 3);
+            btnExportarPdf.Name = "btnExportarPdf";
+            btnExportarPdf.Size = new Size(30, 29);
+            btnExportarPdf.TabIndex = 29;
+            btnExportarPdf.UseVisualStyleBackColor = true;
+            btnExportarPdf.Click += btnExportarPdf_Click;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(txtBuscarUsuario);
+            flowLayoutPanel2.Controls.Add(dtpDesde);
+            flowLayoutPanel2.Controls.Add(dtpHasta);
+            flowLayoutPanel2.Controls.Add(btnBuscar);
+            flowLayoutPanel2.Location = new Point(7, 4);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(703, 28);
+            flowLayoutPanel2.TabIndex = 27;
+            // 
+            // btnExportarExcel
+            // 
+            btnExportarExcel.Cursor = Cursors.Hand;
+            btnExportarExcel.FlatAppearance.BorderSize = 0;
+            btnExportarExcel.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnExportarExcel.FlatStyle = FlatStyle.Flat;
+            btnExportarExcel.Image = Properties.Resources.icons8_ms_excel_26;
+            btnExportarExcel.Location = new Point(39, 3);
+            btnExportarExcel.Name = "btnExportarExcel";
+            btnExportarExcel.Size = new Size(31, 29);
+            btnExportarExcel.TabIndex = 28;
+            btnExportarExcel.UseVisualStyleBackColor = true;
+            btnExportarExcel.Click += btnExportarExcel_Click;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.Controls.Add(btnExportarPdf);
+            flowLayoutPanel3.Controls.Add(btnExportarExcel);
+            flowLayoutPanel3.Location = new Point(862, 4);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(81, 36);
+            flowLayoutPanel3.TabIndex = 19;
             // 
             // GestionUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
-            ClientSize = new Size(939, 490);
+            ClientSize = new Size(962, 661);
+            Controls.Add(flowLayoutPanel3);
+            Controls.Add(flowLayoutPanel2);
+            Controls.Add(panel1);
             Controls.Add(tabControl1);
-            Controls.Add(label1);
             Name = "GestionUsuarios";
             Text = "GestionUsuarios";
             Load += GestionUsuarios_Load;
@@ -435,12 +548,16 @@
             ((System.ComponentModel.ISupportInitialize)personaBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)personaBindingSource).EndInit();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -456,7 +573,6 @@
         private CheckBox chkActivo;
         private Button btnAgregar;
         private Button btnEditar;
-        private Button btnEliminar;
         private Button btnLimpiar;
         private FlowLayoutPanel flowLayoutPanel1;
         private BindingSource usuarioBindingSource;
@@ -464,15 +580,24 @@
         private ComboBox CbmRol;
         private BindingSource personaBindingSource1;
         private BindingSource personaBindingSource;
-        private Button btnProbar;
-        private Label label1;
         private Panel panel1;
         private TextBox BoxDni;
         private Label lblDni;
-        private TextBox textBox1;
+        private TextBox BoxConfirmarPassword;
         private Label lblConfirmarPassword;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private TabPage tabPage2;
+        private Button btnEliminar;
+        private Button btnProbar;
+        private Panel panel3;
+        private Panel panel2;
+        private Button btnBuscar;
+        private TextBox txtBuscarUsuario;
+        private DateTimePicker dtpHasta;
+        private DateTimePicker dtpDesde;
+        private Button btnExportarPdf;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Button btnExportarExcel;
+        private FlowLayoutPanel flowLayoutPanel3;
     }
 }

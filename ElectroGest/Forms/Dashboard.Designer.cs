@@ -125,6 +125,7 @@
             label1.Size = new Size(152, 15);
             label1.TabIndex = 3;
             label1.Text = "Electrogest Alderete Cent";
+            label1.Click += label1_Click;
             // 
             // pictureBox2
             // 
@@ -191,7 +192,7 @@
             btnBackup.FlatStyle = FlatStyle.Flat;
             btnBackup.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             btnBackup.ForeColor = SystemColors.ButtonFace;
-            btnBackup.Image = Properties.Resources.icons8_base_de_datos_48;
+            btnBackup.Image = Properties.Resources.icons8_database_48;
             btnBackup.ImageAlign = ContentAlignment.MiddleLeft;
             btnBackup.Location = new Point(3, 177);
             btnBackup.Name = "btnBackup";

@@ -47,6 +47,45 @@ namespace ElectroGest.Datas
                 _context.SaveChanges();
             }
         }
+        public bool EmailExiste(string email)
+        {
+            return _context.Personas.Any(p => p.Email == email);
+        }
+        public bool DniExiste(int dni)
+        {
+            return _context.Personas.Any(p => p.Dni == dni);
+        }
+
+        public List<Usuario> BuscarUsuarios(string filtro, DateTime? fechaDesde = null, DateTime? fechaHasta = null)
+        {
+            var query = _context.Usuarios
+                .Include(u => u.IdNavigation)
+                .AsQueryable();
+
+            // Filtro por texto (nombre, email, dni, teléfono, rol)
+            if (!string.IsNullOrWhiteSpace(filtro))
+            {
+                query = query.Where(u =>
+                    u.IdNavigation.Nombre.Contains(filtro) ||
+                    u.IdNavigation.Email.Contains(filtro) ||
+                    (u.IdNavigation.Dni != null && u.IdNavigation.Dni.ToString().Contains(filtro)) ||
+                    u.IdNavigation.Telefono.Contains(filtro) ||
+                    u.Rol.Nombre.Contains(filtro) // 👈 suponiendo que Rol tiene propiedad Nombre
+                );
+            }
+
+            // Filtro por fecha desde
+            if (fechaDesde.HasValue)
+                query = query.Where(u => u.FechaCreacion >= fechaDesde.Value);
+
+            // Filtro por fecha hasta
+            if (fechaHasta.HasValue)
+                query = query.Where(u => u.FechaCreacion <= fechaHasta.Value);
+
+            return query.ToList();
+        }
+
+
 
         public void DebugUsuarios()
         {
