@@ -40,7 +40,7 @@ namespace ElectroGest.Forms
         private void Dashboard_Load(object sender, EventArgs e)
         {
             //VerificarPanel();  //Temporal debug
-            btnUsuarios.PerformClick();
+            btnInicio.PerformClick();
             // Ocultar todos los botones primero
             OcultarTodosBotones();
 
@@ -123,28 +123,21 @@ namespace ElectroGest.Forms
 
         private void MostrarOpcionesCierre()
         {
-            DialogResult result = MessageBox.Show("¿Qué acción desea realizar?\n\n" +
-                                                "• Sí: Cerrar sesión y volver al login\n" +
-                                                "• No: Salir completamente de la aplicación\n" +
-                                                "• Cancelar: Permanecer en la aplicación",
-                                                "Cerrar aplicación",
-                                                MessageBoxButtons.YesNoCancel,
-                                                MessageBoxIcon.Question);
+            // Pregunta si quiere salir de la aplicación
+            DialogResult resultado = MessageBox.Show(
+                "¿Desea salir de la aplicación?",
+                "Cerrar aplicación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
-            switch (result)
+            if (resultado == DialogResult.Yes)
             {
-
-
-                case DialogResult.Yes:
-                    CerrandoSesion = false;
-                    Application.Exit();
-                    break;
-
-                case DialogResult.Cancel:
-                    // No hacer nada, ya se canceló el cierre
-                    break;
+                Application.Exit();
             }
+            // Si es No, no hace nada y se queda en la app
         }
+
         private void AbrirFormulario(Form formHijo)
         {
             // Cerrar formulario activo si existe

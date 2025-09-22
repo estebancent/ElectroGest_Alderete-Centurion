@@ -175,7 +175,10 @@ namespace ElectroGest.Forms
             else if (_repo.EmailExiste(BoxEmail.Text))
                 errores.Add(" El email ingresado ya existe en el sistema.");
 
-            // Validar contraseña
+            //validar contraseñas
+            if (BoxPassword.Text.Length < 4)
+                errores.Add(" La contraseña debe tener al menos 4 dígitos.");
+
             if (BoxPassword.Text != BoxConfirmarPassword.Text)
                 errores.Add(" Las contraseñas no coinciden.");
 
@@ -213,7 +216,7 @@ namespace ElectroGest.Forms
             CargarUsuarios();
             LimpiarCampos();
             tabControl1.SelectedIndex = 0;
-            MessageBox.Show("✅ Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -318,7 +321,7 @@ namespace ElectroGest.Forms
             {
                 int dni = int.Parse(BoxDni.Text);
                 if (usuario.IdNavigation.Dni != dni && _repo.DniExiste(dni))
-                    errores.Add("El DNI ingresado ya existe en el sistema.");
+                    errores.Add(" El DNI ingresado ya existe en el sistema.");
             }
 
             // Validar Teléfono
@@ -339,6 +342,11 @@ namespace ElectroGest.Forms
             // Validar contraseñas (si se edita)
             if (!string.IsNullOrWhiteSpace(BoxPassword.Text))
             {
+                //validar contraseñas
+                if (BoxPassword.Text.Length < 4)
+                    errores.Add(" La contraseña debe tener al menos 4 dígitos.");
+
+    
                 if (BoxPassword.Text != BoxConfirmarPassword.Text)
                     errores.Add(" Las contraseñas no coinciden.");
             }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             btnCerrarSesion = new Button();
             btnUsuarios = new Button();
             panelSidebar = new Panel();
@@ -61,7 +62,7 @@
             // 
             btnCerrarSesion.BackColor = Color.FromArgb(100, 192, 60, 100);
             btnCerrarSesion.FlatAppearance.BorderSize = 0;
-            btnCerrarSesion.FlatAppearance.MouseDownBackColor = Color.Gold;
+            btnCerrarSesion.FlatAppearance.MouseDownBackColor = Color.FromArgb(100, 192, 60, 130);
             btnCerrarSesion.FlatStyle = FlatStyle.Flat;
             btnCerrarSesion.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             btnCerrarSesion.ForeColor = SystemColors.ButtonFace;
@@ -158,7 +159,7 @@
             btnInicio.FlatStyle = FlatStyle.Flat;
             btnInicio.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             btnInicio.ForeColor = SystemColors.ButtonFace;
-            btnInicio.Image = Properties.Resources.icons8_página_principal_482;
+            btnInicio.Image = (Image)resources.GetObject("btnInicio.Image");
             btnInicio.ImageAlign = ContentAlignment.MiddleLeft;
             btnInicio.Location = new Point(3, 3);
             btnInicio.Name = "btnInicio";
@@ -317,6 +318,7 @@
             // 
             // panelContenedor
             // 
+            panelContenedor.BackColor = Color.FromArgb(224, 224, 224);
             panelContenedor.Dock = DockStyle.Fill;
             panelContenedor.Location = new Point(0, 0);
             panelContenedor.Name = "panelContenedor";

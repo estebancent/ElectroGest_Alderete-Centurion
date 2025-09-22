@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label4 = new Label();
             label3 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
             colorDialog1 = new ColorDialog();
-            label4 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -50,8 +50,18 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(915, 749);
+            panel1.Size = new Size(1000, 788);
             panel1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(269, 352);
+            label4.Name = "label4";
+            label4.Size = new Size(337, 30);
+            label4.TabIndex = 7;
+            label4.Text = " productos, clientes y muchos màs.";
             // 
             // label3
             // 
@@ -83,16 +93,6 @@
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(269, 352);
-            label4.Name = "label4";
-            label4.Size = new Size(337, 30);
-            label4.TabIndex = 7;
-            label4.Text = " productos, clientes y muchos màs.";
-            // 
             // PanelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -101,7 +101,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(224, 224, 224);
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(915, 749);
+            ClientSize = new Size(1000, 788);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             MdiChildrenMinimizedAnchorBottom = false;

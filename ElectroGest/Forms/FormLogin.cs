@@ -31,9 +31,9 @@ namespace ElectroGest.Forms
         {
             timerError.Interval = 5000; // 5 segundos (5000 ms)
             pnlError.Visible = false;
-            string debugInfo = _repoUsuarios.GetDebugInfo();
-            MessageBox.Show(debugInfo, "Debug - Usuarios en BD",
-                           MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //string debugInfo = _repoUsuarios.GetDebugInfo();
+          //  MessageBox.Show(debugInfo, "Debug - Usuarios en BD",
+            //               MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void TextBoxes_KeyDown(object sender, KeyEventArgs e)
         {
