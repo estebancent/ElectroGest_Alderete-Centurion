@@ -63,6 +63,16 @@ namespace ElectroGest.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Alderete_Cent_ {
             get {
                 object obj = ResourceManager.GetObject("Alderete Cent.", resourceCulture);
@@ -76,6 +86,66 @@ namespace ElectroGest.Properties {
         internal static System.Drawing.Bitmap backgroundgreen {
             get {
                 object obj = ResourceManager.GetObject("backgroundgreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap clientesFonde {
+            get {
+                object obj = ResourceManager.GetObject("clientesFonde", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoUser {
+            get {
+                object obj = ResourceManager.GetObject("fondoUser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondouser2 {
+            get {
+                object obj = ResourceManager.GetObject("fondouser2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoUser3 {
+            get {
+                object obj = ResourceManager.GetObject("fondoUser3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_actualizaciones_disponibles_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-actualizaciones-disponibles-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_añadir_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-añadir-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +243,69 @@ namespace ElectroGest.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_database_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-database-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_emoji_de_flechas_en_sentido_contrario_a_las_agujas_del_reloj_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-emoji-de-flechas-en-sentido-contrario-a-las-agujas-del-reloj-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_invisible_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-invisible-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_limpiar_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-limpiar-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_ms_excel_26 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-ms-excel-26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_ms_excel_261 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-ms-excel-261", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_ms_excel_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-ms-excel-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +346,16 @@ namespace ElectroGest.Properties {
         internal static System.Drawing.Bitmap icons8_página_principal_482 {
             get {
                 object obj = ResourceManager.GetObject("icons8-página-principal-482", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_pdf_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-pdf-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
