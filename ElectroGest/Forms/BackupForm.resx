@@ -118,10 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAASZJREFUSEvtjDtLw2AUhmPFlAo66KDg4NDBwcHFQaioo0J/jD/D9seIl0EQHAQF
+        i4Mk3rAVahMTKio4eMt3yWtTTjkKgho/0KEPPMvhPY/V5f+AqpWN/J5y5GdC4WfwzkBe9xZplp6o3lcW
+        VzY+M6rbty+NbJ6m6RC1XCgv+wEZuoif0VY/Pcig6Cb379hu1HIlnFg2ZRl5MYhE6LuPypt71VzeF9XR
+        x87mawdWKMvIs2EkQjXSK46dpCFOhwLKMsodQSJExYE6bz38XP1acTodyjLqaAwmpSyjDsdhUsoy+iAP
+        k1KW0XsTMCllGb07CZNSlol3pmBSyjLx9jRMSlkm3pqBSSnLYKPgY3MWZix4lGWwOreEtQWvJX6ph/X5
+        Rcp2+XMs6w0FiXyfH/ymTAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="Fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Archivo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Ubicacion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAABwhJREFUaEPt12tsU2UYB/D6AaPGyFBB2RgK+zC5qjExMQYGEmJCAAUVZfjFGBM/
+        DAAACwwBP0AiyAAABwhJREFUaEPt12tsU2UYB/D6AaPGyFBB2RgK+zC5qjExMQYGEmJCAAUVZfjFGBM/
         DBONQW6G6AcjjEuCJKIY5S7BYAR2YYNx2UY7tt5P1/W2dm3X+2nPaReYG+Lj877nnK7t2u10K1OTPck/
         W5Zefs+7t8+zKSZrsiZrsv7/xbLsY4lE4g0unjjI8Yk2jo/3xPj47RjH9UdjXDAai7WxsdjhcDS6IRQK
         PSo+7d8vnufnxhOJg3w80YcBhAPCIcbxECWJccCSRGMQwYTZKMmdUJg9jI2UiS8z8QUAD8bjfV8j+G4e
@@ -154,27 +177,4 @@
         q8Ovu4uW7l+iUCgU/wBzpkVYN7O2eQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAASZJREFUSEvtjDtLw2AUhmPFlAo66KDg4NDBwcHFQaioo0J/jD/D9seIl0EQHAQF
-        i4Mk3rAVahMTKio4eMt3yWtTTjkKgho/0KEPPMvhPY/V5f+AqpWN/J5y5GdC4WfwzkBe9xZplp6o3lcW
-        VzY+M6rbty+NbJ6m6RC1XCgv+wEZuoif0VY/Pcig6Cb379hu1HIlnFg2ZRl5MYhE6LuPypt71VzeF9XR
-        x87mawdWKMvIs2EkQjXSK46dpCFOhwLKMsodQSJExYE6bz38XP1acTodyjLqaAwmpSyjDsdhUsoy+iAP
-        k1KW0XsTMCllGb07CZNSlol3pmBSyjLx9jRMSlkm3pqBSSnLYKPgY3MWZix4lGWwOreEtQWvJX6ph/X5
-        Rcp2+XMs6w0FiXyfH/ymTAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="Fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Archivo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Ubicacion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

@@ -164,7 +164,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.DarkSeaGreen;
-            label1.Location = new Point(48, 22);
+            label1.Location = new Point(53, 21);
             label1.Name = "label1";
             label1.Size = new Size(152, 15);
             label1.TabIndex = 3;

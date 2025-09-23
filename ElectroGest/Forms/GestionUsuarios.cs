@@ -359,7 +359,7 @@ namespace ElectroGest.Forms
                 return;
             }
 
-            // ✅ Si pasó todas las validaciones, actualizar el usuario
+            // Si pasó todas las validaciones, actualizar el usuario
             usuario.IdNavigation.Nombre = BoxNombre.Text;
             usuario.IdNavigation.Dni = int.Parse(BoxDni.Text);
             usuario.IdNavigation.Email = BoxEmail.Text;

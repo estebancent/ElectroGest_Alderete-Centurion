@@ -29,63 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BackupForm));
-            label1 = new Label();
-            label2 = new Label();
-            button1 = new Button();
             textBox1 = new TextBox();
             button2 = new Button();
             label3 = new Label();
-            button3 = new Button();
-            tabControl1 = new TabControl();
+            label1 = new Label();
             tabPage1 = new TabPage();
-            dataGridView1 = new DataGridView();
-            Fecha = new DataGridViewTextBoxColumn();
-            Archivo = new DataGridViewTextBoxColumn();
-            Ubicacion = new DataGridViewTextBoxColumn();
+            tabControl1 = new TabControl();
             Usuario = new DataGridViewTextBoxColumn();
-            tabControl1.SuspendLayout();
+            Ubicacion = new DataGridViewTextBoxColumn();
+            Archivo = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
+            dataGridView1 = new DataGridView();
+            button3 = new Button();
+            button1 = new Button();
+            label2 = new Label();
             tabPage1.SuspendLayout();
+            tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(50, 60, 50);
-            label1.Location = new Point(61, 44);
-            label1.Name = "label1";
-            label1.Size = new Size(168, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Gestion de Backup";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(50, 60, 50);
-            label2.Location = new Point(61, 86);
-            label2.Name = "label2";
-            label2.Size = new Size(525, 21);
-            label2.TabIndex = 1;
-            label2.Text = "“Aquí puede realizar copias de seguridad y restaurarlas en caso necesario”.";
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(50, 50, 80);
-            button1.FlatAppearance.BorderColor = Color.FromArgb(128, 128, 255);
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.Gainsboro;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(63, 212);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 54);
-            button1.TabIndex = 2;
-            button1.Text = "Generar Backup";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
@@ -121,6 +82,68 @@
             label3.TabIndex = 5;
             label3.Text = "Seleccion lugar de destino:\r\n";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(50, 60, 50);
+            label1.Location = new Point(61, 44);
+            label1.Name = "label1";
+            label1.Size = new Size(168, 25);
+            label1.TabIndex = 0;
+            label1.Text = "Gestion de Backup";
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(519, 106);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Historial de Backups";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Location = new Point(59, 304);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(527, 134);
+            tabControl1.TabIndex = 8;
+            // 
+            // Usuario
+            // 
+            Usuario.HeaderText = "Usuario";
+            Usuario.Name = "Usuario";
+            // 
+            // Ubicacion
+            // 
+            Ubicacion.HeaderText = "Ubicacion";
+            Ubicacion.Name = "Ubicacion";
+            // 
+            // Archivo
+            // 
+            Archivo.HeaderText = "Archivo";
+            Archivo.Name = "Archivo";
+            // 
+            // Fecha
+            // 
+            Fecha.HeaderText = "Fecha";
+            Fecha.Name = "Fecha";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = Color.FromArgb(224, 224, 224);
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Fecha, Archivo, Ubicacion, Usuario });
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(513, 100);
+            dataGridView1.TabIndex = 0;
+            // 
             // button3
             // 
             button3.BackColor = Color.FromArgb(50, 50, 50);
@@ -136,56 +159,33 @@
             button3.Text = "Restaurar";
             button3.UseVisualStyleBackColor = false;
             // 
-            // tabControl1
+            // button1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Location = new Point(59, 304);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(527, 134);
-            tabControl1.TabIndex = 8;
+            button1.BackColor = Color.FromArgb(50, 50, 80);
+            button1.FlatAppearance.BorderColor = Color.FromArgb(128, 128, 255);
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.Gainsboro;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(63, 212);
+            button1.Name = "button1";
+            button1.Size = new Size(150, 54);
+            button1.TabIndex = 2;
+            button1.Text = "Generar Backup";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = false;
             // 
-            // tabPage1
+            // label2
             // 
-            tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(519, 106);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Historial de Backups";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = Color.FromArgb(224, 224, 224);
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Fecha, Archivo, Ubicacion, Usuario });
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(513, 100);
-            dataGridView1.TabIndex = 0;
-            // 
-            // Fecha
-            // 
-            Fecha.HeaderText = "Fecha";
-            Fecha.Name = "Fecha";
-            // 
-            // Archivo
-            // 
-            Archivo.HeaderText = "Archivo";
-            Archivo.Name = "Archivo";
-            // 
-            // Ubicacion
-            // 
-            Ubicacion.HeaderText = "Ubicacion";
-            Ubicacion.Name = "Ubicacion";
-            // 
-            // Usuario
-            // 
-            Usuario.HeaderText = "Usuario";
-            Usuario.Name = "Usuario";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(50, 60, 50);
+            label2.Location = new Point(61, 86);
+            label2.Name = "label2";
+            label2.Size = new Size(525, 21);
+            label2.TabIndex = 1;
+            label2.Text = "“Aquí puede realizar copias de seguridad y restaurarlas en caso necesario”.";
             // 
             // BackupForm
             // 
@@ -204,10 +204,10 @@
             Cursor = Cursors.Hand;
             ForeColor = Color.Black;
             Name = "BackupForm";
-            Text = "bu";
+            Text = "buckup";
             Load += BackupForm_Load;
-            tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -215,19 +215,19 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Button button1;
         private TextBox textBox1;
         private Button button2;
         private Label label3;
-        private Button button3;
-        private TabControl tabControl1;
+        private Label label1;
         private TabPage tabPage1;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Archivo;
         private DataGridViewTextBoxColumn Ubicacion;
         private DataGridViewTextBoxColumn Usuario;
+        private TabControl tabControl1;
+        private Button button3;
+        private Button button1;
+        private Label label2;
     }
 }
