@@ -28,33 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
             colorDialog1 = new ColorDialog();
-            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pictureBox1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel1.BackColor = Color.FromArgb(224, 224, 224);
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(panel7);
-            panel1.Controls.Add(panel6);
-            panel1.Controls.Add(panel5);
-            panel1.Controls.Add(panel4);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1000, 788);
-            panel1.TabIndex = 0;
+            pictureBox1.Image = Properties.Resources.icons8_neo_cryptocurrency_48;
+            pictureBox1.Location = new Point(227, 216);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 47);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(224, 224, 224);
+            label2.Location = new Point(275, 281);
+            label2.Name = "label2";
+            label2.Size = new Size(436, 21);
+            label2.TabIndex = 3;
+            label2.Text = "“Aquí puede realizar gestion de usuarios, productos y ventas”.";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(224, 224, 224);
+            label5.Location = new Point(313, 226);
+            label5.Name = "label5";
+            label5.Size = new Size(341, 25);
+            label5.TabIndex = 2;
+            label5.Text = "Bienvenido a ElectroGest Alderete Cent";
             // 
             // label4
             // 
@@ -102,27 +117,30 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.FromArgb(224, 224, 224);
+            BackColor = Color.FromArgb(50, 50, 60);
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1000, 788);
-            Controls.Add(panel1);
+            Controls.Add(label2);
+            Controls.Add(pictureBox1);
+            Controls.Add(label5);
             FormBorderStyle = FormBorderStyle.None;
             MdiChildrenMinimizedAnchorBottom = false;
             Name = "PanelForm";
             Text = "PanelForm";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
         private ColorDialog colorDialog1;
         private PictureBox pictureBox2;
         private Label label3;
         private Label label1;
         private Label label4;
+        private Label label2;
+        private Label label5;
+        private PictureBox pictureBox1;
     }
 }
