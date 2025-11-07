@@ -91,7 +91,7 @@ namespace ElectroGest.Datas
             }
         }
 
-        // ✅ Desactivar o reactivar un producto
+        //  Desactivar o reactivar un producto
         public void CambiarEstado(int idProducto, bool estado)
         {
             var producto = _context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
@@ -103,7 +103,7 @@ namespace ElectroGest.Datas
             }
         }
 
-        // ✅ Eliminar producto definitivamente
+        //  Eliminar producto definitivamente
         public void Eliminar(int id)
         {
             var producto = _context.Productos.FirstOrDefault(p => p.IdProducto == id);
@@ -114,7 +114,7 @@ namespace ElectroGest.Datas
             }
         }
 
-        // ✅ Generador de código de barras interno
+        // Generador de código de barras interno
         private string GenerarCodigoBarras(int idProducto)
         {
             string baseCodigo = "779" + idProducto.ToString().PadLeft(9, '0'); // 12 dígitos base
@@ -141,7 +141,7 @@ namespace ElectroGest.Datas
                 .Include(p => p.IdMarcaNavigation)
                 .AsQueryable();
 
-            // 🔹 Filtrar por término de búsqueda (sku, código de barras, nombre o descripción)
+            //  Filtrar por término de búsqueda (sku, código de barras, nombre o descripción)
             if (!string.IsNullOrWhiteSpace(termino))
             {
                 query = query.Where(p =>
@@ -151,21 +151,33 @@ namespace ElectroGest.Datas
                     p.Descripcion.Contains(termino));
             }
 
-            // 🔹 Filtrar por categoría si se seleccionó
+            //  Filtrar por categoría si se seleccionó
             if (idCategoria.HasValue)
             {
                 query = query.Where(p => p.IdCategoria == idCategoria.Value);
             }
 
-            // 🔹 Filtrar por marca si se seleccionó
+            //  Filtrar por marca si se seleccionó
             if (idMarca.HasValue)
             {
                 query = query.Where(p => p.IdMarca == idMarca.Value);
             }
 
-            // 🔹 Ordenar descendente por IdProducto (los últimos primero)
+            //  Ordenar descendente por IdProducto (los últimos primero)
             return query.OrderByDescending(p => p.IdProducto).ToList();
         }
+        public void ActualizarMargenProducto(int idProducto, decimal margen)
+        {
+            var producto = _context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
+
+            if (producto != null)
+            {
+                producto.MargenGanancia = margen;
+                producto.FechaActualizacion = DateTime.Now;
+                _context.SaveChanges();
+            }
+        }
+
 
     }
 }

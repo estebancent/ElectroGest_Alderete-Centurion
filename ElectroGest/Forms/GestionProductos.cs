@@ -33,7 +33,7 @@ namespace ElectroGest.Forms
             _repositorioCategoria = new RepositoriosCategorias();
             _repositorioMarca = new RepositoriosMarcas();
 
-          
+
 
         }
 
@@ -204,7 +204,7 @@ namespace ElectroGest.Forms
                 dgvProductos.Refresh();
 
                 // Limpiar selección inicial
-              
+
                 this.BeginInvoke(new Action(() => dgvProductos.ClearSelection()));
                 dgvProductos.ClearSelection();
             }
@@ -429,7 +429,7 @@ namespace ElectroGest.Forms
                 };
 
                 _repositorioProducto.Agregar(producto);
-                MessageBox.Show("Producto agregado correctamente ✅");
+                MessageBox.Show("Producto agregado correctamente");
                 LimpiarCampos();
                 CargarProductos();
 
@@ -479,64 +479,6 @@ namespace ElectroGest.Forms
                 }
             }
         }
-
-
-        //   private void btnEditar_Click(object sender, EventArgs e)
-        // {
-        //   List<string> errores = new List<string>();
-
-        // Nombre
-        // if (string.IsNullOrWhiteSpace(tbNombre.Text))
-        //{
-        //  errores.Add("El campo Nombre es obligatorio.");
-        //}
-
-        // Código de producto
-        //if (string.IsNullOrWhiteSpace(tbCodProd.Text))
-        //{
-        //  errores.Add("El campo Código de Producto es obligatorio.");
-        //}
-
-        // Precio Compra
-        //if (string.IsNullOrWhiteSpace(tbPrecioCompra.Text) ||
-        //  !decimal.TryParse(tbPrecioCompra.Text, out decimal precioCompra) || precioCompra < 0)
-        //{
-        //  errores.Add("El campo Precio de Compra es obligatorio y debe ser un número mayor o igual a 0.");
-        //}
-
-        // Precio Venta
-        //if (string.IsNullOrWhiteSpace(tbPrecioVenta.Text) ||
-        //  !decimal.TryParse(tbPrecioVenta.Text, out decimal precioVenta) || precioVenta < 0)
-        //{
-        //  errores.Add("El campo Precio de Venta es obligatorio y debe ser un número mayor o igual a 0.");
-        //}
-
-        // Stock
-        //   if (string.IsNullOrWhiteSpace(tbStock.Text) ||
-        //   !int.TryParse(tbStock.Text, out int stock) || stock < 0)
-        //{
-        //errores.Add("El campo Stock es obligatorio y debe ser un número mayor o igual a 0.");
-        // }
-
-        // Marca
-        //if (string.IsNullOrWhiteSpace(comboBoxMarcas.Text))
-        //{
-        //  errores.Add("El campo Marca es obligatorio.");
-        //}
-
-        // Mostrar errores si existen
-        //if (errores.Count > 0)
-        //{
-        //string mensaje = string.Join("\n- ", errores);
-        //MessageBox.Show("Se encontraron los siguientes errores:\n- " + mensaje, "Errores de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //  return;
-        //}
-
-        // Si todo es válido
-        //  MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        // Aquí iría la lógica para guardar el producto en la base de datos
-        //}
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -693,32 +635,7 @@ namespace ElectroGest.Forms
 
             ActualizarEstadoBotones();
         }
-        private void LimpiarCamposs()
-        {
-            idSeleccionado = 0;
-
-            tbNombre.Clear();
-            tbDescripcion.Clear();
-            tbPrecioCompra.Clear();
-            tbPrecioVenta.Clear();
-            tbMargen.Clear();
-            txtUrlImagen.Clear();
-            picProducto.ImageLocation = null;
-
-            comboBoxCategorias.SelectedIndex = -1;
-            comboBoxMarcas.SelectedIndex = -1;
-            checkActivo.Checked = false;
-
-            dgvProductos.ClearSelection();
-
-            // Estado de botones
-            btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
-            btnAgregar.Enabled = true;
-            btnLimpiar.Enabled = false;
-
-            lblTitulo.Text = "Registrar nuevo producto";
-        }
+     
         private void LimpiarCampos()
         {
             idSeleccionado = 0;
@@ -760,13 +677,13 @@ namespace ElectroGest.Forms
             // 🔔 Nos suscribimos al evento
             formCompras.ProductosActualizados += FormCompras_ProductosActualizados;
 
-           
-            
+
+
             formCompras.ShowDialog();
         }
 
-        // 🔹 Manejador del evento
-        // 🔹 Manejador del evento
+        //  Manejador del evento
+  
         private void FormCompras_ProductosActualizados(object sender, EventArgs e)
         {
             RefrescarLista(); // Recarga la lista de productos
@@ -783,26 +700,6 @@ namespace ElectroGest.Forms
             CargarProductos(); // Trae datos frescos desde BD
         }
 
-
-        private void LimpiarCampos4()
-        {
-            //tbCodigo.Clear();
-            //txtSku.Clear();
-            tbNombre.Clear();
-            tbDescripcion.Clear();
-            tbPrecioCompra.Clear();
-            tbPrecioVenta.Clear();
-            tbMargen.Clear();
-            txtUrlImagen.Clear();
-            picProducto.ImageLocation = null;
-            comboBoxCategorias.SelectedIndex = -1;
-            comboBoxMarcas.SelectedIndex = -1;
-            checkActivo.Checked = false;
-
-            idSeleccionado = null;
-            dgvProductos.ClearSelection();
-            ActualizarEstadoBotones();
-        }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -832,6 +729,42 @@ namespace ElectroGest.Forms
             CargarProductosFiltrados();
 
             lblTitulo.Text = "Registrar nuevo producto";
+        }
+        // ✅ Función que calcula el precio de venta
+        private decimal CalcularPrecioVenta()
+        {
+            // Validamos que los campos no estén vacíos
+            if (string.IsNullOrWhiteSpace(tbPrecioCompra.Text) || string.IsNullOrWhiteSpace(tbMargen.Text))
+            {
+                MessageBox.Show("Ingresá el precio de compra y el margen de ganancia.");
+                return 0;
+            }
+
+            // Convertimos los valores
+            if (!decimal.TryParse(tbPrecioCompra.Text, out decimal precioCompra))
+            {
+                MessageBox.Show("El precio de compra no es válido.");
+                return 0;
+            }
+
+            if (!decimal.TryParse(tbMargen.Text, out decimal margen))
+            {
+                MessageBox.Show("El margen de ganancia no es válido.");
+                return 0;
+            }
+
+            // 🧮 Cálculo: precio venta = compra + (compra * margen / 100)
+            decimal precioVenta = precioCompra + (precioCompra * (margen / 100));
+
+            // Mostramos el resultado en el TextBox de venta
+            tbPrecioVenta.Text = precioVenta.ToString("0.00");
+
+            return precioVenta;
+        }
+
+        private void btnPrecioVenta_Click(object sender, EventArgs e)
+        {
+            CalcularPrecioVenta();
         }
 
     }

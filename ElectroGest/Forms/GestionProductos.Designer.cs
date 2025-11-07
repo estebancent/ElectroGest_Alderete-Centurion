@@ -191,6 +191,7 @@
             // btnPrecioVenta
             // 
             btnPrecioVenta.BackColor = Color.Transparent;
+            btnPrecioVenta.Cursor = Cursors.Hand;
             btnPrecioVenta.FlatAppearance.BorderSize = 0;
             btnPrecioVenta.FlatStyle = FlatStyle.Flat;
             btnPrecioVenta.Image = (Image)resources.GetObject("btnPrecioVenta.Image");
@@ -200,6 +201,7 @@
             btnPrecioVenta.TabIndex = 29;
             btnPrecioVenta.TextAlign = ContentAlignment.MiddleRight;
             btnPrecioVenta.UseVisualStyleBackColor = false;
+            btnPrecioVenta.Click += btnPrecioVenta_Click;
             // 
             // tbMargen
             // 

@@ -17,10 +17,11 @@ namespace ElectroGest.Forms
         private RepositorioProveedores _repositorio;
         private RepositorioCompra _repositorioCompras;
         private RepositorioProductos _repositorioProductos;
+
         // 🔸 Declaración a nivel de clase
         private int idProductoSeleccionado = 0;
         private Usuario _usuario;
-       
+
 
         public event EventHandler ProductosActualizados;
 
@@ -29,21 +30,27 @@ namespace ElectroGest.Forms
             InitializeComponent();
             _repositorio = new RepositorioProveedores();
             _repositorioCompras = new RepositorioCompra();
+            _repositorioProductos = new RepositorioProductos();
             _usuario = Utils.Sesion.UsuarioActual;
         }
 
 
         private void FormRegistrarCompra_Load(object sender, EventArgs e)
         {
+            txtFactura.Visible = false;
+            int proximoNumero = _repositorioCompras.ObtenerProximoNumeroCompra();
+            txtNroCompra.Text = proximoNumero.ToString("D5"); // Ejemplo: 00005
+            txtNroCompra.Enabled = false;
             CargarComboBoxProveedores();
             // Configuramos las columnas del carrito
             dgvCarrito.Columns.Clear();
             dgvCarrito.AutoGenerateColumns = false;
             dgvCarrito.AllowUserToAddRows = false;
-
+            txtMargen.Text = "30";
             dgvCarrito.Columns.Add("IdProducto", "ID Producto");
             dgvCarrito.Columns.Add("NombreProducto", "Producto");
             dgvCarrito.Columns.Add("Cantidad", "Cantidad");
+            dgvCarrito.Columns.Add("MargenGanancia", "Margen");
             dgvCarrito.Columns.Add("PrecioCompra", "Precio Compra");
             dgvCarrito.Columns.Add("PrecioVenta", "Precio Venta");
             dgvCarrito.Columns.Add("Subtotal", "Subtotal");
@@ -119,7 +126,7 @@ namespace ElectroGest.Forms
             //DialogResult resultado = addProveedor.ShowDialog();
             var formProveedores = new ProveedoresForm();
 
-            // 📡 Suscribirse al evento
+            // Suscribirse al evento
             formProveedores.ProveedoresActualizadas += ProveedoresForm_ProveedoresActualizadas;
 
             formProveedores.ShowDialog();
@@ -191,7 +198,10 @@ namespace ElectroGest.Forms
                 };
 
                 _repositorioCompras.InsertarDetalle(detalle);
-                
+                // 🔹 Obtener margen desde el carrito y actualizar en Productos
+                decimal margen = Convert.ToDecimal(row.Cells["MargenGanancia"].Value);
+                _repositorioProductos.ActualizarMargenProducto(detalle.IdProducto, margen);
+
 
                 // 🔄 Registrar relación producto–proveedor
                 int idProdProv = _repositorioCompras.RegistrarProductoProveedor(
@@ -204,19 +214,19 @@ namespace ElectroGest.Forms
                 _repositorioCompras.RegistrarHistorialPrecioCompra(idProdProv, detalle.PrecioCompraUnitario);
                 ProductosActualizados?.Invoke(this, EventArgs.Empty);
             }
-          
+
 
             MessageBox.Show("Compra registrada correctamente. El stock fue actualizado.");
-          
+
 
             LimpiarFormulario();
             // 🔔 Disparar el evento para avisar que los productos se actualizaron
-    
+
 
             // Cerramos el formulario si es modal
             this.Close();
         }
-  
+
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
@@ -241,6 +251,7 @@ namespace ElectroGest.Forms
                 idProductoSeleccionado,
                 txtProductoSeleccionado.Text,
                 cantidad,
+                margen,
                 precioCompra,
                 precioVenta,
                 subtotal
@@ -346,6 +357,47 @@ namespace ElectroGest.Forms
         }
 
         private void panelSuperior_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        // ✅ Función que calcula el precio de venta
+        private decimal CalcularPrecioVenta()
+        {
+            // Validamos que los campos no estén vacíos
+            if (string.IsNullOrWhiteSpace(txtPrecioCompra.Text) || string.IsNullOrWhiteSpace(txtMargen.Text))
+            {
+                MessageBox.Show("Ingresá el precio de compra y el margen de ganancia.");
+                return 0;
+            }
+
+            // Convertimos los valores
+            if (!decimal.TryParse(txtPrecioCompra.Text, out decimal precioCompra))
+            {
+                MessageBox.Show("El precio de compra no es válido.");
+                return 0;
+            }
+
+            if (!decimal.TryParse(txtMargen.Text, out decimal margen))
+            {
+                MessageBox.Show("El margen de ganancia no es válido.");
+                return 0;
+            }
+
+            // 🧮 Cálculo: precio venta = compra + (compra * margen / 100)
+            decimal precioVenta = precioCompra + (precioCompra * (margen / 100));
+
+            // Mostramos el resultado en el TextBox de venta
+            txtPrecioVenta.Text = precioVenta.ToString("0.00");
+
+            return precioVenta;
+        }
+
+        private void btnPrecioVenta_Click(object sender, EventArgs e)
+        {
+            CalcularPrecioVenta();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

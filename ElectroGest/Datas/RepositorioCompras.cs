@@ -173,5 +173,14 @@ namespace ElectroGest.Datas
 
             return 0;
         }
+        public int ObtenerProximoNumeroCompra()
+        {
+            int ultimoId = _context.Compras.Any()
+                ? _context.Compras.Max(c => c.IdCompra)
+                : 0;
+
+            return ultimoId + 1;
+        }
+
     }
 }

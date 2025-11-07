@@ -49,7 +49,6 @@
             lblFormaPago = new Label();
             lblTotalFinal = new Label();
             label9 = new Label();
-            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvDetalleVentas).BeginInit();
             SuspendLayout();
             // 
@@ -76,6 +75,7 @@
             // 
             lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            lblFecha.ForeColor = Color.FromArgb(50, 50, 55);
             lblFecha.Location = new Point(48, 17);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(40, 17);
@@ -261,17 +261,6 @@
             label9.TabIndex = 20;
             label9.Text = "Total Final Descuentos/Recargos:";
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            label10.ForeColor = Color.FromArgb(50, 50, 55);
-            label10.Location = new Point(44, 17);
-            label10.Name = "label10";
-            label10.Size = new Size(40, 17);
-            label10.TabIndex = 2;
-            label10.Text = "fecha";
-            // 
             // FormFactura
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -294,7 +283,6 @@
             Controls.Add(lblTotal);
             Controls.Add(lblVendedor);
             Controls.Add(lblCliente);
-            Controls.Add(label10);
             Controls.Add(lblFecha);
             Controls.Add(lblNumeroFactura);
             Controls.Add(dgvDetalleVentas);
@@ -329,6 +317,5 @@
         private Label lblFormaPago;
         private Label lblTotalFinal;
         private Label label9;
-        private Label label10;
     }
 }

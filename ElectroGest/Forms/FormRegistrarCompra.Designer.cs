@@ -30,14 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistrarCompra));
             panelSuperior = new Panel();
+            label2 = new Label();
             btnAgregaMarca = new Button();
             txtProductoSeleccionado = new TextBox();
+            txtFactura = new TextBox();
             btnBuscarProducto = new Button();
             label12 = new Label();
             cmbProveedor = new ComboBox();
             panelDetalles = new Panel();
+            label1 = new Label();
             txtObservaciones = new TextBox();
-            txtFactura = new TextBox();
             txtPrecioCompra = new TextBox();
             NumericCantidad = new NumericUpDown();
             label8 = new Label();
@@ -57,6 +59,7 @@
             btnAgregarProducto = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnEliminarSeleccionado = new Button();
+            txtNroCompra = new TextBox();
             panelSuperior.SuspendLayout();
             panelDetalles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericCantidad).BeginInit();
@@ -68,8 +71,11 @@
             // 
             // panelSuperior
             // 
+            panelSuperior.Controls.Add(txtNroCompra);
+            panelSuperior.Controls.Add(label2);
             panelSuperior.Controls.Add(btnAgregaMarca);
             panelSuperior.Controls.Add(txtProductoSeleccionado);
+            panelSuperior.Controls.Add(txtFactura);
             panelSuperior.Controls.Add(btnBuscarProducto);
             panelSuperior.Controls.Add(label12);
             panelSuperior.Controls.Add(cmbProveedor);
@@ -79,6 +85,16 @@
             panelSuperior.Size = new Size(923, 80);
             panelSuperior.TabIndex = 0;
             panelSuperior.Paint += panelSuperior_Paint;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(4, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(76, 15);
+            label2.TabIndex = 47;
+            label2.Text = "Nro Compra:";
+            label2.Click += label2_Click;
             // 
             // btnAgregaMarca
             // 
@@ -102,6 +118,15 @@
             txtProductoSeleccionado.Size = new Size(244, 23);
             txtProductoSeleccionado.TabIndex = 32;
             // 
+            // txtFactura
+            // 
+            txtFactura.Location = new Point(357, 5);
+            txtFactura.Name = "txtFactura";
+            txtFactura.PlaceholderText = "FAC-00001";
+            txtFactura.ReadOnly = true;
+            txtFactura.Size = new Size(179, 23);
+            txtFactura.TabIndex = 46;
+            // 
             // btnBuscarProducto
             // 
             btnBuscarProducto.Location = new Point(619, 25);
@@ -115,7 +140,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(12, 38);
+            label12.Location = new Point(4, 38);
             label12.Name = "label12";
             label12.Size = new Size(64, 15);
             label12.TabIndex = 30;
@@ -131,8 +156,8 @@
             // 
             // panelDetalles
             // 
+            panelDetalles.Controls.Add(label1);
             panelDetalles.Controls.Add(txtObservaciones);
-            panelDetalles.Controls.Add(txtFactura);
             panelDetalles.Controls.Add(txtPrecioCompra);
             panelDetalles.Controls.Add(NumericCantidad);
             panelDetalles.Controls.Add(label8);
@@ -147,20 +172,22 @@
             panelDetalles.Size = new Size(923, 80);
             panelDetalles.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(514, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 15);
+            label1.TabIndex = 48;
+            label1.Text = "Observaciones:";
+            // 
             // txtObservaciones
             // 
-            txtObservaciones.Location = new Point(660, 6);
+            txtObservaciones.Location = new Point(601, 4);
             txtObservaciones.Multiline = true;
             txtObservaciones.Name = "txtObservaciones";
-            txtObservaciones.Size = new Size(251, 54);
+            txtObservaciones.Size = new Size(274, 54);
             txtObservaciones.TabIndex = 47;
-            // 
-            // txtFactura
-            // 
-            txtFactura.Location = new Point(479, 6);
-            txtFactura.Name = "txtFactura";
-            txtFactura.Size = new Size(159, 23);
-            txtFactura.TabIndex = 46;
             // 
             // txtPrecioCompra
             // 
@@ -205,6 +232,7 @@
             btnPrecioVenta.TabIndex = 37;
             btnPrecioVenta.TextAlign = ContentAlignment.MiddleRight;
             btnPrecioVenta.UseVisualStyleBackColor = false;
+            btnPrecioVenta.Click += btnPrecioVenta_Click;
             // 
             // txtPrecioVenta
             // 
@@ -246,7 +274,7 @@
             dgvCarrito.Dock = DockStyle.Fill;
             dgvCarrito.Location = new Point(3, 3);
             dgvCarrito.Name = "dgvCarrito";
-            dgvCarrito.Size = new Size(807, 190);
+            dgvCarrito.Size = new Size(885, 190);
             dgvCarrito.TabIndex = 2;
             dgvCarrito.CellContentClick += dgvCarrito_CellContentClick;
             // 
@@ -271,7 +299,7 @@
             tabControl1.Location = new Point(12, 175);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(821, 224);
+            tabControl1.Size = new Size(899, 224);
             tabControl1.TabIndex = 41;
             // 
             // tabPage1
@@ -280,7 +308,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(813, 196);
+            tabPage1.Size = new Size(891, 196);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Compras";
             tabPage1.UseVisualStyleBackColor = true;
@@ -336,6 +364,14 @@
             btnEliminarSeleccionado.Text = "Eliminar";
             btnEliminarSeleccionado.UseVisualStyleBackColor = false;
             btnEliminarSeleccionado.Click += btnEliminarSeleccionado_Click;
+            // 
+            // txtNroCompra
+            // 
+            txtNroCompra.Location = new Point(82, 6);
+            txtNroCompra.Name = "txtNroCompra";
+            txtNroCompra.ReadOnly = true;
+            txtNroCompra.Size = new Size(92, 23);
+            txtNroCompra.TabIndex = 48;
             // 
             // FormRegistrarCompra
             // 
@@ -394,5 +430,8 @@
         private TextBox txtObservaciones;
         private TextBox txtFactura;
         private Button btnEliminarSeleccionado;
+        private Label label2;
+        private Label label1;
+        private TextBox txtNroCompra;
     }
 }
