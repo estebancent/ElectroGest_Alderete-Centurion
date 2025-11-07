@@ -391,8 +391,131 @@ namespace ElectroGest.Forms
             chartCompraProveedores.BorderlineColor = Color.LightGray;
             chartCompraProveedores.BorderlineDashStyle = ChartDashStyle.Solid;
         }
-
         private void GraficarComprasPorUsuario()
+        {
+            // 1) Obtener cantidad de compras por usuario (conteo de registros)
+            var compras = _repoCompras.ObtenerTodas()
+                .GroupBy(c => c.IdUsuarioNavigation?.IdNavigation?.Nombre ?? "Sin usuario")
+                .Select(g => new
+                {
+                    Usuario = g.Key,
+                    Cantidad = g.Count()
+                })
+                .OrderByDescending(x => x.Cantidad)
+                .ToList();
+
+            if (compras.Count == 0)
+            {
+                MessageBox.Show("No hay compras para graficar.", "Información",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // --- limpiar chart ---
+            chartComprasUser.Series.Clear();
+            chartComprasUser.ChartAreas.Clear();
+            chartComprasUser.Titles.Clear();
+            chartComprasUser.Legends.Clear();
+
+            // --- ChartArea: dejamos espacio a la derecha para la leyenda ---
+            var area = new ChartArea("MainArea")
+            {
+                BackColor = Color.White,
+                // Position: X, Y, Width, Height (dejar width <100 para la leyenda a la derecha)
+                Position = new ElementPosition(5, 5, 70, 90),
+                // InnerPlotPosition controla la zona interna donde se dibuja la torta
+                InnerPlotPosition = new ElementPosition(10, 5, 80, 90)
+            };
+            chartComprasUser.ChartAreas.Add(area);
+
+            // --- Serie Pie ---
+            var serie = new Series("ComprasPorUsuario")
+            {
+                ChartType = SeriesChartType.Pie,
+                IsValueShownAsLabel = false,    // mostramos % o valor en el label si queremos; preferimos la leyenda a la derecha
+                Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                BorderWidth = 1,
+                BorderColor = Color.White
+            };
+
+            // Paleta moderna (puedes agregar más colores si necesitás)
+            Color[] colores = new Color[]
+            {
+        Color.FromArgb(93, 173, 226),   // Azul
+        Color.FromArgb(46, 204, 113),   // Verde
+        Color.FromArgb(241, 196, 15),   // Amarillo
+        Color.FromArgb(231, 76, 60),    // Rojo
+        Color.FromArgb(155, 89, 182),   // Violeta
+        Color.FromArgb(52, 152, 219),   // Celeste
+        Color.FromArgb(230, 126, 34),   // Naranja
+        Color.FromArgb(149, 165, 166),  // Gris
+        Color.FromArgb(26, 188, 156),   // Turquesa
+        Color.FromArgb(52, 73, 94)      // Azul oscuro
+            };
+
+            int totalCompras = compras.Sum(x => x.Cantidad);
+
+            //  Añadir puntos: valor = cantidad, y configurar legend text como "Usuario (N)"
+            for (int i = 0; i < compras.Count; i++)
+            {
+                int idx = serie.Points.AddY(compras[i].Cantidad);
+                var punto = serie.Points[idx];
+
+                punto.AxisLabel = compras[i].Usuario; // etiqueta asociada (no visible si PieLabelStyle Outside/Inside)
+                punto.LegendText = $"{compras[i].Usuario} ({compras[i].Cantidad})";
+                punto.Color = colores[i % colores.Length];
+                // mostramos porcentaje dentro de la porción (opcional)
+                punto.Label = $"{(double)compras[i].Cantidad / totalCompras:P1}";
+                punto.LabelForeColor = Color.White;
+                punto.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            }
+
+            // Propiedades visuales de la torta
+            serie["PieLabelStyle"] = "Inside";       // "Inside" o "Outside" según preferencia
+            serie["PieDrawingStyle"] = "SoftEdge";   // borde suave
+            serie["PieStartAngle"] = "270";
+            serie["CollectedThreshold"] = "2";       // agrupa porciones < 2% en "Otros"
+            serie["CollectedLabel"] = "Otros";
+            serie["CollectedColor"] = "Gray";
+
+            chartComprasUser.Series.Add(serie);
+
+            // --- Leyenda al costado derecho (lista con usuario + cantidad) ---
+            var legend = new Legend("MainLegend")
+            {
+                Docking = Docking.Right,
+                Alignment = StringAlignment.Near,
+                LegendStyle = LegendStyle.Table,
+                TableStyle = LegendTableStyle.Auto,
+                BackColor = Color.Transparent,
+                Font = new Font("Segoe UI", 9),
+                IsTextAutoFit = false
+            };
+            chartComprasUser.Legends.Add(legend);
+
+            // Esto hace que la leyenda muestre las entradas (usa LegendText que asignamos)
+            serie.IsVisibleInLegend = true;
+
+            // --- Título ---
+            chartComprasUser.Titles.Add(new Title(
+                "Compras registradas por Usuario",
+                Docking.Left,
+              
+                new Font("Segoe UI", 10, FontStyle.Bold),
+                Color.FromArgb(40, 40, 40)
+            ));
+
+            // Fondo general
+            chartComprasUser.BackColor = Color.WhiteSmoke;
+
+            // Opcional: mejorar estilo de la leyenda (columnas, ancho)
+            chartComprasUser.Legends[0].MaximumAutoSize = 50; // porción del área total que puede usar la leyenda
+
+            // Renderizar
+            chartComprasUser.Invalidate();
+        }
+
+        private void GraficarComprasPorUsuariosTotalInvertido()
         {
             var compras = _repoCompras.ObtenerTodas()
                 .GroupBy(c => c.IdUsuarioNavigation?.IdNavigation?.Nombre ?? "Sin usuario")
