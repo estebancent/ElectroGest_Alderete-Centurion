@@ -136,8 +136,8 @@
   <data name="icons8-añadir-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-añadir-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-ms-excel-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons8-ms-excel-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-ms-excel-261" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-ms-excel-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-analistica-web-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-analistica-web-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,6 +154,9 @@
   <data name="fondouser2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\fondouser2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconDesactivar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\iconDesactivar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="backgroundgreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\backgroundgreen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,11 +166,8 @@
   <data name="icons8-carrito-2-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-carrito-2-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-página-principal-481" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons8-página-principal-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-base-de-datos-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons8-base-de-datos-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-contraseña-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-contraseña-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,20 +190,23 @@
   <data name="fondoUser3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\fondoUser3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-usuario-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons8-usuario-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-usuario-masculino-en-círculo-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-usuario-masculino-en-círculo-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-neo-cryptocurrency-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-neo-cryptocurrency-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-usuario-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-usuario-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-crítico-hombre-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-crítico-hombre-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-neo-cryptocurrency-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons8-neo-cryptocurrency-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-página-principal-481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-página-principal-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-ms-excel-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-ms-excel-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-página-principal-482" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-página-principal-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,8 +217,8 @@
   <data name="icons8-limpiar-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-limpiar-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconHabilitar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\iconHabilitar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-user-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-user-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,14 +226,20 @@
   <data name="icons8-invisible-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-invisible-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-ms-excel-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-ms-excel-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-analistica-web-481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-analistica-web-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-cierre-de-sesión-redondeado-hacia-la-izquierda-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-cierre-de-sesión-redondeado-hacia-la-izquierda-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-analistica-web-481" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons8-analistica-web-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-base-de-datos-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-base-de-datos-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-ventas-481" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-ventas-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,7 +250,7 @@
   <data name="icons8-usuario-48 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons8-usuario-48 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-ms-excel-261" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons8-ms-excel-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-producto-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons8-producto-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

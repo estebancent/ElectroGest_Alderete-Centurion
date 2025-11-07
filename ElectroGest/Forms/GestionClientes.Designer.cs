@@ -29,32 +29,38 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionClientes));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
-            Nombre = new DataGridViewTextBoxColumn();
-            DNI = new DataGridViewTextBoxColumn();
-            Telefono = new DataGridViewTextBoxColumn();
-            correo = new DataGridViewTextBoxColumn();
-            Direcciòn = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
-            textBox5 = new TextBox();
+            BoxDireccion = new TextBox();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            BoxTelefono = new TextBox();
+            BoxDni = new TextBox();
+            BoxEmail = new TextBox();
+            BoxNombre = new TextBox();
             button1 = new Button();
-            textBox6 = new TextBox();
+            txtBuscarDni = new TextBox();
             label7 = new Label();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            btnAgregar = new Button();
+            btnActualizar = new Button();
+            btnEstado = new Button();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            dgvClientes = new DataGridView();
+            btnLimpiar = new Button();
+            txtIdCliente = new TextBox();
+            chkActivo = new CheckBox();
             groupBox1.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -66,52 +72,18 @@
             label1.TabIndex = 0;
             label1.Text = "Clientes";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, DNI, Telefono, correo, Direcciòn });
-            dataGridView1.Location = new Point(12, 315);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(543, 49);
-            dataGridView1.TabIndex = 1;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            // 
-            // DNI
-            // 
-            DNI.HeaderText = "DNI";
-            DNI.Name = "DNI";
-            // 
-            // Telefono
-            // 
-            Telefono.HeaderText = "Telefono";
-            Telefono.Name = "Telefono";
-            // 
-            // correo
-            // 
-            correo.HeaderText = "correo";
-            correo.Name = "correo";
-            // 
-            // Direcciòn
-            // 
-            Direcciòn.HeaderText = "Direcciòn";
-            Direcciòn.Name = "Direcciòn";
-            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox5);
+            groupBox1.Controls.Add(BoxDireccion);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(textBox4);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(BoxTelefono);
+            groupBox1.Controls.Add(BoxDni);
+            groupBox1.Controls.Add(BoxEmail);
+            groupBox1.Controls.Add(BoxNombre);
             groupBox1.Location = new Point(12, 78);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(562, 186);
@@ -119,12 +91,12 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del cliente";
             // 
-            // textBox5
+            // BoxDireccion
             // 
-            textBox5.Location = new Point(68, 145);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(437, 23);
-            textBox5.TabIndex = 9;
+            BoxDireccion.Location = new Point(68, 145);
+            BoxDireccion.Name = "BoxDireccion";
+            BoxDireccion.Size = new Size(437, 23);
+            BoxDireccion.TabIndex = 9;
             // 
             // label6
             // 
@@ -171,33 +143,33 @@
             label2.TabIndex = 4;
             label2.Text = "Nombre";
             // 
-            // textBox4
+            // BoxTelefono
             // 
-            textBox4.Location = new Point(68, 66);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(181, 23);
-            textBox4.TabIndex = 3;
+            BoxTelefono.Location = new Point(68, 66);
+            BoxTelefono.Name = "BoxTelefono";
+            BoxTelefono.Size = new Size(181, 23);
+            BoxTelefono.TabIndex = 3;
             // 
-            // textBox3
+            // BoxDni
             // 
-            textBox3.Location = new Point(324, 66);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(181, 23);
-            textBox3.TabIndex = 2;
+            BoxDni.Location = new Point(324, 66);
+            BoxDni.Name = "BoxDni";
+            BoxDni.Size = new Size(181, 23);
+            BoxDni.TabIndex = 2;
             // 
-            // textBox2
+            // BoxEmail
             // 
-            textBox2.Location = new Point(68, 112);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(437, 23);
-            textBox2.TabIndex = 1;
+            BoxEmail.Location = new Point(68, 112);
+            BoxEmail.Name = "BoxEmail";
+            BoxEmail.Size = new Size(437, 23);
+            BoxEmail.TabIndex = 1;
             // 
-            // textBox1
+            // BoxNombre
             // 
-            textBox1.Location = new Point(68, 26);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(437, 23);
-            textBox1.TabIndex = 0;
+            BoxNombre.Location = new Point(68, 26);
+            BoxNombre.Name = "BoxNombre";
+            BoxNombre.Size = new Size(437, 23);
+            BoxNombre.TabIndex = 0;
             // 
             // button1
             // 
@@ -209,13 +181,14 @@
             button1.Text = "Buscar";
             button1.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // txtBuscarDni
             // 
-            textBox6.Location = new Point(101, 29);
-            textBox6.Name = "textBox6";
-            textBox6.PlaceholderText = "Ingrese DNI del cliente";
-            textBox6.Size = new Size(341, 23);
-            textBox6.TabIndex = 4;
+            txtBuscarDni.Location = new Point(101, 29);
+            txtBuscarDni.Name = "txtBuscarDni";
+            txtBuscarDni.PlaceholderText = "Ingrese DNI del cliente";
+            txtBuscarDni.Size = new Size(341, 23);
+            txtBuscarDni.TabIndex = 4;
+            txtBuscarDni.TextChanged += txtBuscarDni_TextChanged;
             // 
             // label7
             // 
@@ -226,55 +199,156 @@
             label7.TabIndex = 5;
             label7.Text = "Buscar cliente:";
             // 
-            // button2
+            // btnAgregar
             // 
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(618, 90);
-            button2.Name = "button2";
-            button2.Size = new Size(127, 37);
-            button2.TabIndex = 6;
-            button2.Text = "Agregar";
-            button2.UseVisualStyleBackColor = true;
+            btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
+            btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAgregar.Location = new Point(618, 78);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(127, 37);
+            btnAgregar.TabIndex = 6;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
-            // button3
+            // btnActualizar
             // 
-            button3.Location = new Point(618, 144);
-            button3.Name = "button3";
-            button3.Size = new Size(127, 37);
-            button3.TabIndex = 7;
-            button3.Text = "Actualizar";
-            button3.UseVisualStyleBackColor = true;
+            btnActualizar.Location = new Point(618, 130);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(127, 37);
+            btnActualizar.TabIndex = 7;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += btnActualizar_Click;
             // 
-            // button4
+            // btnEstado
             // 
-            button4.Location = new Point(618, 198);
-            button4.Name = "button4";
-            button4.Size = new Size(127, 37);
-            button4.TabIndex = 8;
-            button4.Text = "Eliminar";
-            button4.UseVisualStyleBackColor = true;
+            btnEstado.Location = new Point(618, 182);
+            btnEstado.Name = "btnEstado";
+            btnEstado.Size = new Size(127, 37);
+            btnEstado.TabIndex = 8;
+            btnEstado.TextAlign = ContentAlignment.MiddleRight;
+            btnEstado.UseVisualStyleBackColor = true;
+            btnEstado.Click += btnEstado_Click;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Location = new Point(12, 270);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(893, 238);
+            tabControl1.TabIndex = 25;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(dgvClientes);
+            tabPage1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tabPage1.ForeColor = Color.FromArgb(64, 64, 64);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(885, 210);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Lista de Clientes";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvClientes
+            // 
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 224, 224);
+            dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClientes.BackgroundColor = Color.FromArgb(224, 224, 224);
+            dgvClientes.BorderStyle = BorderStyle.None;
+            dgvClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Menu;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvClientes.Cursor = Cursors.Hand;
+            dgvClientes.Dock = DockStyle.Fill;
+            dgvClientes.EnableHeadersVisualStyles = false;
+            dgvClientes.Location = new Point(3, 3);
+            dgvClientes.Name = "dgvClientes";
+            dgvClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ScrollBar;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.SelectionBackColor = Color.SteelBlue;
+            dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dgvClientes.RowTemplate.DefaultCellStyle.BackColor = SystemColors.ActiveCaption;
+            dgvClientes.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvClientes.Size = new Size(879, 204);
+            dgvClientes.TabIndex = 18;
+            dgvClientes.CellClick += dgvClientes_CellClick;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(618, 231);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(127, 37);
+            btnLimpiar.TabIndex = 26;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // txtIdCliente
+            // 
+            txtIdCliente.Location = new Point(613, 43);
+            txtIdCliente.Name = "txtIdCliente";
+            txtIdCliente.Size = new Size(132, 23);
+            txtIdCliente.TabIndex = 27;
+            txtIdCliente.Visible = false;
+            // 
+            // chkActivo
+            // 
+            chkActivo.AutoSize = true;
+            chkActivo.Location = new Point(774, 46);
+            chkActivo.Name = "chkActivo";
+            chkActivo.Size = new Size(15, 14);
+            chkActivo.TabIndex = 28;
+            chkActivo.UseVisualStyleBackColor = true;
+            chkActivo.Visible = false;
             // 
             // GestionClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            ClientSize = new Size(917, 520);
+            Controls.Add(chkActivo);
+            Controls.Add(txtIdCliente);
+            Controls.Add(btnLimpiar);
+            Controls.Add(tabControl1);
+            Controls.Add(btnEstado);
+            Controls.Add(btnActualizar);
+            Controls.Add(btnAgregar);
             Controls.Add(label7);
-            Controls.Add(textBox6);
+            Controls.Add(txtBuscarDni);
             Controls.Add(button1);
             Controls.Add(groupBox1);
-            Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "GestionClientes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "GestionClientes";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += GestionClientes_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -282,28 +356,28 @@
         #endregion
 
         private Label label1;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn DNI;
-        private DataGridViewTextBoxColumn Telefono;
-        private DataGridViewTextBoxColumn correo;
         private GroupBox groupBox1;
         private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private DataGridViewTextBoxColumn Direcciòn;
-        private TextBox textBox5;
+        private TextBox BoxTelefono;
+        private TextBox BoxDni;
+        private TextBox BoxEmail;
+        private TextBox BoxNombre;
+        private TextBox BoxDireccion;
         private Label label6;
         private Button button1;
-        private TextBox textBox6;
+        private TextBox txtBuscarDni;
         private Label label7;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnAgregar;
+        private Button btnActualizar;
+        private Button btnEstado;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private DataGridView dgvClientes;
+        private Button btnLimpiar;
+        private TextBox txtIdCliente;
+        private CheckBox chkActivo;
     }
 }

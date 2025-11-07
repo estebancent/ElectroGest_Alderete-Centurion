@@ -332,6 +332,7 @@
             CbmRol.Name = "CbmRol";
             CbmRol.Size = new Size(166, 23);
             CbmRol.TabIndex = 3;
+            CbmRol.SelectedIndexChanged += CbmRol_SelectedIndexChanged;
             // 
             // personaBindingSource1
             // 

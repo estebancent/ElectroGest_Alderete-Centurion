@@ -1,5 +1,6 @@
 ﻿using ElectroGest.Datas;
 using ElectroGest.Models;
+using ElectroGest.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,7 +82,7 @@ namespace ElectroGest.Forms
             {
                 MessageBox.Show($"Bienvenido {usuario.IdNavigation.Nombre} - Rol: {usuario.Rol.Nombre}", "Login Exitoso");
 
-
+                Sesion.UsuarioActual = usuario;
                 UsuarioAutenticado = usuario;
                 this.DialogResult = DialogResult.OK; // ← Importante
                 this.Close();

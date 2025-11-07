@@ -220,5 +220,7 @@ namespace ElectroGest.Forms
             AbrirFormulario(new ProveedoresForm());
             ResaltarBoton(btnProveedor);
         }
+
+       
     }
 }

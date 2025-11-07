@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportesForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
             label1 = new Label();
@@ -38,7 +47,7 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             groupBox2 = new GroupBox();
-            label3 = new Label();
+            CantidadClientes = new Label();
             groupBox3 = new GroupBox();
             label4 = new Label();
             groupBox4 = new GroupBox();
@@ -54,15 +63,13 @@
             tabPage1 = new TabPage();
             button4 = new Button();
             tabPage2 = new TabPage();
+            tabControl3 = new TabControl();
+            tabPage7 = new TabPage();
+            tabPage8 = new TabPage();
+            button5 = new Button();
             pictureBox3 = new PictureBox();
             button2 = new Button();
             pictureBox4 = new PictureBox();
-            dataGridView1 = new DataGridView();
-            Cliente = new DataGridViewTextBoxColumn();
-            Fecha = new DataGridViewTextBoxColumn();
-            Vendedor = new DataGridViewTextBoxColumn();
-            CantidadProd = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             dateTimePicker3 = new DateTimePicker();
             label9 = new Label();
             dateTimePicker4 = new DateTimePicker();
@@ -70,23 +77,23 @@
             label10 = new Label();
             label11 = new Label();
             tabPage3 = new TabPage();
-            pictureBox5 = new PictureBox();
-            button3 = new Button();
-            pictureBox6 = new PictureBox();
-            dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            tabControl2 = new TabControl();
+            tabPage5 = new TabPage();
+            chartComprasPorProveedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabPage6 = new TabPage();
+            chartComprasUser = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            button6 = new Button();
+            dgvCompras = new DataGridView();
             dateTimePicker5 = new DateTimePicker();
             label12 = new Label();
             dateTimePicker6 = new DateTimePicker();
             comboBox3 = new ComboBox();
             label13 = new Label();
             label14 = new Label();
-            button5 = new Button();
-            button6 = new Button();
+            tabPage4 = new TabPage();
+            chartCompraProveedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            dgvProductosProveedores = new DataGridView();
+            dgvVentas = new DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -98,13 +105,21 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabControl3.SuspendLayout();
+            tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            tabControl2.SuspendLayout();
+            tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartComprasPorProveedores).BeginInit();
+            tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartComprasUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCompras).BeginInit();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartCompraProveedores).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProductosProveedores).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
             // dateTimePicker1
@@ -152,7 +167,6 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cantidad de ventas:";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // VentasCount
             // 
@@ -164,7 +178,6 @@
             VentasCount.Size = new Size(70, 32);
             VentasCount.TabIndex = 0;
             VentasCount.Text = "1500";
-            VentasCount.Click += VentasCount_Click;
             // 
             // pictureBox1
             // 
@@ -189,7 +202,7 @@
             // groupBox2
             // 
             groupBox2.BackColor = Color.MediumSeaGreen;
-            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(CantidadClientes);
             groupBox2.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             groupBox2.ForeColor = SystemColors.ControlLightLight;
             groupBox2.Location = new Point(215, 70);
@@ -199,16 +212,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Cantidad de Clientes";
             // 
-            // label3
+            // CantidadClientes
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Mono SemiBold", 18F, FontStyle.Bold);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(54, 32);
-            label3.Name = "label3";
-            label3.Size = new Size(56, 32);
-            label3.TabIndex = 0;
-            label3.Text = "240";
+            CantidadClientes.AutoSize = true;
+            CantidadClientes.Font = new Font("Cascadia Mono SemiBold", 18F, FontStyle.Bold);
+            CantidadClientes.ForeColor = SystemColors.ControlLightLight;
+            CantidadClientes.Location = new Point(54, 32);
+            CantidadClientes.Name = "CantidadClientes";
+            CantidadClientes.Size = new Size(0, 32);
+            CantidadClientes.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -234,7 +246,6 @@
             label4.Size = new Size(136, 21);
             label4.TabIndex = 0;
             label4.Text = "$89.450.093,50";
-            label4.Click += label4_Click;
             // 
             // groupBox4
             // 
@@ -259,7 +270,6 @@
             label5.Size = new Size(136, 21);
             label5.TabIndex = 0;
             label5.Text = "$42.447.092,61";
-            label5.Click += label5_Click;
             // 
             // groupBox6
             // 
@@ -323,7 +333,6 @@
             groupBox5.TabIndex = 10;
             groupBox5.TabStop = false;
             groupBox5.Text = "Cantidad de productos";
-            groupBox5.Enter += groupBox5_Enter;
             // 
             // label6
             // 
@@ -340,6 +349,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -383,11 +393,11 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(tabControl3);
             tabPage2.Controls.Add(button5);
             tabPage2.Controls.Add(pictureBox3);
             tabPage2.Controls.Add(button2);
             tabPage2.Controls.Add(pictureBox4);
-            tabPage2.Controls.Add(dataGridView1);
             tabPage2.Controls.Add(dateTimePicker3);
             tabPage2.Controls.Add(label9);
             tabPage2.Controls.Add(dateTimePicker4);
@@ -401,6 +411,46 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Ventas";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabControl3
+            // 
+            tabControl3.Controls.Add(tabPage7);
+            tabControl3.Controls.Add(tabPage8);
+            tabControl3.Location = new Point(6, 37);
+            tabControl3.Name = "tabControl3";
+            tabControl3.SelectedIndex = 0;
+            tabControl3.Size = new Size(901, 267);
+            tabControl3.TabIndex = 26;
+            // 
+            // tabPage7
+            // 
+            tabPage7.Controls.Add(dgvVentas);
+            tabPage7.Location = new Point(4, 24);
+            tabPage7.Name = "tabPage7";
+            tabPage7.Padding = new Padding(3);
+            tabPage7.Size = new Size(893, 239);
+            tabPage7.TabIndex = 0;
+            tabPage7.Text = "Ventas";
+            tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            tabPage8.Location = new Point(4, 24);
+            tabPage8.Name = "tabPage8";
+            tabPage8.Padding = new Padding(3);
+            tabPage8.Size = new Size(893, 239);
+            tabPage8.TabIndex = 1;
+            tabPage8.Text = "Por Usuarios";
+            tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(817, 6);
+            button5.Name = "button5";
+            button5.Size = new Size(93, 25);
+            button5.TabIndex = 25;
+            button5.Text = "Buscar";
+            button5.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
             // 
@@ -430,41 +480,6 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 22;
             pictureBox4.TabStop = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Cliente, Fecha, Vendedor, CantidadProd, Total });
-            dataGridView1.Location = new Point(6, 48);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(901, 51);
-            dataGridView1.TabIndex = 21;
-            // 
-            // Cliente
-            // 
-            Cliente.HeaderText = "Cliente";
-            Cliente.Name = "Cliente";
-            // 
-            // Fecha
-            // 
-            Fecha.HeaderText = "Fecha";
-            Fecha.Name = "Fecha";
-            // 
-            // Vendedor
-            // 
-            Vendedor.HeaderText = "Vendedor";
-            Vendedor.Name = "Vendedor";
-            // 
-            // CantidadProd
-            // 
-            CantidadProd.HeaderText = "Cantidad Productos";
-            CantidadProd.Name = "CantidadProd";
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.Name = "Total";
             // 
             // dateTimePicker3
             // 
@@ -506,7 +521,6 @@
             label10.Size = new Size(42, 15);
             label10.TabIndex = 17;
             label10.Text = "Desde:";
-            label10.Click += label10_Click;
             // 
             // label11
             // 
@@ -519,11 +533,9 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(tabControl2);
             tabPage3.Controls.Add(button6);
-            tabPage3.Controls.Add(pictureBox5);
-            tabPage3.Controls.Add(button3);
-            tabPage3.Controls.Add(pictureBox6);
-            tabPage3.Controls.Add(dataGridView2);
+            tabPage3.Controls.Add(dgvCompras);
             tabPage3.Controls.Add(dateTimePicker5);
             tabPage3.Controls.Add(label12);
             tabPage3.Controls.Add(dateTimePicker6);
@@ -538,70 +550,90 @@
             tabPage3.Text = "Compras";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // pictureBox5
+            // tabControl2
             // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(493, 317);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(414, 270);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 24;
-            pictureBox5.TabStop = false;
+            tabControl2.Controls.Add(tabPage5);
+            tabControl2.Controls.Add(tabPage6);
+            tabControl2.Location = new Point(6, 230);
+            tabControl2.Name = "tabControl2";
+            tabControl2.SelectedIndex = 0;
+            tabControl2.Size = new Size(901, 357);
+            tabControl2.TabIndex = 30;
             // 
-            // button3
+            // tabPage5
             // 
-            button3.Location = new Point(769, 279);
-            button3.Name = "button3";
-            button3.Size = new Size(138, 32);
-            button3.TabIndex = 25;
-            button3.Text = "Exportar PDF";
-            button3.UseVisualStyleBackColor = true;
+            tabPage5.Controls.Add(chartComprasPorProveedores);
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(893, 329);
+            tabPage5.TabIndex = 0;
+            tabPage5.Text = "Total Compras Por Proveedor";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
-            // pictureBox6
+            // chartComprasPorProveedores
             // 
-            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(15, 317);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(448, 270);
-            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox6.TabIndex = 23;
-            pictureBox6.TabStop = false;
+            chartArea1.Name = "ChartArea1";
+            chartComprasPorProveedores.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartComprasPorProveedores.Legends.Add(legend1);
+            chartComprasPorProveedores.Location = new Point(3, 6);
+            chartComprasPorProveedores.Name = "chartComprasPorProveedores";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartComprasPorProveedores.Series.Add(series1);
+            chartComprasPorProveedores.Size = new Size(884, 317);
+            chartComprasPorProveedores.TabIndex = 29;
+            chartComprasPorProveedores.Text = "chart2";
             // 
-            // dataGridView2
+            // tabPage6
             // 
-            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dataGridView2.Location = new Point(6, 49);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(901, 51);
-            dataGridView2.TabIndex = 22;
+            tabPage6.Controls.Add(chartComprasUser);
+            tabPage6.Location = new Point(4, 24);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new Padding(3);
+            tabPage6.Size = new Size(893, 329);
+            tabPage6.TabIndex = 1;
+            tabPage6.Text = "Registros por Usuarios";
+            tabPage6.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // chartComprasUser
             // 
-            dataGridViewTextBoxColumn1.HeaderText = "Usuario";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            chartArea2.Name = "ChartArea1";
+            chartComprasUser.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartComprasUser.Legends.Add(legend2);
+            chartComprasUser.Location = new Point(3, 6);
+            chartComprasUser.Name = "chartComprasUser";
+            chartComprasUser.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartComprasUser.Series.Add(series2);
+            chartComprasUser.Size = new Size(884, 317);
+            chartComprasUser.TabIndex = 28;
+            chartComprasUser.Text = "chart1";
             // 
-            // dataGridViewTextBoxColumn2
+            // button6
             // 
-            dataGridViewTextBoxColumn2.HeaderText = "Fecha";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            button6.Location = new Point(814, 9);
+            button6.Name = "button6";
+            button6.Size = new Size(93, 25);
+            button6.TabIndex = 26;
+            button6.Text = "Buscar";
+            button6.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // dgvCompras
             // 
-            dataGridViewTextBoxColumn3.HeaderText = "Proveedor";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Cantidad Productos";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Total";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dgvCompras.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCompras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCompras.Location = new Point(6, 49);
+            dgvCompras.Name = "dgvCompras";
+            dgvCompras.Size = new Size(901, 175);
+            dgvCompras.TabIndex = 22;
+            dgvCompras.CellClick += dgvCompras_CellContentClick;
             // 
             // dateTimePicker5
             // 
@@ -653,23 +685,51 @@
             label14.TabIndex = 18;
             label14.Text = "Hasta:";
             // 
-            // button5
+            // tabPage4
             // 
-            button5.Location = new Point(817, 6);
-            button5.Name = "button5";
-            button5.Size = new Size(93, 25);
-            button5.TabIndex = 25;
-            button5.Text = "Buscar";
-            button5.UseVisualStyleBackColor = true;
+            tabPage4.Controls.Add(chartCompraProveedores);
+            tabPage4.Controls.Add(dgvProductosProveedores);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(913, 593);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Productos por Proveedor";
+            tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // chartCompraProveedores
             // 
-            button6.Location = new Point(814, 9);
-            button6.Name = "button6";
-            button6.Size = new Size(93, 25);
-            button6.TabIndex = 26;
-            button6.Text = "Buscar";
-            button6.UseVisualStyleBackColor = true;
+            chartArea3.Name = "ChartArea1";
+            chartCompraProveedores.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chartCompraProveedores.Legends.Add(legend3);
+            chartCompraProveedores.Location = new Point(6, 276);
+            chartCompraProveedores.Name = "chartCompraProveedores";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartCompraProveedores.Series.Add(series3);
+            chartCompraProveedores.Size = new Size(867, 311);
+            chartCompraProveedores.TabIndex = 30;
+            chartCompraProveedores.Text = "chart2";
+            // 
+            // dgvProductosProveedores
+            // 
+            dgvProductosProveedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProductosProveedores.Location = new Point(6, 30);
+            dgvProductosProveedores.Name = "dgvProductosProveedores";
+            dgvProductosProveedores.Size = new Size(867, 240);
+            dgvProductosProveedores.TabIndex = 0;
+            // 
+            // dgvVentas
+            // 
+            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVentas.Dock = DockStyle.Fill;
+            dgvVentas.Location = new Point(3, 3);
+            dgvVentas.Name = "dgvVentas";
+            dgvVentas.Size = new Size(887, 233);
+            dgvVentas.TabIndex = 0;
+            dgvVentas.CellContentClick += dgvVentas_CellContentClick;
             // 
             // ReportesForm
             // 
@@ -681,6 +741,7 @@
             Controls.Add(tabControl1);
             Name = "ReportesForm";
             Text = "ReportesForm";
+            Load += ReportesForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -700,14 +761,22 @@
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabControl3.ResumeLayout(false);
+            tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            tabControl2.ResumeLayout(false);
+            tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartComprasPorProveedores).EndInit();
+            tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartComprasUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCompras).EndInit();
+            tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartCompraProveedores).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProductosProveedores).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);
         }
 
@@ -725,7 +794,7 @@
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private GroupBox groupBox6;
-        private Label label3;
+        private Label CantidadClientes;
         private Label label4;
         private Label label5;
         private Label label7;
@@ -750,26 +819,27 @@
         private ComboBox comboBox3;
         private Label label13;
         private Label label14;
-        private DataGridView dataGridView1;
         private PictureBox pictureBox3;
         private Button button2;
         private PictureBox pictureBox4;
-        private DataGridViewTextBoxColumn Cliente;
-        private DataGridViewTextBoxColumn Fecha;
-        private DataGridViewTextBoxColumn Vendedor;
-        private DataGridViewTextBoxColumn CantidadProd;
-        private DataGridViewTextBoxColumn Total;
-        private PictureBox pictureBox5;
-        private Button button3;
-        private PictureBox pictureBox6;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridView dgvCompras;
         private Button button4;
         private Button button5;
         private Button button6;
+        private TabPage tabPage4;
+        private DataGridView dgvProductosProveedores;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartComprasUser;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartCompraProveedores;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartComprasPorProveedores;
+        private TabControl tabControl2;
+        private TabPage tabPage5;
+        private TabPage tabPage6;
+        private TabControl tabControl3;
+        private TabPage tabPage7;
+        private TabPage tabPage8;
+        private DataGridView dgvVentas;
+        // private ScottPlot.FormsPlot formsPlot1;
+        // private ScottPlot.FormsPlot formsPlot1;
     }
 }

@@ -44,8 +44,7 @@ namespace ElectroGest.Forms
 
 
         // Cargar lista de usuarios en el DataGridView
-        private void CargarUsuarios()
-        {
+        private void CargarUsuarios() {
             // Pedimos los usuarios directamente desde el repositorio
             var lista = _repo.ObtenerUsuarios()
                .Select(u => new
@@ -346,7 +345,7 @@ namespace ElectroGest.Forms
                 if (BoxPassword.Text.Length < 4)
                     errores.Add(" La contraseña debe tener al menos 4 dígitos.");
 
-    
+
                 if (BoxPassword.Text != BoxConfirmarPassword.Text)
                     errores.Add(" Las contraseñas no coinciden.");
             }
@@ -589,6 +588,10 @@ namespace ElectroGest.Forms
             }
         }
 
+        private void CbmRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

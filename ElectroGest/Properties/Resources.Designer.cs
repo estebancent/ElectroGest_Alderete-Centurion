@@ -133,6 +133,26 @@ namespace ElectroGest.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconDesactivar {
+            get {
+                object obj = ResourceManager.GetObject("iconDesactivar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconHabilitar {
+            get {
+                object obj = ResourceManager.GetObject("iconHabilitar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_actualizaciones_disponibles_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-actualizaciones-disponibles-24", resourceCulture);
@@ -356,6 +376,16 @@ namespace ElectroGest.Properties {
         internal static System.Drawing.Bitmap icons8_pdf_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-pdf-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_producto_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-producto-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
