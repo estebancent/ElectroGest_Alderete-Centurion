@@ -1557,7 +1557,7 @@ namespace ElectroGest.Forms
             }
         }
 
-        private void GraficarVentasPorCategorias()
+        private void GraficarVentasPorCategoriasTotalEnPrecio()
         {
             using (var context = new SistemaVentasContext())
             {
