@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Globalization;
+using ElectroGest.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 
@@ -47,7 +49,11 @@ namespace ElectroGest.Forms
 
             CargarVentas();
             dgvCompras.CellContentClick -= dgvCompras_CellContentClick;
-
+            GraficarVentasPorMes();
+            GraficarVentasPorUsuario();
+            GraficarVentasPorCliente();
+            GraficarTop5ClientesConMasCompras();
+            GraficarVentasPorCategoria();
 
             // Agregar la columna de botón (si no existe)
             if (!dgvCompras.Columns.Contains("btnVerDetalle"))
@@ -942,6 +948,741 @@ namespace ElectroGest.Forms
                 }
             }
         }
+        private void GraficarVentasPorMes()
+        {
+            try
+            {
+                // 1️⃣ Obtener todas las ventas
+                var ventas = _repoVentas.ObtenerTodas();
+
+                if (ventas.Count == 0)
+                {
+                    MessageBox.Show("No hay ventas registradas para graficar.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // 2️⃣ Agrupar por mes y año
+                var ventasPorMes = ventas
+                    .Where(v => v.FechaVenta != null)
+                    .GroupBy(v => new { v.FechaVenta.Value.Year, v.FechaVenta.Value.Month })
+                    .Select(g => new
+                    {
+                        Fecha = new DateTime(g.Key.Year, g.Key.Month, 1),
+                        Total = g.Sum(v => v.TotalFinal)
+                    })
+                    .OrderBy(x => x.Fecha)
+                    .ToList();
+
+                // 3️⃣ Preparar etiquetas y valores
+                string[] etiquetasMeses = ventasPorMes
+                    .Select(v => v.Fecha.ToString("MMM yy")) // más compacto (Ene 25)
+                    .ToArray();
+
+                double[] totales = ventasPorMes.Select(v => (double)v.Total).ToArray();
+
+                // 4️⃣ Limpiar gráfico
+                chartVentasMensuales.Series.Clear();
+                chartVentasMensuales.ChartAreas.Clear();
+                chartVentasMensuales.Titles.Clear();
+                chartVentasMensuales.Legends.Clear();
+
+                // 5️⃣ Configurar área del gráfico
+                ChartArea area = new ChartArea("MainArea")
+                {
+                    BackColor = Color.White
+                };
+
+                // Cuadrícula ligera y moderna
+                area.AxisX.MajorGrid.LineColor = Color.FromArgb(235, 235, 235);
+                area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+
+                // Títulos de ejes
+                area.AxisX.Title = "Mes";
+                area.AxisY.Title = "Total de Ventas ($)";
+                area.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisY.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+
+                // Etiquetas del eje
+                area.AxisX.LabelStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+                area.AxisY.LabelStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+                area.AxisX.LabelStyle.ForeColor = Color.FromArgb(60, 60, 60);
+                area.AxisY.LabelStyle.ForeColor = Color.FromArgb(60, 60, 60);
+
+                // Ajustes visuales del eje X
+                area.AxisX.Interval = 1;
+                area.AxisX.LabelStyle.Angle = -30; // ligeramente inclinadas
+                area.AxisX.LabelAutoFitStyle = LabelAutoFitStyles.DecreaseFont | LabelAutoFitStyles.StaggeredLabels;
+                area.AxisX.IsLabelAutoFit = true;
+
+                // Márgenes equilibrados
+                area.Position = new ElementPosition(5, 10, 90, 80);
+                area.InnerPlotPosition = new ElementPosition(5, 0, 90, 90);
+
+                chartVentasMensuales.ChartAreas.Add(area);
+
+                // 6️⃣ Crear la serie (línea moderna con puntos)
+                Series serie = new Series("VentasMensuales")
+                {
+                    ChartType = SeriesChartType.Line,
+                    BorderWidth = 3,
+                    Color = Color.FromArgb(52, 152, 219), // Azul moderno
+                    MarkerStyle = MarkerStyle.Circle,
+                    MarkerSize = 8,
+                    MarkerColor = Color.White,
+                    MarkerBorderColor = Color.FromArgb(41, 128, 185),
+                    MarkerBorderWidth = 2,
+                    Font = new Font("Segoe UI", 8, FontStyle.Bold),
+                    IsValueShownAsLabel = true
+                };
+
+                // 7️⃣ Agregar los puntos con etiquetas balanceadas
+                for (int i = 0; i < etiquetasMeses.Length; i++)
+                {
+                    int index = serie.Points.AddXY(i, totales[i]);
+                    double valor = totales[i];
+                    string etiqueta = $"${valor:N0}";
+
+                    // Evita saturar etiquetas en gráficos con muchos meses
+                    if (etiquetasMeses.Length > 8 && i % 2 != 0)
+                        etiqueta = ""; // oculta una de cada dos etiquetas
+
+                    serie.Points[index].Label = etiqueta;
+                    serie.Points[index].LabelForeColor = Color.FromArgb(50, 50, 50);
+                }
+
+                chartVentasMensuales.Series.Add(serie);
+
+                // 8️⃣ Etiquetas personalizadas eje X
+                area.AxisX.CustomLabels.Clear();
+                for (int i = 0; i < etiquetasMeses.Length; i++)
+                {
+                    double pos = i;
+                    area.AxisX.CustomLabels.Add(pos - 0.5, pos + 0.5, etiquetasMeses[i]);
+                }
+
+                // 9️⃣ Apariencia general
+                chartVentasMensuales.BackColor = Color.White;
+                chartVentasMensuales.BorderlineColor = Color.FromArgb(220, 220, 220);
+                chartVentasMensuales.BorderlineDashStyle = ChartDashStyle.Solid;
+                chartVentasMensuales.BorderlineWidth = 1;
+
+                // 10️⃣ Título principal elegante
+                Title title = new Title("Tendencia Mensual de Ventas",
+                    Docking.Top,
+                    new Font("Segoe UI", 9, FontStyle.Bold),
+                    Color.FromArgb(35, 35, 35))
+                {
+                    Alignment = ContentAlignment.TopCenter
+                };
+                chartVentasMensuales.Titles.Add(title);
+
+                // 11️⃣ Leyenda minimalista
+                Legend legend = new Legend("MainLegend")
+                {
+                    Docking = Docking.Bottom,
+                    Alignment = StringAlignment.Center,
+                    Font = new Font("Segoe UI", 9),
+                    BackColor = Color.White,
+                    ForeColor = Color.FromArgb(70, 70, 70),
+                    BorderColor = Color.Transparent
+                };
+                chartVentasMensuales.Legends.Add(legend);
+
+                // 12️⃣ Refrescar gráfico
+                chartVentasMensuales.Invalidate();
+                chartVentasMensuales.Update();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al graficar ventas mensuales: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GraficarVentasPorUsuario()
+        {
+            // 1️⃣ Obtener cantidad de ventas por usuario (vendedor)
+            var ventas = _repoVentas.ObtenerTodas()
+                .GroupBy(v => v.Vendedor?.IdNavigation.Nombre ?? "Sin vendedor")
+                .Select(g => new
+                {
+                    Usuario = g.Key,
+                    Cantidad = g.Count()
+                })
+                .OrderByDescending(x => x.Cantidad)
+                .ToList();
+
+            if (ventas.Count == 0)
+            {
+                MessageBox.Show("No hay ventas para graficar.", "Información",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // --- limpiar chart ---
+            chartVentasPorUsuario.Series.Clear();
+            chartVentasPorUsuario.ChartAreas.Clear();
+            chartVentasPorUsuario.Titles.Clear();
+            chartVentasPorUsuario.Legends.Clear();
+
+            // --- ChartArea ---
+            var area = new ChartArea("MainArea")
+            {
+                BackColor = Color.White,
+                Position = new ElementPosition(5, 5, 70, 90),
+                InnerPlotPosition = new ElementPosition(10, 5, 80, 90)
+            };
+            chartVentasPorUsuario.ChartAreas.Add(area);
+
+            // --- Serie tipo Pie ---
+            var serie = new Series("VentasPorUsuario")
+            {
+                ChartType = SeriesChartType.Pie,
+                IsValueShownAsLabel = false,
+                Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                BorderWidth = 1,
+                BorderColor = Color.White
+            };
+
+            // --- Paleta moderna ---
+            Color[] colores = new Color[]
+            {
+        Color.FromArgb(93, 173, 226),   // Azul
+        Color.FromArgb(46, 204, 113),   // Verde
+        Color.FromArgb(241, 196, 15),   // Amarillo
+        Color.FromArgb(231, 76, 60),    // Rojo
+        Color.FromArgb(155, 89, 182),   // Violeta
+        Color.FromArgb(52, 152, 219),   // Celeste
+        Color.FromArgb(230, 126, 34),   // Naranja
+        Color.FromArgb(149, 165, 166),  // Gris
+        Color.FromArgb(26, 188, 156),   // Turquesa
+        Color.FromArgb(52, 73, 94)      // Azul oscuro
+            };
+
+            int totalVentas = ventas.Sum(x => x.Cantidad);
+
+            // --- Añadir puntos ---
+            for (int i = 0; i < ventas.Count; i++)
+            {
+                int idx = serie.Points.AddY(ventas[i].Cantidad);
+                var punto = serie.Points[idx];
+
+                punto.AxisLabel = ventas[i].Usuario;
+                punto.LegendText = $"{ventas[i].Usuario} ({ventas[i].Cantidad})";
+                punto.Color = colores[i % colores.Length];
+                punto.Label = $"{(double)ventas[i].Cantidad / totalVentas:P1}";
+                punto.LabelForeColor = Color.White;
+                punto.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            }
+
+            // --- Estilo de la torta ---
+            serie["PieLabelStyle"] = "Inside";
+            serie["PieDrawingStyle"] = "SoftEdge";
+            serie["PieStartAngle"] = "270";
+            serie["CollectedThreshold"] = "2";
+            serie["CollectedLabel"] = "Otros";
+            serie["CollectedColor"] = "Gray";
+
+            chartVentasPorUsuario.Series.Add(serie);
+
+            // --- Leyenda ---
+            var legend = new Legend("MainLegend")
+            {
+                Docking = Docking.Right,
+                Alignment = StringAlignment.Near,
+                LegendStyle = LegendStyle.Table,
+                TableStyle = LegendTableStyle.Auto,
+                BackColor = Color.Transparent,
+                Font = new Font("Segoe UI", 9),
+                IsTextAutoFit = false
+            };
+            chartVentasPorUsuario.Legends.Add(legend);
+            serie.IsVisibleInLegend = true;
+
+            // --- Título ---
+            chartVentasPorUsuario.Titles.Add(new Title(
+                "Ventas registradas por Usuario",
+                Docking.Top,
+                new Font("Segoe UI", 11, FontStyle.Bold),
+                Color.FromArgb(40, 40, 40)
+            ));
+
+            // --- Fondo general ---
+            chartVentasPorUsuario.BackColor = Color.WhiteSmoke;
+            chartVentasPorUsuario.Legends[0].MaximumAutoSize = 50;
+
+            chartVentasPorUsuario.Invalidate();
+        }
+        private void GraficarVentasPorCliente()
+        {
+            try
+            {
+                // 1️⃣ Obtener todas las ventas agrupadas por cliente
+                var ventasPorCliente = _repoVentas.ObtenerTodas()
+                    .Where(v => v.Cliente != null)
+                    .GroupBy(v => v.Cliente.IdNavigation.Nombre)
+                    .Select(g => new
+                    {
+                        Cliente = g.Key,
+                        TotalVendido = g.Sum(v => v.TotalFinal ?? v.Total)
+                    })
+                    .OrderByDescending(x => x.TotalVendido)
+                    .ToList();
+
+                if (ventasPorCliente.Count == 0)
+                {
+                    MessageBox.Show("No hay ventas registradas para graficar.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // 2️⃣ Limpiar gráfico
+                chartVentasPorCliente.Series.Clear();
+                chartVentasPorCliente.ChartAreas.Clear();
+                chartVentasPorCliente.Titles.Clear();
+                chartVentasPorCliente.Legends.Clear();
+
+                // 3️⃣ Crear área principal
+                ChartArea area = new ChartArea("MainArea")
+                {
+                    BackColor = Color.White
+                };
+                area.AxisX.MajorGrid.LineColor = Color.LightGray;
+                area.AxisY.MajorGrid.Enabled = false;
+
+                area.AxisX.Title = "Total Vendido ($)";
+                area.AxisY.Title = "Cliente";
+
+                area.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisY.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisX.LabelStyle.Font = new Font("Segoe UI", 9);
+                area.AxisY.LabelStyle.Font = new Font("Segoe UI", 9);
+
+                chartVentasPorCliente.ChartAreas.Add(area);
+
+                // 4️⃣ Crear la serie
+                Series serie = new Series("VentasPorCliente")
+                {
+                    ChartType = SeriesChartType.Bar,
+                    BorderWidth = 1,
+                    Color = Color.FromArgb(52, 152, 219),
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                    IsValueShownAsLabel = true
+                };
+
+                // 5️⃣ Cargar los datos en el gráfico
+                foreach (var item in ventasPorCliente)
+                {
+                    int idx = serie.Points.AddXY(item.Cliente, item.TotalVendido);
+                    serie.Points[idx].Label = $"$ {item.TotalVendido:N0}";
+                    serie.Points[idx].Color = Color.FromArgb(93, 173, 226);
+                }
+
+                chartVentasPorCliente.Series.Add(serie);
+
+                // 6️⃣ Ajustes visuales
+                chartVentasPorCliente.BackColor = Color.WhiteSmoke;
+                chartVentasPorCliente.BorderlineColor = Color.LightGray;
+                chartVentasPorCliente.BorderlineDashStyle = ChartDashStyle.Solid;
+
+                // 7️⃣ Título
+                Title title = new Title("Total de Ventas por Cliente",
+                    Docking.Top,
+                    new Font("Segoe UI", 13, FontStyle.Bold),
+                    Color.FromArgb(40, 40, 40));
+                title.Alignment = ContentAlignment.TopCenter;
+                chartVentasPorCliente.Titles.Add(title);
+
+                // 8️⃣ Leyenda (opcional)
+                Legend legend = new Legend("MainLegend")
+                {
+                    Docking = Docking.Bottom,
+                    Alignment = StringAlignment.Center,
+                    Font = new Font("Segoe UI", 9),
+                    IsTextAutoFit = true
+                };
+                chartVentasPorCliente.Legends.Add(legend);
+
+                // 9️⃣ Ajustar márgenes internos
+                chartVentasPorCliente.ChartAreas[0].InnerPlotPosition = new ElementPosition(10, 5, 80, 90);
+
+                // 🔟 Renderizar
+                chartVentasPorCliente.Invalidate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al graficar ventas por cliente: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void GraficarTop5ClientesConMasCompras()
+        {
+            try
+            {
+                // 1️⃣ Obtener datos agrupados por cliente (total y cantidad)
+                var ventas = _repoVentas.ObtenerTodas()
+                    .GroupBy(v => v.Cliente.IdNavigation?.Nombre ?? "Sin cliente")
+                    .Select(g => new
+                    {
+                        Cliente = g.Key,
+                        TotalVentas = g.Sum(v => v.Total),
+                        CantidadVentas = g.Count()
+                    })
+                    .OrderByDescending(x => x.TotalVentas)
+                    .Take(5)
+                    .ToList();
+
+                if (ventas.Count == 0)
+                {
+                    MessageBox.Show("No hay ventas registradas para graficar.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // 2️⃣ Preparar nombres y valores
+                string[] clientes = ventas
+                    .Select(c => c.Cliente.Length > 20 ? c.Cliente.Substring(0, 20) + "…" : c.Cliente)
+                    .ToArray();
+
+                double[] totales = ventas.Select(c => (double)c.TotalVentas).ToArray();
+                int[] cantidades = ventas.Select(c => c.CantidadVentas).ToArray();
+
+                // 3️⃣ Limpiar gráfico
+                chartVentasPorCliente.Series.Clear();
+                chartVentasPorCliente.ChartAreas.Clear();
+                chartVentasPorCliente.Titles.Clear();
+                chartVentasPorCliente.Legends.Clear();
+
+                // 4️⃣ Configurar área del gráfico
+                ChartArea area = new ChartArea("MainArea");
+                area.BackColor = Color.White;
+                area.AxisX.MajorGrid.Enabled = false;
+                area.AxisY.MajorGrid.LineColor = Color.LightGray;
+                area.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dot;
+                area.AxisX.Title = "Cliente";
+                area.AxisY.Title = "Total de Ventas ($)";
+                area.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisY.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisX.LabelStyle.Font = new Font("Segoe UI", 9);
+                area.AxisY.LabelStyle.Font = new Font("Segoe UI", 9);
+                area.AxisX.Interval = 1;
+                chartVentasPorCliente.ChartAreas.Add(area);
+
+                // 5️⃣ Crear la serie
+                Series serie = new Series("TopClientes")
+                {
+                    ChartType = SeriesChartType.Column,
+                    IsValueShownAsLabel = true,
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                    BorderWidth = 0
+                };
+
+                // 6️⃣ Paleta de colores moderna
+                Color[] colores = new Color[]
+                {
+            Color.FromArgb(52, 152, 219),
+            Color.FromArgb(46, 204, 113),
+            Color.FromArgb(231, 76, 60),
+            Color.FromArgb(241, 196, 15),
+            Color.FromArgb(155, 89, 182),
+            Color.FromArgb(230, 126, 34),
+            Color.FromArgb(26, 188, 156),
+            Color.FromArgb(52, 73, 94)
+                };
+
+                // 7️⃣ Agregar barras y etiquetas personalizadas
+                for (int i = 0; i < clientes.Length; i++)
+                {
+                    int index = serie.Points.AddXY(i, totales[i]);
+                    serie.Points[index].Color = colores[i % colores.Length];
+                    // Mostrar tanto el total como la cantidad
+                    serie.Points[index].Label = $"$ {totales[i]:N0}\n({cantidades[i]} ventas)";
+                }
+
+                chartVentasPorCliente.Series.Add(serie);
+
+                // 8️⃣ Etiquetas personalizadas en eje X
+                area.AxisX.CustomLabels.Clear();
+                for (int i = 0; i < clientes.Length; i++)
+                {
+                    double position = i;
+                    area.AxisX.CustomLabels.Add(position - 0.5, position + 0.5, clientes[i]);
+                }
+
+                // 9️⃣ Estilos visuales
+                serie["PointWidth"] = "0.6";
+                serie["DrawingStyle"] = "Cylinder";
+                chartVentasPorCliente.BackColor = Color.White;
+                chartVentasPorCliente.BorderlineColor = Color.LightGray;
+                chartVentasPorCliente.BorderlineDashStyle = ChartDashStyle.Solid;
+                chartVentasPorCliente.BorderlineWidth = 1;
+
+                // 🔟 Título
+                Title title = new Title("Top 5 Clientes con Más Compras",
+                    Docking.Top,
+                    new Font("Segoe UI", 13, FontStyle.Bold),
+                    Color.FromArgb(45, 45, 48));
+                chartVentasPorCliente.Titles.Add(title);
+
+                // 11️⃣ Refrescar
+                chartVentasPorCliente.Invalidate();
+                chartVentasPorCliente.Update();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al graficar el Top 5 de clientes: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void GraficarVentasPorCategoria()
+        {
+            using (var context = new SistemaVentasContext())
+            {
+                // 1) Traer ventas con detalle, producto y categoría
+                var ventas = context.Ventas
+                    .Include(v => v.DetalleVenta)
+                        .ThenInclude(dv => dv.IdProductoNavigation)
+                            .ThenInclude(p => p.IdCategoriaNavigation)
+                    .ToList();
+
+                // 2) Agrupar por categoría y contar cantidad total de productos vendidos
+                var ventasPorCategoria = ventas
+                    .SelectMany(v => v.DetalleVenta)
+                    .Where(dv => dv.IdProductoNavigation != null && dv.IdProductoNavigation.IdCategoriaNavigation != null)
+                    .GroupBy(dv => dv.IdProductoNavigation.IdCategoriaNavigation.Nombre)
+                    .Select(g => new
+                    {
+                        Categoria = g.Key,
+                        Cantidad = g.Sum(dv => dv.Cantidad) // cuenta unidades vendidas
+                    })
+                    .OrderByDescending(x => x.Cantidad)
+                    .ToList();
+
+                if (ventasPorCategoria.Count == 0)
+                {
+                    MessageBox.Show("No hay categorías con ventas registradas.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // --- limpiar chart ---
+                chartVentasCategoria.Series.Clear();
+                chartVentasCategoria.ChartAreas.Clear();
+                chartVentasCategoria.Titles.Clear();
+                chartVentasCategoria.Legends.Clear();
+
+                // --- ChartArea ---
+                var area = new ChartArea("MainArea")
+                {
+                    BackColor = Color.White,
+                    Position = new ElementPosition(5, 5, 70, 90),
+                    InnerPlotPosition = new ElementPosition(10, 5, 80, 90)
+                };
+                chartVentasCategoria.ChartAreas.Add(area);
+
+                // --- Serie Pie ---
+                var serie = new Series("VentasPorCategoria")
+                {
+                    ChartType = SeriesChartType.Pie,
+                    IsValueShownAsLabel = false,
+                    Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                    BorderWidth = 1,
+                    BorderColor = Color.White
+                };
+
+                // Colores modernos
+                Color[] colores = new Color[]
+                {
+            Color.FromArgb(93, 173, 226),
+            Color.FromArgb(46, 204, 113),
+            Color.FromArgb(241, 196, 15),
+            Color.FromArgb(231, 76, 60),
+            Color.FromArgb(155, 89, 182),
+            Color.FromArgb(230, 126, 34),
+            Color.FromArgb(26, 188, 156),
+            Color.FromArgb(52, 73, 94),
+            Color.FromArgb(149, 165, 166)
+                };
+
+                int totalVentas = ventasPorCategoria.Sum(x => x.Cantidad);
+
+                for (int i = 0; i < ventasPorCategoria.Count; i++)
+                {
+                    int idx = serie.Points.AddY(ventasPorCategoria[i].Cantidad);
+                    var punto = serie.Points[idx];
+
+                    punto.LegendText = $"{ventasPorCategoria[i].Categoria} ({ventasPorCategoria[i].Cantidad})";
+                    punto.Color = colores[i % colores.Length];
+                    punto.Label = $"{(double)ventasPorCategoria[i].Cantidad / totalVentas:P1}";
+                    punto.LabelForeColor = Color.White;
+                    punto.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+
+                serie["PieLabelStyle"] = "Inside";
+                serie["PieDrawingStyle"] = "SoftEdge";
+                serie["PieStartAngle"] = "270";
+                serie["CollectedThreshold"] = "2";
+                serie["CollectedLabel"] = "Otros";
+                serie["CollectedColor"] = "Gray";
+
+                chartVentasCategoria.Series.Add(serie);
+
+                // --- Leyenda ---
+                var legend = new Legend("MainLegend")
+                {
+                    Docking = Docking.Right,
+                    Alignment = StringAlignment.Near,
+                    LegendStyle = LegendStyle.Table,
+                    TableStyle = LegendTableStyle.Auto,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Segoe UI", 9),
+                    IsTextAutoFit = false
+                };
+                chartVentasCategoria.Legends.Add(legend);
+
+                serie.IsVisibleInLegend = true;
+
+                // --- Título ---
+                chartVentasCategoria.Titles.Add(new Title(
+                    "Cantidad de Ventas por Categoría",
+                    Docking.Top,
+                    new Font("Segoe UI", 11, FontStyle.Bold),
+                    Color.FromArgb(40, 40, 40)
+                ));
+
+                chartVentasCategoria.BackColor = Color.WhiteSmoke;
+                chartVentasCategoria.Legends[0].MaximumAutoSize = 50;
+                chartVentasCategoria.Invalidate();
+            }
+        }
+
+        private void GraficarVentasPorCategorias()
+        {
+            using (var context = new SistemaVentasContext())
+            {
+                // 1) Traer ventas con detalle, producto y categoría
+                var ventas = context.Ventas
+                    .Include(v => v.DetalleVenta)
+                        .ThenInclude(dv => dv.IdProductoNavigation)
+                            .ThenInclude(p => p.IdCategoriaNavigation)
+                    .ToList();
+
+                // 2) Agrupar por categoría y sumar el total vendido
+                var ventasPorCategoria = ventas
+                    .SelectMany(v => v.DetalleVenta)
+                    .Where(dv => dv.IdProductoNavigation != null && dv.IdProductoNavigation.IdCategoriaNavigation != null)
+                    .GroupBy(dv => dv.IdProductoNavigation.IdCategoriaNavigation.Nombre)
+                    .Select(g => new
+                    {
+                        Categoria = g.Key,
+                        Total = g.Sum(dv => dv.Subtotal)
+                    })
+                    .OrderByDescending(x => x.Total)
+                    .ToList();
+
+                if (ventasPorCategoria.Count == 0)
+                {
+                    MessageBox.Show("No hay categorías con ventas registradas.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // --- limpiar chart ---
+                chartVentasCategoria.Series.Clear();
+                chartVentasCategoria.ChartAreas.Clear();
+                chartVentasCategoria.Titles.Clear();
+                chartVentasCategoria.Legends.Clear();
+
+                // --- ChartArea ---
+                var area = new ChartArea("MainArea")
+                {
+                    BackColor = Color.White,
+                    Position = new ElementPosition(5, 5, 70, 90),
+                    InnerPlotPosition = new ElementPosition(10, 5, 80, 90)
+                };
+                chartVentasCategoria.ChartAreas.Add(area);
+
+                // --- Serie Pie ---
+                var serie = new Series("VentasPorCategoria")
+                {
+                    ChartType = SeriesChartType.Pie,
+                    IsValueShownAsLabel = false,
+                    Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                    BorderWidth = 1,
+                    BorderColor = Color.White
+                };
+
+                // Colores modernos
+                Color[] colores = new Color[]
+                {
+            Color.FromArgb(93, 173, 226),
+            Color.FromArgb(46, 204, 113),
+            Color.FromArgb(241, 196, 15),
+            Color.FromArgb(231, 76, 60),
+            Color.FromArgb(155, 89, 182),
+            Color.FromArgb(230, 126, 34),
+            Color.FromArgb(26, 188, 156),
+            Color.FromArgb(52, 73, 94),
+            Color.FromArgb(149, 165, 166)
+                };
+
+                decimal totalVentas = ventasPorCategoria.Sum(x => x.Total);
+
+                for (int i = 0; i < ventasPorCategoria.Count; i++)
+                {
+                    int idx = serie.Points.AddY(ventasPorCategoria[i].Total);
+                    var punto = serie.Points[idx];
+
+                    punto.LegendText = $"{ventasPorCategoria[i].Categoria} ({ventasPorCategoria[i].Total:C0})";
+                    punto.Color = colores[i % colores.Length];
+                    punto.Label = $"{(ventasPorCategoria[i].Total / totalVentas):P1}";
+                    punto.LabelForeColor = Color.White;
+                    punto.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+
+                serie["PieLabelStyle"] = "Inside";
+                serie["PieDrawingStyle"] = "SoftEdge";
+                serie["PieStartAngle"] = "270";
+                serie["CollectedThreshold"] = "2";
+                serie["CollectedLabel"] = "Otros";
+                serie["CollectedColor"] = "Gray";
+
+                chartVentasCategoria.Series.Add(serie);
+
+                // --- Leyenda ---
+                var legend = new Legend("MainLegend")
+                {
+                    Docking = Docking.Right,
+                    Alignment = StringAlignment.Near,
+                    LegendStyle = LegendStyle.Table,
+                    TableStyle = LegendTableStyle.Auto,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Segoe UI", 9),
+                    IsTextAutoFit = false
+                };
+                chartVentasCategoria.Legends.Add(legend);
+
+                serie.IsVisibleInLegend = true;
+
+                // --- Título ---
+                chartVentasCategoria.Titles.Add(new Title(
+                    "Ventas por Categoría",
+                    Docking.Top,
+                    new Font("Segoe UI", 11, FontStyle.Bold),
+                    Color.FromArgb(40, 40, 40)
+                ));
+
+                chartVentasCategoria.BackColor = Color.WhiteSmoke;
+                chartVentasCategoria.Legends[0].MaximumAutoSize = 50;
+                chartVentasCategoria.Invalidate();
+            }
+        }
+
+
+
+
+
 
 
     }

@@ -29,15 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportesForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
             label1 = new Label();
@@ -63,37 +75,45 @@
             tabPage1 = new TabPage();
             button4 = new Button();
             tabPage2 = new TabPage();
-            tabControl3 = new TabControl();
-            tabPage7 = new TabPage();
-            tabPage8 = new TabPage();
+            flowLayoutPanel2 = new FlowLayoutPanel();
             button5 = new Button();
-            pictureBox3 = new PictureBox();
-            button2 = new Button();
-            pictureBox4 = new PictureBox();
             dateTimePicker3 = new DateTimePicker();
-            label9 = new Label();
+            button7 = new Button();
             dateTimePicker4 = new DateTimePicker();
             comboBox2 = new ComboBox();
-            label10 = new Label();
-            label11 = new Label();
+            comboBox5 = new ComboBox();
+            button8 = new Button();
+            tabControl4 = new TabControl();
+            tabPage9 = new TabPage();
+            chartVentasMensuales = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabPage10 = new TabPage();
+            chartVentasPorUsuario = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabPage11 = new TabPage();
+            chartVentasCategoria = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabPage12 = new TabPage();
+            chartVentasPorCliente = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabControl3 = new TabControl();
+            tabPage7 = new TabPage();
+            dgvVentas = new DataGridView();
+            tabPage8 = new TabPage();
             tabPage3 = new TabPage();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            button2 = new Button();
+            dateTimePicker5 = new DateTimePicker();
+            button3 = new Button();
+            dateTimePicker6 = new DateTimePicker();
+            comboBox3 = new ComboBox();
+            comboBox4 = new ComboBox();
+            button6 = new Button();
             tabControl2 = new TabControl();
             tabPage5 = new TabPage();
             chartComprasPorProveedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tabPage6 = new TabPage();
             chartComprasUser = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            button6 = new Button();
             dgvCompras = new DataGridView();
-            dateTimePicker5 = new DateTimePicker();
-            label12 = new Label();
-            dateTimePicker6 = new DateTimePicker();
-            comboBox3 = new ComboBox();
-            label13 = new Label();
-            label14 = new Label();
             tabPage4 = new TabPage();
             chartCompraProveedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
             dgvProductosProveedores = new DataGridView();
-            dgvVentas = new DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -105,11 +125,21 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            tabControl4.SuspendLayout();
+            tabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartVentasMensuales).BeginInit();
+            tabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartVentasPorUsuario).BeginInit();
+            tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartVentasCategoria).BeginInit();
+            tabPage12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartVentasPorCliente).BeginInit();
             tabControl3.SuspendLayout();
             tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             tabPage3.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             tabControl2.SuspendLayout();
             tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartComprasPorProveedores).BeginInit();
@@ -119,7 +149,6 @@
             tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartCompraProveedores).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductosProveedores).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
             // dateTimePicker1
@@ -393,17 +422,9 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(flowLayoutPanel2);
+            tabPage2.Controls.Add(tabControl4);
             tabPage2.Controls.Add(tabControl3);
-            tabPage2.Controls.Add(button5);
-            tabPage2.Controls.Add(pictureBox3);
-            tabPage2.Controls.Add(button2);
-            tabPage2.Controls.Add(pictureBox4);
-            tabPage2.Controls.Add(dateTimePicker3);
-            tabPage2.Controls.Add(label9);
-            tabPage2.Controls.Add(dateTimePicker4);
-            tabPage2.Controls.Add(comboBox2);
-            tabPage2.Controls.Add(label10);
-            tabPage2.Controls.Add(label11);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -412,11 +433,216 @@
             tabPage2.Text = "Ventas";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(button5);
+            flowLayoutPanel2.Controls.Add(dateTimePicker3);
+            flowLayoutPanel2.Controls.Add(button7);
+            flowLayoutPanel2.Controls.Add(dateTimePicker4);
+            flowLayoutPanel2.Controls.Add(comboBox2);
+            flowLayoutPanel2.Controls.Add(comboBox5);
+            flowLayoutPanel2.Controls.Add(button8);
+            flowLayoutPanel2.Location = new Point(3, 6);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(901, 31);
+            flowLayoutPanel2.TabIndex = 32;
+            // 
+            // button5
+            // 
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button5.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Location = new Point(3, 3);
+            button5.Name = "button5";
+            button5.Size = new Size(50, 23);
+            button5.TabIndex = 0;
+            button5.Text = "Desde:";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker3
+            // 
+            dateTimePicker3.Location = new Point(59, 3);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(240, 23);
+            dateTimePicker3.TabIndex = 16;
+            // 
+            // button7
+            // 
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button7.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Location = new Point(305, 3);
+            button7.Name = "button7";
+            button7.Size = new Size(50, 23);
+            button7.TabIndex = 17;
+            button7.Text = "Desde:";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker4
+            // 
+            dateTimePicker4.CalendarMonthBackground = SystemColors.ControlLightLight;
+            dateTimePicker4.Location = new Point(361, 3);
+            dateTimePicker4.Name = "dateTimePicker4";
+            dateTimePicker4.Size = new Size(215, 23);
+            dateTimePicker4.TabIndex = 15;
+            dateTimePicker4.Value = new DateTime(2025, 11, 8, 9, 18, 28, 0);
+            // 
+            // comboBox2
+            // 
+            comboBox2.BackColor = SystemColors.ButtonFace;
+            comboBox2.FlatStyle = FlatStyle.Popup;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
+            comboBox2.Location = new Point(582, 3);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(118, 23);
+            comboBox2.TabIndex = 19;
+            // 
+            // comboBox5
+            // 
+            comboBox5.BackColor = SystemColors.Menu;
+            comboBox5.FlatStyle = FlatStyle.Popup;
+            comboBox5.FormattingEnabled = true;
+            comboBox5.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
+            comboBox5.Location = new Point(706, 3);
+            comboBox5.Name = "comboBox5";
+            comboBox5.Size = new Size(118, 23);
+            comboBox5.TabIndex = 20;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(830, 3);
+            button8.Name = "button8";
+            button8.Size = new Size(61, 25);
+            button8.TabIndex = 26;
+            button8.Text = "Buscar";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // tabControl4
+            // 
+            tabControl4.Controls.Add(tabPage9);
+            tabControl4.Controls.Add(tabPage10);
+            tabControl4.Controls.Add(tabPage11);
+            tabControl4.Controls.Add(tabPage12);
+            tabControl4.Location = new Point(3, 310);
+            tabControl4.Name = "tabControl4";
+            tabControl4.SelectedIndex = 0;
+            tabControl4.Size = new Size(900, 280);
+            tabControl4.TabIndex = 27;
+            // 
+            // tabPage9
+            // 
+            tabPage9.Controls.Add(chartVentasMensuales);
+            tabPage9.Location = new Point(4, 24);
+            tabPage9.Name = "tabPage9";
+            tabPage9.Padding = new Padding(3);
+            tabPage9.Size = new Size(892, 252);
+            tabPage9.TabIndex = 0;
+            tabPage9.Text = "Ventas Mensuales";
+            tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // chartVentasMensuales
+            // 
+            chartArea8.Name = "ChartArea1";
+            chartVentasMensuales.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            chartVentasMensuales.Legends.Add(legend8);
+            chartVentasMensuales.Location = new Point(6, 6);
+            chartVentasMensuales.Name = "chartVentasMensuales";
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            chartVentasMensuales.Series.Add(series8);
+            chartVentasMensuales.Size = new Size(880, 240);
+            chartVentasMensuales.TabIndex = 0;
+            chartVentasMensuales.Text = "chart1";
+            // 
+            // tabPage10
+            // 
+            tabPage10.Controls.Add(chartVentasPorUsuario);
+            tabPage10.Location = new Point(4, 24);
+            tabPage10.Name = "tabPage10";
+            tabPage10.Padding = new Padding(3);
+            tabPage10.Size = new Size(892, 252);
+            tabPage10.TabIndex = 1;
+            tabPage10.Text = "Ventas por Usuario";
+            tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // chartVentasPorUsuario
+            // 
+            chartArea9.Name = "ChartArea1";
+            chartVentasPorUsuario.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            chartVentasPorUsuario.Legends.Add(legend9);
+            chartVentasPorUsuario.Location = new Point(-1, 3);
+            chartVentasPorUsuario.Name = "chartVentasPorUsuario";
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            chartVentasPorUsuario.Series.Add(series9);
+            chartVentasPorUsuario.Size = new Size(890, 246);
+            chartVentasPorUsuario.TabIndex = 0;
+            chartVentasPorUsuario.Text = "chart1";
+            // 
+            // tabPage11
+            // 
+            tabPage11.Controls.Add(chartVentasCategoria);
+            tabPage11.Location = new Point(4, 24);
+            tabPage11.Name = "tabPage11";
+            tabPage11.Size = new Size(892, 252);
+            tabPage11.TabIndex = 2;
+            tabPage11.Text = "Ventas Por Categoria";
+            tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // chartVentasCategoria
+            // 
+            chartArea10.Name = "ChartArea1";
+            chartVentasCategoria.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            chartVentasCategoria.Legends.Add(legend10);
+            chartVentasCategoria.Location = new Point(0, 3);
+            chartVentasCategoria.Name = "chartVentasCategoria";
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            chartVentasCategoria.Series.Add(series10);
+            chartVentasCategoria.Size = new Size(892, 249);
+            chartVentasCategoria.TabIndex = 0;
+            chartVentasCategoria.Text = "chart1";
+            // 
+            // tabPage12
+            // 
+            tabPage12.Controls.Add(chartVentasPorCliente);
+            tabPage12.Location = new Point(4, 24);
+            tabPage12.Name = "tabPage12";
+            tabPage12.Size = new Size(892, 252);
+            tabPage12.TabIndex = 3;
+            tabPage12.Text = "Ventas por Cliente";
+            tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // chartVentasPorCliente
+            // 
+            chartArea11.Name = "ChartArea1";
+            chartVentasPorCliente.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            chartVentasPorCliente.Legends.Add(legend11);
+            chartVentasPorCliente.Location = new Point(3, 3);
+            chartVentasPorCliente.Name = "chartVentasPorCliente";
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            chartVentasPorCliente.Series.Add(series11);
+            chartVentasPorCliente.Size = new Size(886, 246);
+            chartVentasPorCliente.TabIndex = 0;
+            chartVentasPorCliente.Text = "chart1";
+            // 
             // tabControl3
             // 
             tabControl3.Controls.Add(tabPage7);
             tabControl3.Controls.Add(tabPage8);
-            tabControl3.Location = new Point(6, 37);
+            tabControl3.Location = new Point(6, 40);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
             tabControl3.Size = new Size(901, 267);
@@ -433,6 +659,16 @@
             tabPage7.Text = "Ventas";
             tabPage7.UseVisualStyleBackColor = true;
             // 
+            // dgvVentas
+            // 
+            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVentas.Dock = DockStyle.Fill;
+            dgvVentas.Location = new Point(3, 3);
+            dgvVentas.Name = "dgvVentas";
+            dgvVentas.Size = new Size(887, 233);
+            dgvVentas.TabIndex = 0;
+            dgvVentas.CellContentClick += dgvVentas_CellContentClick;
+            // 
             // tabPage8
             // 
             tabPage8.Location = new Point(4, 24);
@@ -443,105 +679,11 @@
             tabPage8.Text = "Por Usuarios";
             tabPage8.UseVisualStyleBackColor = true;
             // 
-            // button5
-            // 
-            button5.Location = new Point(817, 6);
-            button5.Name = "button5";
-            button5.Size = new Size(93, 25);
-            button5.TabIndex = 25;
-            button5.Text = "Buscar";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(493, 368);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(414, 219);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 23;
-            pictureBox3.TabStop = false;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(769, 330);
-            button2.Name = "button2";
-            button2.Size = new Size(138, 32);
-            button2.TabIndex = 24;
-            button2.Text = "Exportar PDF";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(15, 368);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(448, 219);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 22;
-            pictureBox4.TabStop = false;
-            // 
-            // dateTimePicker3
-            // 
-            dateTimePicker3.Location = new Point(342, 8);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(240, 23);
-            dateTimePicker3.TabIndex = 16;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(588, 14);
-            label9.Name = "label9";
-            label9.Size = new Size(61, 15);
-            label9.TabIndex = 20;
-            label9.Text = "Categoria:";
-            // 
-            // dateTimePicker4
-            // 
-            dateTimePicker4.Location = new Point(54, 8);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(236, 23);
-            dateTimePicker4.TabIndex = 15;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox2.Location = new Point(652, 6);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(162, 23);
-            comboBox2.TabIndex = 19;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(6, 14);
-            label10.Name = "label10";
-            label10.Size = new Size(42, 15);
-            label10.TabIndex = 17;
-            label10.Text = "Desde:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(296, 14);
-            label11.Name = "label11";
-            label11.Size = new Size(40, 15);
-            label11.TabIndex = 18;
-            label11.Text = "Hasta:";
-            // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(flowLayoutPanel1);
             tabPage3.Controls.Add(tabControl2);
-            tabPage3.Controls.Add(button6);
             tabPage3.Controls.Add(dgvCompras);
-            tabPage3.Controls.Add(dateTimePicker5);
-            tabPage3.Controls.Add(label12);
-            tabPage3.Controls.Add(dateTimePicker6);
-            tabPage3.Controls.Add(comboBox3);
-            tabPage3.Controls.Add(label13);
-            tabPage3.Controls.Add(label14);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -549,6 +691,93 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Compras";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(button2);
+            flowLayoutPanel1.Controls.Add(dateTimePicker5);
+            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Controls.Add(dateTimePicker6);
+            flowLayoutPanel1.Controls.Add(comboBox3);
+            flowLayoutPanel1.Controls.Add(comboBox4);
+            flowLayoutPanel1.Controls.Add(button6);
+            flowLayoutPanel1.Location = new Point(10, 4);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(901, 39);
+            flowLayoutPanel1.TabIndex = 31;
+            // 
+            // button2
+            // 
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button2.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(3, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(50, 23);
+            button2.TabIndex = 0;
+            button2.Text = "Desde:";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker5
+            // 
+            dateTimePicker5.Location = new Point(59, 3);
+            dateTimePicker5.Name = "dateTimePicker5";
+            dateTimePicker5.Size = new Size(240, 23);
+            dateTimePicker5.TabIndex = 16;
+            // 
+            // button3
+            // 
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button3.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(305, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(50, 23);
+            button3.TabIndex = 17;
+            button3.Text = "Desde:";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker6
+            // 
+            dateTimePicker6.CalendarMonthBackground = SystemColors.ControlLightLight;
+            dateTimePicker6.Location = new Point(361, 3);
+            dateTimePicker6.Name = "dateTimePicker6";
+            dateTimePicker6.Size = new Size(215, 23);
+            dateTimePicker6.TabIndex = 15;
+            dateTimePicker6.Value = new DateTime(2025, 11, 8, 9, 18, 28, 0);
+            // 
+            // comboBox3
+            // 
+            comboBox3.BackColor = SystemColors.ButtonFace;
+            comboBox3.FlatStyle = FlatStyle.Popup;
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
+            comboBox3.Location = new Point(582, 3);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(118, 23);
+            comboBox3.TabIndex = 19;
+            // 
+            // comboBox4
+            // 
+            comboBox4.BackColor = SystemColors.Menu;
+            comboBox4.FlatStyle = FlatStyle.Popup;
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
+            comboBox4.Location = new Point(706, 3);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(118, 23);
+            comboBox4.TabIndex = 20;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(830, 3);
+            button6.Name = "button6";
+            button6.Size = new Size(61, 25);
+            button6.TabIndex = 26;
+            button6.Text = "Buscar";
+            button6.UseVisualStyleBackColor = true;
             // 
             // tabControl2
             // 
@@ -573,16 +802,16 @@
             // 
             // chartComprasPorProveedores
             // 
-            chartArea1.Name = "ChartArea1";
-            chartComprasPorProveedores.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartComprasPorProveedores.Legends.Add(legend1);
+            chartArea12.Name = "ChartArea1";
+            chartComprasPorProveedores.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            chartComprasPorProveedores.Legends.Add(legend12);
             chartComprasPorProveedores.Location = new Point(3, 6);
             chartComprasPorProveedores.Name = "chartComprasPorProveedores";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartComprasPorProveedores.Series.Add(series1);
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            chartComprasPorProveedores.Series.Add(series12);
             chartComprasPorProveedores.Size = new Size(884, 317);
             chartComprasPorProveedores.TabIndex = 29;
             chartComprasPorProveedores.Text = "chart2";
@@ -600,29 +829,20 @@
             // 
             // chartComprasUser
             // 
-            chartArea2.Name = "ChartArea1";
-            chartComprasUser.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartComprasUser.Legends.Add(legend2);
+            chartArea13.Name = "ChartArea1";
+            chartComprasUser.ChartAreas.Add(chartArea13);
+            legend13.Name = "Legend1";
+            chartComprasUser.Legends.Add(legend13);
             chartComprasUser.Location = new Point(3, 6);
             chartComprasUser.Name = "chartComprasUser";
             chartComprasUser.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartComprasUser.Series.Add(series2);
+            series13.ChartArea = "ChartArea1";
+            series13.Legend = "Legend1";
+            series13.Name = "Series1";
+            chartComprasUser.Series.Add(series13);
             chartComprasUser.Size = new Size(884, 317);
             chartComprasUser.TabIndex = 28;
             chartComprasUser.Text = "chart1";
-            // 
-            // button6
-            // 
-            button6.Location = new Point(814, 9);
-            button6.Name = "button6";
-            button6.Size = new Size(93, 25);
-            button6.TabIndex = 26;
-            button6.Text = "Buscar";
-            button6.UseVisualStyleBackColor = true;
             // 
             // dgvCompras
             // 
@@ -634,56 +854,6 @@
             dgvCompras.Size = new Size(901, 175);
             dgvCompras.TabIndex = 22;
             dgvCompras.CellClick += dgvCompras_CellContentClick;
-            // 
-            // dateTimePicker5
-            // 
-            dateTimePicker5.Location = new Point(333, 11);
-            dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(240, 23);
-            dateTimePicker5.TabIndex = 16;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(579, 19);
-            label12.Name = "label12";
-            label12.Size = new Size(61, 15);
-            label12.TabIndex = 20;
-            label12.Text = "Categoria:";
-            // 
-            // dateTimePicker6
-            // 
-            dateTimePicker6.Location = new Point(45, 11);
-            dateTimePicker6.Name = "dateTimePicker6";
-            dateTimePicker6.Size = new Size(236, 23);
-            dateTimePicker6.TabIndex = 15;
-            // 
-            // comboBox3
-            // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox3.Location = new Point(646, 11);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(162, 23);
-            comboBox3.TabIndex = 19;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(6, 19);
-            label13.Name = "label13";
-            label13.Size = new Size(42, 15);
-            label13.TabIndex = 17;
-            label13.Text = "Desde:";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(287, 19);
-            label14.Name = "label14";
-            label14.Size = new Size(40, 15);
-            label14.TabIndex = 18;
-            label14.Text = "Hasta:";
             // 
             // tabPage4
             // 
@@ -699,16 +869,16 @@
             // 
             // chartCompraProveedores
             // 
-            chartArea3.Name = "ChartArea1";
-            chartCompraProveedores.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            chartCompraProveedores.Legends.Add(legend3);
+            chartArea14.Name = "ChartArea1";
+            chartCompraProveedores.ChartAreas.Add(chartArea14);
+            legend14.Name = "Legend1";
+            chartCompraProveedores.Legends.Add(legend14);
             chartCompraProveedores.Location = new Point(6, 276);
             chartCompraProveedores.Name = "chartCompraProveedores";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chartCompraProveedores.Series.Add(series3);
+            series14.ChartArea = "ChartArea1";
+            series14.Legend = "Legend1";
+            series14.Name = "Series1";
+            chartCompraProveedores.Series.Add(series14);
             chartCompraProveedores.Size = new Size(867, 311);
             chartCompraProveedores.TabIndex = 30;
             chartCompraProveedores.Text = "chart2";
@@ -720,16 +890,6 @@
             dgvProductosProveedores.Name = "dgvProductosProveedores";
             dgvProductosProveedores.Size = new Size(867, 240);
             dgvProductosProveedores.TabIndex = 0;
-            // 
-            // dgvVentas
-            // 
-            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVentas.Dock = DockStyle.Fill;
-            dgvVentas.Location = new Point(3, 3);
-            dgvVentas.Name = "dgvVentas";
-            dgvVentas.Size = new Size(887, 233);
-            dgvVentas.TabIndex = 0;
-            dgvVentas.CellContentClick += dgvVentas_CellContentClick;
             // 
             // ReportesForm
             // 
@@ -760,13 +920,21 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            tabControl4.ResumeLayout(false);
+            tabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartVentasMensuales).EndInit();
+            tabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartVentasPorUsuario).EndInit();
+            tabPage11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartVentasCategoria).EndInit();
+            tabPage12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartVentasPorCliente).EndInit();
             tabControl3.ResumeLayout(false);
             tabPage7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             tabControl2.ResumeLayout(false);
             tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartComprasPorProveedores).EndInit();
@@ -776,7 +944,6 @@
             tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartCompraProveedores).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductosProveedores).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);
         }
 
@@ -806,30 +973,19 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private DateTimePicker dateTimePicker3;
-        private Label label9;
-        private DateTimePicker dateTimePicker4;
-        private ComboBox comboBox2;
-        private Label label10;
-        private Label label11;
         private TabPage tabPage3;
         private DateTimePicker dateTimePicker5;
-        private Label label12;
         private DateTimePicker dateTimePicker6;
         private ComboBox comboBox3;
-        private Label label13;
-        private Label label14;
         private PictureBox pictureBox3;
-        private Button button2;
         private PictureBox pictureBox4;
         private DataGridView dgvCompras;
         private Button button4;
-        private Button button5;
         private Button button6;
         private TabPage tabPage4;
         private DataGridView dgvProductosProveedores;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartComprasUser;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasMensuales;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCompraProveedores;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartComprasPorProveedores;
         private TabControl tabControl2;
@@ -839,6 +995,26 @@
         private TabPage tabPage7;
         private TabPage tabPage8;
         private DataGridView dgvVentas;
+        private TabControl tabControl4;
+        private TabPage tabPage9;
+        private TabPage tabPage10;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button button2;
+        private Button button3;
+        private ComboBox comboBox4;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Button button5;
+        private DateTimePicker dateTimePicker3;
+        private Button button7;
+        private DateTimePicker dateTimePicker4;
+        private ComboBox comboBox2;
+        private ComboBox comboBox5;
+        private Button button8;
+        private TabPage tabPage11;
+        private TabPage tabPage12;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasPorUsuario;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasPorCliente;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasCategoria;
         // private ScottPlot.FormsPlot formsPlot1;
         // private ScottPlot.FormsPlot formsPlot1;
     }
