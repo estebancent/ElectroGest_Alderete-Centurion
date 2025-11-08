@@ -65,7 +65,7 @@ namespace ElectroGest.Forms
                     btnClientes.Enabled = true;
                     btnInicio.Visible = true;
                     btnProductos.Enabled = true;
-                    btnVentas.Enabled = true;
+                    btnVentas.Enabled = false;
 
                     break;
                 case "Vendedor":

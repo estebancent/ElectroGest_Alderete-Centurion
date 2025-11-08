@@ -22,6 +22,7 @@ namespace ElectroGest.Forms
 
         private int? idSeleccionado = null;
         private Usuario _usuario;
+
         public GestionProductos()
         {
             InitializeComponent();
@@ -33,12 +34,46 @@ namespace ElectroGest.Forms
             _repositorioCategoria = new RepositoriosCategorias();
             _repositorioMarca = new RepositoriosMarcas();
 
-
+            _usuario = Utils.Sesion.UsuarioActual;
 
         }
 
         private void GestionProductos_Load(object sender, EventArgs e)
         {
+            switch (_usuario.Rol.Nombre)
+            {
+                case "Supervisor":
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = checkActivo.Checked;
+                    btnAgregar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    break;
+                case "Vendedor":
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = checkActivo.Checked;
+                    btnAgregar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    btnCargarImagen.Enabled = false;
+                    btnPrecioVenta.Enabled = false;
+                    btnAgregaMarca.Enabled = false;
+                    btnAgregarCategoria.Enabled = false;
+                    btnCompras.Enabled = false;
+                    comboBoxCategorias.Enabled = false;
+                    comboBoxMarcas.Enabled = false;
+
+                    tbCodProd.Enabled = false;
+                    tbNombre.Enabled = false;
+                    tbCodProd.Enabled = false;
+                    tbDescripcion.Enabled = false;
+                    tbPrecioCompra.Enabled = false;
+                    tbPrecioVenta.Enabled = false;
+                    tbMargen.Enabled = false;
+                    txtUrlImagen.Enabled = false;
+                    checkActivo.Enabled = false;
+                    
+                    break;
+                
+            }
             CargarProductos();
             CargarMarcas();
             CargarCategorias();
@@ -244,13 +279,45 @@ namespace ElectroGest.Forms
             int stock = Convert.ToInt32(row.Cells["Stock"].Value ?? 0);
             lblStock.Text = stock > 0 ? $"Stock disponible: {stock}" : "Sin stock";
             lblStock.ForeColor = stock > 0 ? Color.DarkGreen : Color.Red;
+            switch (_usuario.Rol.Nombre)
+            {
+               
+                case "Vendedor":
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = checkActivo.Checked;
+                    btnAgregar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    btnCargarImagen.Enabled = false;
+                    btnPrecioVenta.Enabled = false;
+                    btnAgregaMarca.Enabled = false;
+                    btnAgregarCategoria.Enabled = false;
+                    btnCompras.Enabled = false;
+                    comboBoxCategorias.Enabled = false;
+                    comboBoxMarcas.Enabled = false;
 
+                    tbCodProd.Enabled = false;
+                    tbNombre.Enabled = false;
+                    tbCodProd.Enabled = false;
+                    tbDescripcion.Enabled = false;
+                    tbPrecioCompra.Enabled = false;
+                    tbPrecioVenta.Enabled = false;
+                    tbMargen.Enabled = false;
+                    txtUrlImagen.Enabled = false;
+                    checkActivo.Enabled = false;
+
+                    break;
+                case "Administrador":
+                    btnEditar.Enabled = true;
+                    btnEliminar.Enabled = checkActivo.Checked;
+                    btnAgregar.Enabled = false;
+                    btnLimpiar.Enabled = true;
+                    lblTitulo.Text = "Editar producto seleccionado";
+
+                    break;
+
+            }
             // 🔹 Control de botones
-            btnEditar.Enabled = true;
-            btnEliminar.Enabled = checkActivo.Checked;
-            btnAgregar.Enabled = false;
-            btnLimpiar.Enabled = true;
-            lblTitulo.Text = "Editar producto seleccionado";
+       
         }
 
 
@@ -659,14 +726,22 @@ namespace ElectroGest.Forms
             checkActivo.Checked = false;
 
             dgvProductos.ClearSelection();
+            switch (_usuario.Rol.Nombre)
+            {
 
-            // Estado de botones
-            btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
-            btnAgregar.Enabled = true;
-            btnLimpiar.Enabled = false;
+               
+                case "Administrador":
+                    // Estado de botones
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    btnAgregar.Enabled = true;
+                    btnLimpiar.Enabled = false;
 
-            lblTitulo.Text = "Registrar nuevo producto";
+                    lblTitulo.Text = "Registrar nuevo producto";
+                    break;
+
+            }
+       
         }
 
 
