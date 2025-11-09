@@ -17,6 +17,8 @@ public partial class Usuario
 
     public bool? Activo { get; set; }
 
+    public virtual ICollection<BackupHistorial> BackupHistorials { get; set; } = new List<BackupHistorial>();
+
     public virtual ICollection<Compra> Compras { get; set; } = new List<Compra>();
 
     public virtual Persona IdNavigation { get; set; } = null!;

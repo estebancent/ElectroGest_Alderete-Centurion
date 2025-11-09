@@ -15,6 +15,8 @@ public partial class SistemaVentasContext : DbContext
     {
     }
 
+    public virtual DbSet<BackupHistorial> BackupHistorials { get; set; }
+
     public virtual DbSet<Categoria> Categorias { get; set; }
 
     public virtual DbSet<Cliente> Clientes { get; set; }
@@ -49,6 +51,25 @@ public partial class SistemaVentasContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<BackupHistorial>(entity =>
+        {
+            entity.HasKey(e => e.IdBackup).HasName("PK__BackupHi__972F40D7AD2A06ED");
+
+            entity.ToTable("BackupHistorial");
+
+            entity.Property(e => e.FechaBackup).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.NombreArchivo).HasMaxLength(255);
+            entity.Property(e => e.Observaciones).HasMaxLength(500);
+            entity.Property(e => e.RutaDestino).HasMaxLength(500);
+            entity.Property(e => e.TamanoMb)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("TamanoMB");
+
+            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.BackupHistorials)
+                .HasForeignKey(d => d.IdUsuario)
+                .HasConstraintName("FK__BackupHis__IdUsu__2DE6D218");
+        });
+
         modelBuilder.Entity<Categoria>(entity =>
         {
             entity.HasKey(e => e.IdCategoria).HasName("PK__Categori__CD54BC5AB0B9776C");

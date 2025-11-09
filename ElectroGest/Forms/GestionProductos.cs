@@ -40,6 +40,20 @@ namespace ElectroGest.Forms
 
         private void GestionProductos_Load(object sender, EventArgs e)
         {
+            CargarSegunRoles();
+            CargarProductos();
+            CargarMarcas();
+            CargarCategorias();
+            // ActualizarEstadoBotones();
+
+            CargarCategoriasFiltros();
+            CargarMarcasFiltros();
+            // CargarProductosFiltrados();
+            //  picProducto.SizeMode = PictureBoxSizeMode.CenterImage;
+
+        }
+        private void CargarSegunRoles()
+        {
             switch (_usuario.Rol.Nombre)
             {
                 case "Supervisor":
@@ -70,20 +84,10 @@ namespace ElectroGest.Forms
                     tbMargen.Enabled = false;
                     txtUrlImagen.Enabled = false;
                     checkActivo.Enabled = false;
-                    
+
                     break;
-                
+
             }
-            CargarProductos();
-            CargarMarcas();
-            CargarCategorias();
-            // ActualizarEstadoBotones();
-
-            CargarCategoriasFiltros();
-            CargarMarcasFiltros();
-            // CargarProductosFiltrados();
-            //  picProducto.SizeMode = PictureBoxSizeMode.CenterImage;
-
         }
         private void CargarProductosFiltrados()
         {
@@ -212,6 +216,7 @@ namespace ElectroGest.Forms
                 lblTitulo.Text = "Registrar nuevo producto";
                 dgvProductos.DataSource = null;
                 dgvProductos.DataSource = productos;
+
 
                 // Renombrar encabezados
                 dgvProductos.Columns["IdProducto"].HeaderText = "ID";
