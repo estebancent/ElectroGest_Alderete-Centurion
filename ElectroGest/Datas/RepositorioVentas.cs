@@ -44,6 +44,24 @@ namespace ElectroGest.Repositorios
                 .ToList();
         }
 
+        public List<Venta> ObtenerVentas(string filtro = null)
+        {
+            var query = _context.Ventas
+                                .Include(v => v.Cliente) // si tiene relación con Cliente
+                                .AsQueryable();
+
+            //if (!string.IsNullOrWhiteSpace(filtro))
+            //{
+            //    query = query.Where(v =>
+            //        v.Cliente.Nombre.Contains(filtro) ||
+            //        v.Usuario.Nombre.Contains(filtro)
+            //    );
+            //}
+
+            return query.ToList();
+        }
+
+
         public string GenerarNumeroFactura()
         {
             int ultimoId = _context.Ventas

@@ -182,5 +182,21 @@ namespace ElectroGest.Datas
             return ultimoId + 1;
         }
 
+        public List<Compra> ObtenerCompras(string filtro = null)
+        {
+            var query = _context.Compras
+                                .AsQueryable();
+
+            //if (!string.IsNullOrWhiteSpace(filtro))
+            //{
+            //    query = query.Where(c =>
+            //        c.Proveedor.Nombre.Contains(filtro)
+            //    );
+            //}
+
+            return query.ToList();
+        }
+
+
     }
 }

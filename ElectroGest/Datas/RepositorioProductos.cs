@@ -91,6 +91,22 @@ namespace ElectroGest.Datas
             }
         }
 
+        public List<Producto> ObtenerProductos(string filtro = null)
+        {
+            var query = _context.Productos.AsQueryable();
+
+            //if (!string.IsNullOrWhiteSpace(filtro))
+            //{
+            //    query = query.Where(p =>
+            //        p.Nombre.Contains(filtro) ||
+            //        p.CodigoBarras
+            //    );
+            //}
+
+            return query.ToList();
+        }
+
+
         //  Desactivar o reactivar un producto
         public void CambiarEstado(int idProducto, bool estado)
         {

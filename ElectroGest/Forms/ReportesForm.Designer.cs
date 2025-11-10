@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportesForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -50,29 +47,37 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
             label1 = new Label();
             label2 = new Label();
             groupBox1 = new GroupBox();
+            VentasCountLabel = new Label();
             VentasCount = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             groupBox2 = new GroupBox();
             CantidadClientes = new Label();
             groupBox3 = new GroupBox();
-            label4 = new Label();
+            TotalDinero = new Label();
             groupBox4 = new GroupBox();
-            label5 = new Label();
+            GananciaNeta = new Label();
             groupBox6 = new GroupBox();
-            label7 = new Label();
+            TotalInvertido = new Label();
             button1 = new Button();
             comboBox1 = new ComboBox();
             label8 = new Label();
             groupBox5 = new GroupBox();
-            label6 = new Label();
+            CantidadProductos = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            chartVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             button4 = new Button();
             tabPage2 = new TabPage();
             flowLayoutPanel2 = new FlowLayoutPanel();
@@ -124,6 +129,7 @@
             groupBox5.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartVentas).BeginInit();
             tabPage2.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             tabControl4.SuspendLayout();
@@ -186,6 +192,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.RoyalBlue;
+            groupBox1.Controls.Add(VentasCountLabel);
             groupBox1.Controls.Add(VentasCount);
             groupBox1.FlatStyle = FlatStyle.Popup;
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -197,6 +204,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Cantidad de ventas:";
             // 
+            // VentasCountLabel
+            // 
+            VentasCountLabel.AutoSize = true;
+            VentasCountLabel.Font = new Font("Cascadia Mono SemiBold", 18F, FontStyle.Bold);
+            VentasCountLabel.Location = new Point(84, 34);
+            VentasCountLabel.Name = "VentasCountLabel";
+            VentasCountLabel.Size = new Size(14, 32);
+            VentasCountLabel.TabIndex = 1;
+            VentasCountLabel.Text = "\r\n";
+            // 
             // VentasCount
             // 
             VentasCount.AutoSize = true;
@@ -204,16 +221,16 @@
             VentasCount.ForeColor = SystemColors.ControlLightLight;
             VentasCount.Location = new Point(64, 23);
             VentasCount.Name = "VentasCount";
-            VentasCount.Size = new Size(70, 32);
+            VentasCount.Size = new Size(14, 32);
             VentasCount.TabIndex = 0;
-            VentasCount.Text = "1500";
+            VentasCount.Text = "\r\n";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(15, 320);
+            pictureBox1.Location = new Point(672, 136);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(448, 254);
+            pictureBox1.Size = new Size(123, 88);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -254,7 +271,7 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.Orange;
-            groupBox3.Controls.Add(label4);
+            groupBox3.Controls.Add(TotalDinero);
             groupBox3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox3.ForeColor = SystemColors.ControlLightLight;
             groupBox3.Location = new Point(415, 70);
@@ -264,22 +281,22 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Ingresos totales";
             // 
-            // label4
+            // TotalDinero
             // 
-            label4.AutoSize = true;
-            label4.CausesValidation = false;
-            label4.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
-            label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(17, 32);
-            label4.Name = "label4";
-            label4.Size = new Size(136, 21);
-            label4.TabIndex = 0;
-            label4.Text = "$89.450.093,50";
+            TotalDinero.AutoSize = true;
+            TotalDinero.CausesValidation = false;
+            TotalDinero.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
+            TotalDinero.ForeColor = SystemColors.ControlLightLight;
+            TotalDinero.Location = new Point(17, 32);
+            TotalDinero.Name = "TotalDinero";
+            TotalDinero.Size = new Size(136, 21);
+            TotalDinero.TabIndex = 0;
+            TotalDinero.Text = "$89.450.093,50";
             // 
             // groupBox4
             // 
             groupBox4.BackColor = Color.MediumAquamarine;
-            groupBox4.Controls.Add(label5);
+            groupBox4.Controls.Add(GananciaNeta);
             groupBox4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox4.ForeColor = SystemColors.ControlLightLight;
             groupBox4.Location = new Point(215, 155);
@@ -289,21 +306,21 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Ganancia Total";
             // 
-            // label5
+            // GananciaNeta
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
-            label5.ForeColor = SystemColors.ControlLightLight;
-            label5.Location = new Point(13, 37);
-            label5.Name = "label5";
-            label5.Size = new Size(136, 21);
-            label5.TabIndex = 0;
-            label5.Text = "$42.447.092,61";
+            GananciaNeta.AutoSize = true;
+            GananciaNeta.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
+            GananciaNeta.ForeColor = SystemColors.ControlLightLight;
+            GananciaNeta.Location = new Point(13, 37);
+            GananciaNeta.Name = "GananciaNeta";
+            GananciaNeta.Size = new Size(136, 21);
+            GananciaNeta.TabIndex = 0;
+            GananciaNeta.Text = "$42.447.092,61";
             // 
             // groupBox6
             // 
             groupBox6.BackColor = Color.Salmon;
-            groupBox6.Controls.Add(label7);
+            groupBox6.Controls.Add(TotalInvertido);
             groupBox6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox6.ForeColor = SystemColors.ControlLightLight;
             groupBox6.Location = new Point(415, 155);
@@ -313,15 +330,15 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "Dinero Invertido";
             // 
-            // label7
+            // TotalInvertido
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
-            label7.Location = new Point(6, 37);
-            label7.Name = "label7";
-            label7.Size = new Size(136, 21);
-            label7.TabIndex = 0;
-            label7.Text = "$47.003.000,89";
+            TotalInvertido.AutoSize = true;
+            TotalInvertido.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
+            TotalInvertido.Location = new Point(6, 37);
+            TotalInvertido.Name = "TotalInvertido";
+            TotalInvertido.Size = new Size(136, 21);
+            TotalInvertido.TabIndex = 0;
+            TotalInvertido.Text = "$47.003.000,89";
             // 
             // button1
             // 
@@ -353,7 +370,7 @@
             // groupBox5
             // 
             groupBox5.BackColor = Color.CornflowerBlue;
-            groupBox5.Controls.Add(label6);
+            groupBox5.Controls.Add(CantidadProductos);
             groupBox5.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             groupBox5.ForeColor = SystemColors.ControlLightLight;
             groupBox5.Location = new Point(15, 155);
@@ -363,15 +380,15 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Cantidad de productos";
             // 
-            // label6
+            // CantidadProductos
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Cascadia Mono SemiBold", 18F, FontStyle.Bold);
-            label6.Location = new Point(48, 37);
-            label6.Name = "label6";
-            label6.Size = new Size(56, 32);
-            label6.TabIndex = 0;
-            label6.Text = "450";
+            CantidadProductos.AutoSize = true;
+            CantidadProductos.Font = new Font("Cascadia Mono SemiBold", 18F, FontStyle.Bold);
+            CantidadProductos.Location = new Point(53, 28);
+            CantidadProductos.Name = "CantidadProductos";
+            CantidadProductos.Size = new Size(56, 32);
+            CantidadProductos.TabIndex = 0;
+            CantidadProductos.Text = "450";
             // 
             // tabControl1
             // 
@@ -387,6 +404,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(chartVentas);
             tabPage1.Controls.Add(button4);
             tabPage1.Controls.Add(dateTimePicker2);
             tabPage1.Controls.Add(pictureBox2);
@@ -410,6 +428,22 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "General";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chartVentas
+            // 
+            chartArea9.Name = "ChartArea1";
+            chartVentas.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            chartVentas.Legends.Add(legend9);
+            chartVentas.Location = new Point(15, 320);
+            chartVentas.Name = "chartVentas";
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            chartVentas.Series.Add(series9);
+            chartVentas.Size = new Size(461, 254);
+            chartVentas.TabIndex = 16;
+            chartVentas.Text = "chart1";
             // 
             // button4
             // 
@@ -545,16 +579,16 @@
             // 
             // chartVentasMensuales
             // 
-            chartArea8.Name = "ChartArea1";
-            chartVentasMensuales.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            chartVentasMensuales.Legends.Add(legend8);
+            chartArea10.Name = "ChartArea1";
+            chartVentasMensuales.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            chartVentasMensuales.Legends.Add(legend10);
             chartVentasMensuales.Location = new Point(6, 6);
             chartVentasMensuales.Name = "chartVentasMensuales";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            chartVentasMensuales.Series.Add(series8);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            chartVentasMensuales.Series.Add(series10);
             chartVentasMensuales.Size = new Size(880, 240);
             chartVentasMensuales.TabIndex = 0;
             chartVentasMensuales.Text = "chart1";
@@ -572,16 +606,16 @@
             // 
             // chartVentasPorUsuario
             // 
-            chartArea9.Name = "ChartArea1";
-            chartVentasPorUsuario.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            chartVentasPorUsuario.Legends.Add(legend9);
+            chartArea11.Name = "ChartArea1";
+            chartVentasPorUsuario.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            chartVentasPorUsuario.Legends.Add(legend11);
             chartVentasPorUsuario.Location = new Point(-1, 3);
             chartVentasPorUsuario.Name = "chartVentasPorUsuario";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            chartVentasPorUsuario.Series.Add(series9);
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            chartVentasPorUsuario.Series.Add(series11);
             chartVentasPorUsuario.Size = new Size(890, 246);
             chartVentasPorUsuario.TabIndex = 0;
             chartVentasPorUsuario.Text = "chart1";
@@ -598,16 +632,16 @@
             // 
             // chartVentasCategoria
             // 
-            chartArea10.Name = "ChartArea1";
-            chartVentasCategoria.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            chartVentasCategoria.Legends.Add(legend10);
+            chartArea12.Name = "ChartArea1";
+            chartVentasCategoria.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            chartVentasCategoria.Legends.Add(legend12);
             chartVentasCategoria.Location = new Point(0, 3);
             chartVentasCategoria.Name = "chartVentasCategoria";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            chartVentasCategoria.Series.Add(series10);
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            chartVentasCategoria.Series.Add(series12);
             chartVentasCategoria.Size = new Size(892, 249);
             chartVentasCategoria.TabIndex = 0;
             chartVentasCategoria.Text = "chart1";
@@ -624,16 +658,16 @@
             // 
             // chartVentasPorCliente
             // 
-            chartArea11.Name = "ChartArea1";
-            chartVentasPorCliente.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            chartVentasPorCliente.Legends.Add(legend11);
+            chartArea13.Name = "ChartArea1";
+            chartVentasPorCliente.ChartAreas.Add(chartArea13);
+            legend13.Name = "Legend1";
+            chartVentasPorCliente.Legends.Add(legend13);
             chartVentasPorCliente.Location = new Point(3, 3);
             chartVentasPorCliente.Name = "chartVentasPorCliente";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            chartVentasPorCliente.Series.Add(series11);
+            series13.ChartArea = "ChartArea1";
+            series13.Legend = "Legend1";
+            series13.Name = "Series1";
+            chartVentasPorCliente.Series.Add(series13);
             chartVentasPorCliente.Size = new Size(886, 246);
             chartVentasPorCliente.TabIndex = 0;
             chartVentasPorCliente.Text = "chart1";
@@ -802,16 +836,16 @@
             // 
             // chartComprasPorProveedores
             // 
-            chartArea12.Name = "ChartArea1";
-            chartComprasPorProveedores.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            chartComprasPorProveedores.Legends.Add(legend12);
+            chartArea14.Name = "ChartArea1";
+            chartComprasPorProveedores.ChartAreas.Add(chartArea14);
+            legend14.Name = "Legend1";
+            chartComprasPorProveedores.Legends.Add(legend14);
             chartComprasPorProveedores.Location = new Point(3, 6);
             chartComprasPorProveedores.Name = "chartComprasPorProveedores";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            chartComprasPorProveedores.Series.Add(series12);
+            series14.ChartArea = "ChartArea1";
+            series14.Legend = "Legend1";
+            series14.Name = "Series1";
+            chartComprasPorProveedores.Series.Add(series14);
             chartComprasPorProveedores.Size = new Size(884, 317);
             chartComprasPorProveedores.TabIndex = 29;
             chartComprasPorProveedores.Text = "chart2";
@@ -829,17 +863,17 @@
             // 
             // chartComprasUser
             // 
-            chartArea13.Name = "ChartArea1";
-            chartComprasUser.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            chartComprasUser.Legends.Add(legend13);
+            chartArea15.Name = "ChartArea1";
+            chartComprasUser.ChartAreas.Add(chartArea15);
+            legend15.Name = "Legend1";
+            chartComprasUser.Legends.Add(legend15);
             chartComprasUser.Location = new Point(3, 6);
             chartComprasUser.Name = "chartComprasUser";
             chartComprasUser.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Series1";
-            chartComprasUser.Series.Add(series13);
+            series15.ChartArea = "ChartArea1";
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            chartComprasUser.Series.Add(series15);
             chartComprasUser.Size = new Size(884, 317);
             chartComprasUser.TabIndex = 28;
             chartComprasUser.Text = "chart1";
@@ -869,16 +903,16 @@
             // 
             // chartCompraProveedores
             // 
-            chartArea14.Name = "ChartArea1";
-            chartCompraProveedores.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            chartCompraProveedores.Legends.Add(legend14);
+            chartArea16.Name = "ChartArea1";
+            chartCompraProveedores.ChartAreas.Add(chartArea16);
+            legend16.Name = "Legend1";
+            chartCompraProveedores.Legends.Add(legend16);
             chartCompraProveedores.Location = new Point(6, 276);
             chartCompraProveedores.Name = "chartCompraProveedores";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Series1";
-            chartCompraProveedores.Series.Add(series14);
+            series16.ChartArea = "ChartArea1";
+            series16.Legend = "Legend1";
+            series16.Name = "Series1";
+            chartCompraProveedores.Series.Add(series16);
             chartCompraProveedores.Size = new Size(867, 311);
             chartCompraProveedores.TabIndex = 30;
             chartCompraProveedores.Text = "chart2";
@@ -919,6 +953,7 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chartVentas).EndInit();
             tabPage2.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             tabControl4.ResumeLayout(false);
@@ -962,14 +997,14 @@
         private GroupBox groupBox4;
         private GroupBox groupBox6;
         private Label CantidadClientes;
-        private Label label4;
-        private Label label5;
-        private Label label7;
+        private Label TotalDinero;
+        private Label GananciaNeta;
+        private Label TotalInvertido;
         private Button button1;
         private ComboBox comboBox1;
         private Label label8;
         private GroupBox groupBox5;
-        private Label label6;
+        private Label CantidadProductos;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
@@ -1015,6 +1050,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasPorUsuario;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasPorCliente;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasCategoria;
+        private Label VentasCountLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVentas;
         // private ScottPlot.FormsPlot formsPlot1;
         // private ScottPlot.FormsPlot formsPlot1;
     }

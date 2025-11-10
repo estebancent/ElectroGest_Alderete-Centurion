@@ -24,6 +24,7 @@ namespace ElectroGest.Forms
     {
         private readonly RepositorioCompra _repoCompras;
         private readonly RepositorioProductoProveedores _repoProductos;
+        private readonly RepositorioProductos _repoProductos2;
         private readonly RepositorioClientes _repoClientes;
         private readonly RepositorioVentas _repoVentas;
         public ReportesForm()
@@ -31,6 +32,7 @@ namespace ElectroGest.Forms
             InitializeComponent();
             _repoCompras = new RepositorioCompra();
             _repoProductos = new RepositorioProductoProveedores();
+            _repoProductos2 = new RepositorioProductos();
             _repoClientes = new RepositorioClientes();
             _repoVentas = new RepositorioVentas();
         }
@@ -42,6 +44,11 @@ namespace ElectroGest.Forms
             GraficarComprasPorProveedor();
             GraficarComprasPorUsuario();
             CargarCantidadClientes();
+            CargarCantidadVentas();
+            CargarCantidadProductos();
+            CargarTotalDinero();
+            CargarTotalInvertidoYGanancia();
+            GraficarVentasPrincipal();
 
             GraficarProductosPorProveedorConChart();
             GraficarProductosPorProveedorConChartEstadistica();
@@ -83,6 +90,76 @@ namespace ElectroGest.Forms
                 MessageBox.Show("Error al contar los clientes: " + ex.Message);
             }
         }
+
+        private void CargarCantidadVentas()
+        {
+            try
+            {
+                var ventas = _repoVentas.ObtenerVentas();
+                int totalVentas = ventas.Count;
+                VentasCountLabel.Text = totalVentas.ToString("N0");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al contar las ventas: " + ex.Message);
+            }
+        }
+
+        private void CargarCantidadProductos()
+        {
+            try
+            {
+                var productos = _repoProductos2.ObtenerProductos();
+                int totalProductos = productos.Count;
+                CantidadProductos.Text = totalProductos.ToString("N0");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al contar los productos: " + ex.Message);
+            }
+        }
+
+        private void CargarTotalDinero()
+        {
+            try
+            {
+                var ventas = _repoVentas.ObtenerVentas();
+                decimal totalDinero = ventas.Sum(v => v.Total);
+                GananciaNeta.Text = totalDinero.ToString("C2"); // Muestra con formato moneda
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular el total de dinero: " + ex.Message);
+            }
+        }
+
+        private void CargarTotalInvertidoYGanancia()
+        {
+            try
+            {
+                // Total de ventas
+                var ventas = _repoVentas.ObtenerVentas();
+                decimal totalVentas = ventas.Sum(v => v.Total);
+
+                // Total de compras (dinero invertido)
+                var compras = _repoCompras.ObtenerCompras();
+                decimal totalInvertido = compras.Sum(c => c.TotalCompra);
+
+                // Ganancia neta
+                decimal gananciaNeta = totalVentas - totalInvertido;
+
+                // Mostrar resultados en labels
+                TotalInvertido.Text = totalInvertido.ToString("C2");
+                GananciaNeta.Text = gananciaNeta.ToString("C2");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular las ganancias: " + ex.Message);
+            }
+        }
+
+
+
         private void GraficarProductosPorProveedorConChartEstadistica()
         {
             try
@@ -1099,6 +1176,153 @@ namespace ElectroGest.Forms
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void GraficarVentasPrincipal()
+        {
+            try
+            {
+                // 1️⃣ Obtener todas las ventas
+                var ventas = _repoVentas.ObtenerTodas();
+
+                if (ventas.Count == 0)
+                {
+                    MessageBox.Show("No hay ventas registradas para graficar.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // 2️⃣ Agrupar por mes y año
+                var ventasPorMes = ventas
+                    .Where(v => v.FechaVenta != null)
+                    .GroupBy(v => new { v.FechaVenta.Value.Year, v.FechaVenta.Value.Month })
+                    .Select(g => new
+                    {
+                        Fecha = new DateTime(g.Key.Year, g.Key.Month, 1),
+                        Total = g.Sum(v => v.TotalFinal)
+                    })
+                    .OrderBy(x => x.Fecha)
+                    .ToList();
+
+                // 3️⃣ Preparar etiquetas y valores
+                string[] etiquetasMeses = ventasPorMes
+                    .Select(v => v.Fecha.ToString("MMM yy"))
+                    .ToArray();
+
+                double[] totales = ventasPorMes.Select(v => (double)v.Total).ToArray();
+
+                // 4️⃣ Limpiar gráfico
+                chartVentas.Series.Clear();
+                chartVentas.ChartAreas.Clear();
+                chartVentas.Titles.Clear();
+                chartVentas.Legends.Clear();
+
+                // 5️⃣ Configurar área del gráfico
+                ChartArea area = new ChartArea("MainArea")
+                {
+                    BackColor = Color.White
+                };
+
+                area.AxisX.MajorGrid.LineColor = Color.FromArgb(235, 235, 235);
+                area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+
+                area.AxisX.Title = "Mes";
+                area.AxisY.Title = "Total de Ventas ($)";
+                area.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisY.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+
+                area.AxisX.LabelStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+                area.AxisY.LabelStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+                area.AxisX.LabelStyle.ForeColor = Color.FromArgb(60, 60, 60);
+                area.AxisY.LabelStyle.ForeColor = Color.FromArgb(60, 60, 60);
+
+                area.AxisX.Interval = 1;
+                area.AxisX.LabelStyle.Angle = -30;
+                area.AxisX.LabelAutoFitStyle = LabelAutoFitStyles.DecreaseFont | LabelAutoFitStyles.StaggeredLabels;
+                area.AxisX.IsLabelAutoFit = true;
+
+                area.Position = new ElementPosition(5, 10, 90, 80);
+                area.InnerPlotPosition = new ElementPosition(5, 0, 90, 90);
+
+                chartVentas.ChartAreas.Add(area);
+
+                // 6️⃣ Crear serie
+                Series serie = new Series("Ventas")
+                {
+                    ChartType = SeriesChartType.Line,
+                    BorderWidth = 3,
+                    Color = Color.FromArgb(46, 204, 113), // Verde moderno
+                    MarkerStyle = MarkerStyle.Circle,
+                    MarkerSize = 8,
+                    MarkerColor = Color.White,
+                    MarkerBorderColor = Color.FromArgb(39, 174, 96),
+                    MarkerBorderWidth = 2,
+                    Font = new Font("Segoe UI", 8, FontStyle.Bold),
+                    IsValueShownAsLabel = true
+                };
+
+                // 7️⃣ Agregar puntos
+                for (int i = 0; i < etiquetasMeses.Length; i++)
+                {
+                    int index = serie.Points.AddXY(i, totales[i]);
+                    double valor = totales[i];
+                    string etiqueta = $"${valor:N0}";
+
+                    if (etiquetasMeses.Length > 8 && i % 2 != 0)
+                        etiqueta = "";
+
+                    serie.Points[index].Label = etiqueta;
+                    serie.Points[index].LabelForeColor = Color.FromArgb(50, 50, 50);
+                }
+
+                chartVentas.Series.Add(serie);
+
+                // 8️⃣ Etiquetas eje X
+                area.AxisX.CustomLabels.Clear();
+                for (int i = 0; i < etiquetasMeses.Length; i++)
+                {
+                    double pos = i;
+                    area.AxisX.CustomLabels.Add(pos - 0.5, pos + 0.5, etiquetasMeses[i]);
+                }
+
+                // 9️⃣ Apariencia general
+                chartVentas.BackColor = Color.White;
+                chartVentas.BorderlineColor = Color.FromArgb(220, 220, 220);
+                chartVentas.BorderlineDashStyle = ChartDashStyle.Solid;
+                chartVentas.BorderlineWidth = 1;
+
+                // 🔟 Título
+                Title title = new Title("Ventas Mensuales",
+                    Docking.Top,
+                    new Font("Segoe UI", 9, FontStyle.Bold),
+                    Color.FromArgb(35, 35, 35))
+                {
+                    Alignment = ContentAlignment.TopCenter
+                };
+                chartVentas.Titles.Add(title);
+
+                // 🔟 Leyenda
+                Legend legend = new Legend("MainLegend")
+                {
+                    Docking = Docking.Bottom,
+                    Alignment = StringAlignment.Center,
+                    Font = new Font("Segoe UI", 9),
+                    BackColor = Color.White,
+                    ForeColor = Color.FromArgb(70, 70, 70),
+                    BorderColor = Color.Transparent
+                };
+                chartVentas.Legends.Add(legend);
+
+                // 🔟 Refrescar gráfico
+                chartVentas.Invalidate();
+                chartVentas.Update();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al graficar las ventas: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void GraficarVentasPorUsuario()
         {
