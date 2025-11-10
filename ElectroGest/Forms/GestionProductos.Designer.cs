@@ -681,7 +681,7 @@
             Controls.Add(flowLayoutPanel2);
             Controls.Add(groupBox1);
             Name = "GestionProductos";
-            Text = "GestionProductos";
+            Text = "Gestion de Productos";
             Load += GestionProductos_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

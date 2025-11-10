@@ -342,7 +342,7 @@
             Controls.Add(label1);
             Name = "GestionClientes";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "GestionClientes";
+            Text = "Gestion de Clientes";
             Load += GestionClientes_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

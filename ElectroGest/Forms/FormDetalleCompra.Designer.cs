@@ -78,7 +78,7 @@
             Controls.Add(dgvDetalles);
             Name = "FormDetalleCompra";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormDetalleCompra";
+            Text = "Detalle de Compra";
             Load += FormDetalleCompra_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDetalles).EndInit();
             ResumeLayout(false);

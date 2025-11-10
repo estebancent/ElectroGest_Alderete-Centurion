@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistrarCompra));
             panelSuperior = new Panel();
+            txtNroCompra = new TextBox();
             label2 = new Label();
             btnAgregaMarca = new Button();
             txtProductoSeleccionado = new TextBox();
@@ -59,7 +60,6 @@
             btnAgregarProducto = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnEliminarSeleccionado = new Button();
-            txtNroCompra = new TextBox();
             panelSuperior.SuspendLayout();
             panelDetalles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericCantidad).BeginInit();
@@ -85,6 +85,14 @@
             panelSuperior.Size = new Size(923, 80);
             panelSuperior.TabIndex = 0;
             panelSuperior.Paint += panelSuperior_Paint;
+            // 
+            // txtNroCompra
+            // 
+            txtNroCompra.Location = new Point(82, 6);
+            txtNroCompra.Name = "txtNroCompra";
+            txtNroCompra.ReadOnly = true;
+            txtNroCompra.Size = new Size(92, 23);
+            txtNroCompra.TabIndex = 48;
             // 
             // label2
             // 
@@ -270,6 +278,7 @@
             // 
             // dgvCarrito
             // 
+            dgvCarrito.BackgroundColor = SystemColors.ButtonHighlight;
             dgvCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCarrito.Dock = DockStyle.Fill;
             dgvCarrito.Location = new Point(3, 3);
@@ -365,14 +374,6 @@
             btnEliminarSeleccionado.UseVisualStyleBackColor = false;
             btnEliminarSeleccionado.Click += btnEliminarSeleccionado_Click;
             // 
-            // txtNroCompra
-            // 
-            txtNroCompra.Location = new Point(82, 6);
-            txtNroCompra.Name = "txtNroCompra";
-            txtNroCompra.ReadOnly = true;
-            txtNroCompra.Size = new Size(92, 23);
-            txtNroCompra.TabIndex = 48;
-            // 
             // FormRegistrarCompra
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -385,7 +386,7 @@
             Controls.Add(panelSuperior);
             Name = "FormRegistrarCompra";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormRegistrarCompra";
+            Text = "Registrar Compra";
             Load += FormRegistrarCompra_Load;
             panelSuperior.ResumeLayout(false);
             panelSuperior.PerformLayout();

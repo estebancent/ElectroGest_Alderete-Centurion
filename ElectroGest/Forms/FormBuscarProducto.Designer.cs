@@ -163,7 +163,7 @@
             Controls.Add(btnBuscar);
             Name = "FormBuscarProducto";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormBuscarProducto";
+            Text = "Buscar Producto";
             Load += FormBuscarProducto_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

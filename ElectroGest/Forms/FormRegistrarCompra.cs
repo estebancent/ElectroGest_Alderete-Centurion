@@ -43,34 +43,51 @@ namespace ElectroGest.Forms
             txtNroCompra.Enabled = false;
             CargarComboBoxProveedores();
             // Configuramos las columnas del carrito
-            dgvCarrito.Columns.Clear();
-            dgvCarrito.AutoGenerateColumns = false;
-            dgvCarrito.AllowUserToAddRows = false;
-            txtMargen.Text = "30";
-            dgvCarrito.Columns.Add("IdProducto", "ID Producto");
-            dgvCarrito.Columns.Add("NombreProducto", "Producto");
-            dgvCarrito.Columns.Add("Cantidad", "Cantidad");
-            dgvCarrito.Columns.Add("MargenGanancia", "Margen");
-            dgvCarrito.Columns.Add("PrecioCompra", "Precio Compra");
-            dgvCarrito.Columns.Add("PrecioVenta", "Precio Venta");
-            dgvCarrito.Columns.Add("Subtotal", "Subtotal");
+           // Configurar columnas del carrito
+dgvCarrito.Columns.Clear();
+dgvCarrito.AutoGenerateColumns = false;
+dgvCarrito.AllowUserToAddRows = false;
+txtMargen.Text = "30";
 
-            // Opcional: ajustar formato y alineación
-            dgvCarrito.Columns["PrecioCompra"].DefaultCellStyle.Format = "C2";
-            dgvCarrito.Columns["PrecioVenta"].DefaultCellStyle.Format = "C2";
-            dgvCarrito.Columns["Subtotal"].DefaultCellStyle.Format = "C2";
+// Definir columnas
+dgvCarrito.Columns.Add("IdProducto", "ID Producto");
+dgvCarrito.Columns.Add("NombreProducto", "Producto");
+dgvCarrito.Columns.Add("Cantidad", "Cantidad");
+dgvCarrito.Columns.Add("MargenGanancia", "Margen");
+dgvCarrito.Columns.Add("PrecioCompra", "Precio Compra");
+dgvCarrito.Columns.Add("PrecioVenta", "Precio Venta");
+dgvCarrito.Columns.Add("Subtotal", "Subtotal");
 
-            dgvCarrito.Columns["IdProducto"].Visible = false; // ocultamos ID interno
-            if (!dgvCarrito.Columns.Contains("btnEliminar"))
-            {
-                DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
-                btnEliminar.HeaderText = "Acción";
-                btnEliminar.Name = "btnEliminarSeleccionado";
-                btnEliminar.Text = "Eliminar";
-                btnEliminar.UseColumnTextForButtonValue = true;
-                btnEliminar.Width = 80;
-                dgvCarrito.Columns.Add(btnEliminar);
-            }
+// Formato de columnas numéricas
+dgvCarrito.Columns["PrecioCompra"].DefaultCellStyle.Format = "C2";
+dgvCarrito.Columns["PrecioVenta"].DefaultCellStyle.Format = "C2";
+dgvCarrito.Columns["Subtotal"].DefaultCellStyle.Format = "C2";
+
+// Ocultar ID interno
+dgvCarrito.Columns["IdProducto"].Visible = false;
+
+
+
+
+// Columnas se ajustan automáticamente
+dgvCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+// Selección por fila completa
+dgvCarrito.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+dgvCarrito.MultiSelect = false;
+dgvCarrito.AllowUserToResizeRows = false;
+dgvCarrito.RowHeadersVisible = false;
+
+// Encabezados negros con texto blanco
+dgvCarrito.EnableHeadersVisualStyles = false;
+dgvCarrito.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+
+dgvCarrito.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+
+
+
         }
         // Manejador del evento
         private void ProveedoresForm_ProveedoresActualizadas(object sender, EventArgs e)

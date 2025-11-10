@@ -72,7 +72,7 @@ namespace ElectroGest.Forms
                     btnReportes.Enabled = false;
                     btnUsuarios.Enabled = false;
                     btnBackup.Enabled = false;
-                    btnProveedor.Enabled = true;
+                    btnProveedor.Enabled = false;
                     btnClientes.Enabled = true;
                     btnInicio.Visible = true;
                     btnProductos.Enabled = true;

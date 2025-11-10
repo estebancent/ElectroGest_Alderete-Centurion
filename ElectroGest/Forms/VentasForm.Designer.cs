@@ -86,18 +86,27 @@
             txtPrecio = new TextBox();
             txtStockDisponible = new TextBox();
             txtNombreProducto = new TextBox();
-            tabPage2 = new TabPage();
-            dataGridView2 = new DataGridView();
-            FechaVenta = new DataGridViewTextBoxColumn();
-            TotalVenta = new DataGridViewTextBoxColumn();
+            txtBuscarCliente = new TabPage();
+            label22 = new Label();
+            label21 = new Label();
+            btnFiltrar = new Button();
+            fechaHasta = new DateTimePicker();
+            fechaDesde = new DateTimePicker();
+            lblVendedor = new Label();
+            lblPromedioVenta = new Label();
+            lblCantidadVentas = new Label();
+            lblTotalVendido = new Label();
+            txtBuscarClientes = new TextBox();
+            label20 = new Label();
+            dgvVentas = new DataGridView();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCarrito).BeginInit();
             groupBox2.SuspendLayout();
-            tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            txtBuscarCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -343,7 +352,7 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(txtBuscarCliente);
             tabControl1.Location = new Point(3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -555,6 +564,7 @@
             // dgvCarrito
             // 
             dgvCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCarrito.BackgroundColor = SystemColors.ButtonHighlight;
             dgvCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCarrito.Location = new Point(6, 68);
             dgvCarrito.Name = "dgvCarrito";
@@ -737,38 +747,141 @@
             txtNombreProducto.TabIndex = 6;
             txtNombreProducto.TextChanged += textBox9_TextChanged;
             // 
-            // tabPage2
+            // txtBuscarCliente
             // 
-            tabPage2.Controls.Add(dataGridView2);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1037, 616);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Lista de Ventas";
-            tabPage2.UseVisualStyleBackColor = true;
+            txtBuscarCliente.Controls.Add(label22);
+            txtBuscarCliente.Controls.Add(label21);
+            txtBuscarCliente.Controls.Add(btnFiltrar);
+            txtBuscarCliente.Controls.Add(fechaHasta);
+            txtBuscarCliente.Controls.Add(fechaDesde);
+            txtBuscarCliente.Controls.Add(lblVendedor);
+            txtBuscarCliente.Controls.Add(lblPromedioVenta);
+            txtBuscarCliente.Controls.Add(lblCantidadVentas);
+            txtBuscarCliente.Controls.Add(lblTotalVendido);
+            txtBuscarCliente.Controls.Add(txtBuscarClientes);
+            txtBuscarCliente.Controls.Add(label20);
+            txtBuscarCliente.Controls.Add(dgvVentas);
+            txtBuscarCliente.Cursor = Cursors.Hand;
+            txtBuscarCliente.Location = new Point(4, 24);
+            txtBuscarCliente.Name = "txtBuscarCliente";
+            txtBuscarCliente.Padding = new Padding(3);
+            txtBuscarCliente.Size = new Size(1037, 616);
+            txtBuscarCliente.TabIndex = 1;
+            txtBuscarCliente.Text = "Lista de Ventas";
+            txtBuscarCliente.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // label22
             // 
-            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { FechaVenta, TotalVenta });
-            dataGridView2.Location = new Point(18, 107);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(1002, 150);
-            dataGridView2.TabIndex = 0;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            label22.AutoSize = true;
+            label22.Location = new Point(264, 485);
+            label22.Name = "label22";
+            label22.Size = new Size(43, 15);
+            label22.TabIndex = 11;
+            label22.Text = "Hasta: ";
             // 
-            // FechaVenta
+            // label21
             // 
-            FechaVenta.HeaderText = "Fecha";
-            FechaVenta.Name = "FechaVenta";
+            label21.AutoSize = true;
+            label21.Location = new Point(7, 485);
+            label21.Name = "label21";
+            label21.Size = new Size(45, 15);
+            label21.TabIndex = 10;
+            label21.Text = "Desde: ";
             // 
-            // TotalVenta
+            // btnFiltrar
             // 
-            TotalVenta.HeaderText = "Total";
-            TotalVenta.Name = "TotalVenta";
+            btnFiltrar.Location = new Point(524, 481);
+            btnFiltrar.Name = "btnFiltrar";
+            btnFiltrar.Size = new Size(127, 23);
+            btnFiltrar.TabIndex = 6;
+            btnFiltrar.Text = "Calcular Ventas";
+            btnFiltrar.UseVisualStyleBackColor = true;
+            btnFiltrar.Click += btnFiltrar_Click;
+            // 
+            // fechaHasta
+            // 
+            fechaHasta.Location = new Point(313, 481);
+            fechaHasta.Name = "fechaHasta";
+            fechaHasta.Size = new Size(200, 23);
+            fechaHasta.TabIndex = 8;
+            // 
+            // fechaDesde
+            // 
+            fechaDesde.Location = new Point(58, 481);
+            fechaDesde.Name = "fechaDesde";
+            fechaDesde.Size = new Size(200, 23);
+            fechaDesde.TabIndex = 7;
+            // 
+            // lblVendedor
+            // 
+            lblVendedor.AutoSize = true;
+            lblVendedor.Font = new Font("Segoe UI", 12F);
+            lblVendedor.Location = new Point(7, 530);
+            lblVendedor.Name = "lblVendedor";
+            lblVendedor.Size = new Size(84, 21);
+            lblVendedor.TabIndex = 9;
+            lblVendedor.Text = "Vendedor: ";
+            // 
+            // lblPromedioVenta
+            // 
+            lblPromedioVenta.AutoSize = true;
+            lblPromedioVenta.Font = new Font("Segoe UI", 12F);
+            lblPromedioVenta.Location = new Point(355, 566);
+            lblPromedioVenta.Name = "lblPromedioVenta";
+            lblPromedioVenta.Size = new Size(151, 21);
+            lblPromedioVenta.TabIndex = 5;
+            lblPromedioVenta.Text = "Promedio por venta:";
+            // 
+            // lblCantidadVentas
+            // 
+            lblCantidadVentas.AutoSize = true;
+            lblCantidadVentas.Font = new Font("Segoe UI", 12F);
+            lblCantidadVentas.Location = new Point(355, 530);
+            lblCantidadVentas.Name = "lblCantidadVentas";
+            lblCantidadVentas.Size = new Size(146, 21);
+            lblCantidadVentas.TabIndex = 4;
+            lblCantidadVentas.Text = "Cantidad de Ventas:";
+            // 
+            // lblTotalVendido
+            // 
+            lblTotalVendido.AutoSize = true;
+            lblTotalVendido.Font = new Font("Segoe UI", 12F);
+            lblTotalVendido.Location = new Point(7, 566);
+            lblTotalVendido.Name = "lblTotalVendido";
+            lblTotalVendido.Size = new Size(110, 21);
+            lblTotalVendido.TabIndex = 3;
+            lblTotalVendido.Text = "Total Vendido: ";
+            // 
+            // txtBuscarClientes
+            // 
+            txtBuscarClientes.Location = new Point(97, 28);
+            txtBuscarClientes.Name = "txtBuscarClientes";
+            txtBuscarClientes.PlaceholderText = "Ingrese Dni o Nombre";
+            txtBuscarClientes.Size = new Size(235, 23);
+            txtBuscarClientes.TabIndex = 2;
+            txtBuscarClientes.TextChanged += txtBuscarClientes_TextChanged;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(6, 29);
+            label20.Name = "label20";
+            label20.Size = new Size(85, 15);
+            label20.TabIndex = 1;
+            label20.Text = "Buscar Cliente:";
+            // 
+            // dgvVentas
+            // 
+            dgvVentas.AccessibleDescription = "";
+            dgvVentas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVentas.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVentas.Location = new Point(6, 72);
+            dgvVentas.Name = "dgvVentas";
+            dgvVentas.Size = new Size(1002, 401);
+            dgvVentas.TabIndex = 0;
+            dgvVentas.CellContentClick += dgvVentas_CellClick;
             // 
             // VentasForm
             // 
@@ -778,7 +891,7 @@
             ClientSize = new Size(1060, 660);
             Controls.Add(tabControl1);
             Name = "VentasForm";
-            Text = "VentasForm";
+            Text = "Ventas";
             Load += VentasForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -789,8 +902,9 @@
             ((System.ComponentModel.ISupportInitialize)dgvCarrito).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            txtBuscarCliente.ResumeLayout(false);
+            txtBuscarCliente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);
         }
 
@@ -802,7 +916,7 @@
         private TabPage tabPage1;
         private DataGridView dgvCarrito;
         private GroupBox groupBox2;
-        private TabPage tabPage2;
+        private TabPage txtBuscarCliente;
         private Label label5;
         private Label label4;
         private Label label3;
@@ -838,9 +952,7 @@
         private TextBox txtCodProd;
         private TextBox txtCantidad;
         private Label label18;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn FechaVenta;
-        private DataGridViewTextBoxColumn TotalVenta;
+        private DataGridView dgvVentas;
         private Label lblEmailCliente;
         private Label lblDniCliente;
         private Label lblTelefonoCliente;
@@ -857,5 +969,16 @@
         private Label lblTotalFinal;
         private Button btnCalcularTotalFinal;
         private Label label11;
+        private TextBox txtBuscarClientes;
+        private Label label20;
+        private Label lblPromedioVenta;
+        private Label lblCantidadVentas;
+        private Label lblTotalVendido;
+        private DateTimePicker fechaHasta;
+        private DateTimePicker fechaDesde;
+        private Button btnFiltrar;
+        private Label lblVendedor;
+        private Label label22;
+        private Label label21;
     }
 }

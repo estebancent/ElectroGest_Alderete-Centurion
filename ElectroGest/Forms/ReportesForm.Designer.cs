@@ -29,65 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportesForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            fechaDesde = new DateTimePicker();
+            fechaHasta = new DateTimePicker();
             label1 = new Label();
             label2 = new Label();
             groupBox1 = new GroupBox();
             VentasCountLabel = new Label();
             VentasCount = new Label();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
             groupBox2 = new GroupBox();
             CantidadClientes = new Label();
             groupBox3 = new GroupBox();
-            TotalDinero = new Label();
+            lblTotalVentas = new Label();
             groupBox4 = new GroupBox();
             GananciaNeta = new Label();
             groupBox6 = new GroupBox();
             TotalInvertido = new Label();
-            button1 = new Button();
-            comboBox1 = new ComboBox();
-            label8 = new Label();
             groupBox5 = new GroupBox();
             CantidadProductos = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            btnFiltrarGanancias = new Button();
+            btnLimpiarFiltroGeneral = new Button();
             chartVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            button4 = new Button();
             tabPage2 = new TabPage();
             flowLayoutPanel2 = new FlowLayoutPanel();
             button5 = new Button();
-            dateTimePicker3 = new DateTimePicker();
+            fechaDesdeVentas = new DateTimePicker();
             button7 = new Button();
-            dateTimePicker4 = new DateTimePicker();
-            comboBox2 = new ComboBox();
-            comboBox5 = new ComboBox();
-            button8 = new Button();
+            fechaHastaVentas = new DateTimePicker();
+            FiltroCategoria = new ComboBox();
+            FiltroVendedor = new ComboBox();
+            txtBuscarCliente = new TextBox();
+            btnFiltrar = new Button();
+            btnLimpiarFiltros = new Button();
+            btnExportarPdf = new Button();
+            btnExportarExcel = new Button();
             tabControl4 = new TabControl();
             tabPage9 = new TabPage();
             chartVentasMensuales = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -100,16 +100,7 @@
             tabControl3 = new TabControl();
             tabPage7 = new TabPage();
             dgvVentas = new DataGridView();
-            tabPage8 = new TabPage();
             tabPage3 = new TabPage();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            button2 = new Button();
-            dateTimePicker5 = new DateTimePicker();
-            button3 = new Button();
-            dateTimePicker6 = new DateTimePicker();
-            comboBox3 = new ComboBox();
-            comboBox4 = new ComboBox();
-            button6 = new Button();
             tabControl2 = new TabControl();
             tabPage5 = new TabPage();
             chartComprasPorProveedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -120,8 +111,6 @@
             chartCompraProveedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
             dgvProductosProveedores = new DataGridView();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -145,7 +134,6 @@
             tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             tabPage3.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             tabControl2.SuspendLayout();
             tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartComprasPorProveedores).BeginInit();
@@ -157,19 +145,19 @@
             ((System.ComponentModel.ISupportInitialize)dgvProductosProveedores).BeginInit();
             SuspendLayout();
             // 
-            // dateTimePicker1
+            // fechaDesde
             // 
-            dateTimePicker1.Location = new Point(51, 18);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(236, 23);
-            dateTimePicker1.TabIndex = 0;
+            fechaDesde.Location = new Point(51, 18);
+            fechaDesde.Name = "fechaDesde";
+            fechaDesde.Size = new Size(236, 23);
+            fechaDesde.TabIndex = 0;
             // 
-            // dateTimePicker2
+            // fechaHasta
             // 
-            dateTimePicker2.Location = new Point(330, 18);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(240, 23);
-            dateTimePicker2.TabIndex = 1;
+            fechaHasta.Location = new Point(330, 18);
+            fechaHasta.Name = "fechaHasta";
+            fechaHasta.Size = new Size(240, 23);
+            fechaHasta.TabIndex = 1;
             // 
             // label1
             // 
@@ -197,7 +185,7 @@
             groupBox1.FlatStyle = FlatStyle.Popup;
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = SystemColors.ButtonFace;
-            groupBox1.Location = new Point(15, 70);
+            groupBox1.Location = new Point(51, 70);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(172, 69);
             groupBox1.TabIndex = 4;
@@ -225,33 +213,13 @@
             VentasCount.TabIndex = 0;
             VentasCount.Text = "\r\n";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(672, 136);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(123, 88);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(493, 320);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(414, 254);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
-            // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.MediumSeaGreen;
             groupBox2.Controls.Add(CantidadClientes);
             groupBox2.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             groupBox2.ForeColor = SystemColors.ControlLightLight;
-            groupBox2.Location = new Point(215, 70);
+            groupBox2.Location = new Point(310, 70);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(172, 69);
             groupBox2.TabIndex = 7;
@@ -271,27 +239,28 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.Orange;
-            groupBox3.Controls.Add(TotalDinero);
+            groupBox3.Controls.Add(lblTotalVentas);
             groupBox3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox3.ForeColor = SystemColors.ControlLightLight;
-            groupBox3.Location = new Point(415, 70);
+            groupBox3.Location = new Point(310, 158);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(172, 69);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Ingresos totales";
+            groupBox3.Text = "Ingresos total Venta";
             // 
-            // TotalDinero
+            // lblTotalVentas
             // 
-            TotalDinero.AutoSize = true;
-            TotalDinero.CausesValidation = false;
-            TotalDinero.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
-            TotalDinero.ForeColor = SystemColors.ControlLightLight;
-            TotalDinero.Location = new Point(17, 32);
-            TotalDinero.Name = "TotalDinero";
-            TotalDinero.Size = new Size(136, 21);
-            TotalDinero.TabIndex = 0;
-            TotalDinero.Text = "$89.450.093,50";
+            lblTotalVentas.AutoSize = true;
+            lblTotalVentas.CausesValidation = false;
+            lblTotalVentas.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
+            lblTotalVentas.ForeColor = SystemColors.ControlLightLight;
+            lblTotalVentas.Location = new Point(17, 32);
+            lblTotalVentas.Name = "lblTotalVentas";
+            lblTotalVentas.Size = new Size(64, 21);
+            lblTotalVentas.TabIndex = 0;
+            lblTotalVentas.Text = "$00.00";
+            lblTotalVentas.Click += TotalDinero_Click;
             // 
             // groupBox4
             // 
@@ -299,12 +268,12 @@
             groupBox4.Controls.Add(GananciaNeta);
             groupBox4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox4.ForeColor = SystemColors.ControlLightLight;
-            groupBox4.Location = new Point(215, 155);
+            groupBox4.Location = new Point(594, 158);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(172, 69);
             groupBox4.TabIndex = 9;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Ganancia Total";
+            groupBox4.Text = "Ganancia Total Neta";
             // 
             // GananciaNeta
             // 
@@ -323,7 +292,7 @@
             groupBox6.Controls.Add(TotalInvertido);
             groupBox6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             groupBox6.ForeColor = SystemColors.ControlLightLight;
-            groupBox6.Location = new Point(415, 155);
+            groupBox6.Location = new Point(51, 158);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(172, 69);
             groupBox6.TabIndex = 11;
@@ -340,40 +309,13 @@
             TotalInvertido.TabIndex = 0;
             TotalInvertido.Text = "$47.003.000,89";
             // 
-            // button1
-            // 
-            button1.Location = new Point(746, 259);
-            button1.Name = "button1";
-            button1.Size = new Size(138, 32);
-            button1.TabIndex = 12;
-            button1.Text = "Exportar PDF";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox1.Location = new Point(643, 16);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(165, 23);
-            comboBox1.TabIndex = 13;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(576, 24);
-            label8.Name = "label8";
-            label8.Size = new Size(61, 15);
-            label8.TabIndex = 14;
-            label8.Text = "Categoria:";
-            // 
             // groupBox5
             // 
             groupBox5.BackColor = Color.CornflowerBlue;
             groupBox5.Controls.Add(CantidadProductos);
             groupBox5.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             groupBox5.ForeColor = SystemColors.ControlLightLight;
-            groupBox5.Location = new Point(15, 155);
+            groupBox5.Location = new Point(594, 70);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(172, 69);
             groupBox5.TabIndex = 10;
@@ -404,20 +346,16 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btnFiltrarGanancias);
+            tabPage1.Controls.Add(btnLimpiarFiltroGeneral);
             tabPage1.Controls.Add(chartVentas);
-            tabPage1.Controls.Add(button4);
-            tabPage1.Controls.Add(dateTimePicker2);
-            tabPage1.Controls.Add(pictureBox2);
-            tabPage1.Controls.Add(button1);
-            tabPage1.Controls.Add(pictureBox1);
-            tabPage1.Controls.Add(label8);
+            tabPage1.Controls.Add(fechaHasta);
             tabPage1.Controls.Add(groupBox4);
             tabPage1.Controls.Add(groupBox6);
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox3);
-            tabPage1.Controls.Add(dateTimePicker1);
+            tabPage1.Controls.Add(fechaDesde);
             tabPage1.Controls.Add(groupBox5);
-            tabPage1.Controls.Add(comboBox1);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(groupBox1);
@@ -429,30 +367,49 @@
             tabPage1.Text = "General";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnFiltrarGanancias
+            // 
+            btnFiltrarGanancias.BackColor = Color.Transparent;
+            btnFiltrarGanancias.FlatAppearance.BorderSize = 0;
+            btnFiltrarGanancias.FlatStyle = FlatStyle.Flat;
+            btnFiltrarGanancias.Image = (Image)resources.GetObject("btnFiltrarGanancias.Image");
+            btnFiltrarGanancias.Location = new Point(594, 18);
+            btnFiltrarGanancias.Name = "btnFiltrarGanancias";
+            btnFiltrarGanancias.Size = new Size(29, 23);
+            btnFiltrarGanancias.TabIndex = 43;
+            btnFiltrarGanancias.TextAlign = ContentAlignment.MiddleRight;
+            btnFiltrarGanancias.UseVisualStyleBackColor = false;
+            btnFiltrarGanancias.Click += btnFiltrarGanancias_Click;
+            // 
+            // btnLimpiarFiltroGeneral
+            // 
+            btnLimpiarFiltroGeneral.BackColor = Color.Transparent;
+            btnLimpiarFiltroGeneral.FlatAppearance.BorderSize = 0;
+            btnLimpiarFiltroGeneral.FlatStyle = FlatStyle.Flat;
+            btnLimpiarFiltroGeneral.Image = (Image)resources.GetObject("btnLimpiarFiltroGeneral.Image");
+            btnLimpiarFiltroGeneral.Location = new Point(629, 18);
+            btnLimpiarFiltroGeneral.Name = "btnLimpiarFiltroGeneral";
+            btnLimpiarFiltroGeneral.Size = new Size(31, 25);
+            btnLimpiarFiltroGeneral.TabIndex = 42;
+            btnLimpiarFiltroGeneral.TextAlign = ContentAlignment.MiddleRight;
+            btnLimpiarFiltroGeneral.UseVisualStyleBackColor = false;
+            btnLimpiarFiltroGeneral.Click += btnLimpiarFiltroGeneral_Click;
+            // 
             // chartVentas
             // 
-            chartArea9.Name = "ChartArea1";
-            chartVentas.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            chartVentas.Legends.Add(legend9);
+            chartArea1.Name = "ChartArea1";
+            chartVentas.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartVentas.Legends.Add(legend1);
             chartVentas.Location = new Point(15, 320);
             chartVentas.Name = "chartVentas";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            chartVentas.Series.Add(series9);
-            chartVentas.Size = new Size(461, 254);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartVentas.Series.Add(series1);
+            chartVentas.Size = new Size(869, 254);
             chartVentas.TabIndex = 16;
             chartVentas.Text = "chart1";
-            // 
-            // button4
-            // 
-            button4.Location = new Point(814, 16);
-            button4.Name = "button4";
-            button4.Size = new Size(93, 25);
-            button4.TabIndex = 15;
-            button4.Text = "Buscar";
-            button4.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -470,15 +427,19 @@
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Controls.Add(button5);
-            flowLayoutPanel2.Controls.Add(dateTimePicker3);
+            flowLayoutPanel2.Controls.Add(fechaDesdeVentas);
             flowLayoutPanel2.Controls.Add(button7);
-            flowLayoutPanel2.Controls.Add(dateTimePicker4);
-            flowLayoutPanel2.Controls.Add(comboBox2);
-            flowLayoutPanel2.Controls.Add(comboBox5);
-            flowLayoutPanel2.Controls.Add(button8);
+            flowLayoutPanel2.Controls.Add(fechaHastaVentas);
+            flowLayoutPanel2.Controls.Add(FiltroCategoria);
+            flowLayoutPanel2.Controls.Add(FiltroVendedor);
+            flowLayoutPanel2.Controls.Add(txtBuscarCliente);
+            flowLayoutPanel2.Controls.Add(btnFiltrar);
+            flowLayoutPanel2.Controls.Add(btnLimpiarFiltros);
+            flowLayoutPanel2.Controls.Add(btnExportarPdf);
+            flowLayoutPanel2.Controls.Add(btnExportarExcel);
             flowLayoutPanel2.Location = new Point(3, 6);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(901, 31);
+            flowLayoutPanel2.Size = new Size(901, 32);
             flowLayoutPanel2.TabIndex = 32;
             // 
             // button5
@@ -494,12 +455,13 @@
             button5.Text = "Desde:";
             button5.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker3
+            // fechaDesdeVentas
             // 
-            dateTimePicker3.Location = new Point(59, 3);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(240, 23);
-            dateTimePicker3.TabIndex = 16;
+            fechaDesdeVentas.Format = DateTimePickerFormat.Short;
+            fechaDesdeVentas.Location = new Point(59, 3);
+            fechaDesdeVentas.Name = "fechaDesdeVentas";
+            fechaDesdeVentas.Size = new Size(111, 23);
+            fechaDesdeVentas.TabIndex = 16;
             // 
             // button7
             // 
@@ -507,52 +469,106 @@
             button7.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button7.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button7.FlatStyle = FlatStyle.Flat;
-            button7.Location = new Point(305, 3);
+            button7.Location = new Point(176, 3);
             button7.Name = "button7";
             button7.Size = new Size(50, 23);
             button7.TabIndex = 17;
             button7.Text = "Desde:";
             button7.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker4
+            // fechaHastaVentas
             // 
-            dateTimePicker4.CalendarMonthBackground = SystemColors.ControlLightLight;
-            dateTimePicker4.Location = new Point(361, 3);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(215, 23);
-            dateTimePicker4.TabIndex = 15;
-            dateTimePicker4.Value = new DateTime(2025, 11, 8, 9, 18, 28, 0);
+            fechaHastaVentas.CalendarMonthBackground = SystemColors.ControlLightLight;
+            fechaHastaVentas.Format = DateTimePickerFormat.Short;
+            fechaHastaVentas.Location = new Point(232, 3);
+            fechaHastaVentas.Name = "fechaHastaVentas";
+            fechaHastaVentas.Size = new Size(128, 23);
+            fechaHastaVentas.TabIndex = 15;
+            fechaHastaVentas.Value = new DateTime(2025, 11, 8, 9, 18, 28, 0);
             // 
-            // comboBox2
+            // FiltroCategoria
             // 
-            comboBox2.BackColor = SystemColors.ButtonFace;
-            comboBox2.FlatStyle = FlatStyle.Popup;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox2.Location = new Point(582, 3);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(118, 23);
-            comboBox2.TabIndex = 19;
+            FiltroCategoria.BackColor = SystemColors.ButtonFace;
+            FiltroCategoria.FlatStyle = FlatStyle.Popup;
+            FiltroCategoria.FormattingEnabled = true;
+            FiltroCategoria.Location = new Point(366, 3);
+            FiltroCategoria.Name = "FiltroCategoria";
+            FiltroCategoria.Size = new Size(118, 23);
+            FiltroCategoria.TabIndex = 19;
             // 
-            // comboBox5
+            // FiltroVendedor
             // 
-            comboBox5.BackColor = SystemColors.Menu;
-            comboBox5.FlatStyle = FlatStyle.Popup;
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox5.Location = new Point(706, 3);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(118, 23);
-            comboBox5.TabIndex = 20;
+            FiltroVendedor.BackColor = SystemColors.Menu;
+            FiltroVendedor.FlatStyle = FlatStyle.Popup;
+            FiltroVendedor.FormattingEnabled = true;
+            FiltroVendedor.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
+            FiltroVendedor.Location = new Point(490, 3);
+            FiltroVendedor.Name = "FiltroVendedor";
+            FiltroVendedor.Size = new Size(118, 23);
+            FiltroVendedor.TabIndex = 20;
             // 
-            // button8
+            // txtBuscarCliente
             // 
-            button8.Location = new Point(830, 3);
-            button8.Name = "button8";
-            button8.Size = new Size(61, 25);
-            button8.TabIndex = 26;
-            button8.Text = "Buscar";
-            button8.UseVisualStyleBackColor = true;
+            txtBuscarCliente.Location = new Point(614, 3);
+            txtBuscarCliente.Name = "txtBuscarCliente";
+            txtBuscarCliente.PlaceholderText = "Cliente";
+            txtBuscarCliente.Size = new Size(122, 23);
+            txtBuscarCliente.TabIndex = 42;
+            txtBuscarCliente.TextChanged += txtBuscarCliente_TextChanged;
+            // 
+            // btnFiltrar
+            // 
+            btnFiltrar.BackColor = Color.Transparent;
+            btnFiltrar.FlatAppearance.BorderSize = 0;
+            btnFiltrar.FlatStyle = FlatStyle.Flat;
+            btnFiltrar.Image = (Image)resources.GetObject("btnFiltrar.Image");
+            btnFiltrar.Location = new Point(742, 3);
+            btnFiltrar.Name = "btnFiltrar";
+            btnFiltrar.Size = new Size(29, 23);
+            btnFiltrar.TabIndex = 41;
+            btnFiltrar.TextAlign = ContentAlignment.MiddleRight;
+            btnFiltrar.UseVisualStyleBackColor = false;
+            btnFiltrar.Click += btnFiltrar_Click;
+            // 
+            // btnLimpiarFiltros
+            // 
+            btnLimpiarFiltros.BackColor = Color.Transparent;
+            btnLimpiarFiltros.FlatAppearance.BorderSize = 0;
+            btnLimpiarFiltros.FlatStyle = FlatStyle.Flat;
+            btnLimpiarFiltros.Image = (Image)resources.GetObject("btnLimpiarFiltros.Image");
+            btnLimpiarFiltros.Location = new Point(777, 3);
+            btnLimpiarFiltros.Name = "btnLimpiarFiltros";
+            btnLimpiarFiltros.Size = new Size(31, 25);
+            btnLimpiarFiltros.TabIndex = 40;
+            btnLimpiarFiltros.TextAlign = ContentAlignment.MiddleRight;
+            btnLimpiarFiltros.UseVisualStyleBackColor = false;
+            btnLimpiarFiltros.Click += btnLimpiarFiltros_Click;
+            // 
+            // btnExportarPdf
+            // 
+            btnExportarPdf.Cursor = Cursors.Hand;
+            btnExportarPdf.FlatAppearance.BorderSize = 0;
+            btnExportarPdf.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnExportarPdf.FlatStyle = FlatStyle.Flat;
+            btnExportarPdf.Location = new Point(814, 3);
+            btnExportarPdf.Name = "btnExportarPdf";
+            btnExportarPdf.Size = new Size(30, 25);
+            btnExportarPdf.TabIndex = 44;
+            btnExportarPdf.UseVisualStyleBackColor = true;
+            // 
+            // btnExportarExcel
+            // 
+            btnExportarExcel.Cursor = Cursors.Hand;
+            btnExportarExcel.FlatAppearance.BorderSize = 0;
+            btnExportarExcel.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnExportarExcel.FlatStyle = FlatStyle.Flat;
+            btnExportarExcel.Image = Properties.Resources.icons8_ms_excel_26;
+            btnExportarExcel.Location = new Point(850, 3);
+            btnExportarExcel.Name = "btnExportarExcel";
+            btnExportarExcel.Size = new Size(31, 25);
+            btnExportarExcel.TabIndex = 43;
+            btnExportarExcel.UseVisualStyleBackColor = true;
+            btnExportarExcel.Click += btnExportarExcel_Click;
             // 
             // tabControl4
             // 
@@ -579,16 +595,16 @@
             // 
             // chartVentasMensuales
             // 
-            chartArea10.Name = "ChartArea1";
-            chartVentasMensuales.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            chartVentasMensuales.Legends.Add(legend10);
+            chartArea2.Name = "ChartArea1";
+            chartVentasMensuales.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartVentasMensuales.Legends.Add(legend2);
             chartVentasMensuales.Location = new Point(6, 6);
             chartVentasMensuales.Name = "chartVentasMensuales";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            chartVentasMensuales.Series.Add(series10);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartVentasMensuales.Series.Add(series2);
             chartVentasMensuales.Size = new Size(880, 240);
             chartVentasMensuales.TabIndex = 0;
             chartVentasMensuales.Text = "chart1";
@@ -606,16 +622,16 @@
             // 
             // chartVentasPorUsuario
             // 
-            chartArea11.Name = "ChartArea1";
-            chartVentasPorUsuario.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            chartVentasPorUsuario.Legends.Add(legend11);
+            chartArea3.Name = "ChartArea1";
+            chartVentasPorUsuario.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chartVentasPorUsuario.Legends.Add(legend3);
             chartVentasPorUsuario.Location = new Point(-1, 3);
             chartVentasPorUsuario.Name = "chartVentasPorUsuario";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            chartVentasPorUsuario.Series.Add(series11);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartVentasPorUsuario.Series.Add(series3);
             chartVentasPorUsuario.Size = new Size(890, 246);
             chartVentasPorUsuario.TabIndex = 0;
             chartVentasPorUsuario.Text = "chart1";
@@ -632,16 +648,16 @@
             // 
             // chartVentasCategoria
             // 
-            chartArea12.Name = "ChartArea1";
-            chartVentasCategoria.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            chartVentasCategoria.Legends.Add(legend12);
+            chartArea4.Name = "ChartArea1";
+            chartVentasCategoria.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            chartVentasCategoria.Legends.Add(legend4);
             chartVentasCategoria.Location = new Point(0, 3);
             chartVentasCategoria.Name = "chartVentasCategoria";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            chartVentasCategoria.Series.Add(series12);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chartVentasCategoria.Series.Add(series4);
             chartVentasCategoria.Size = new Size(892, 249);
             chartVentasCategoria.TabIndex = 0;
             chartVentasCategoria.Text = "chart1";
@@ -658,16 +674,16 @@
             // 
             // chartVentasPorCliente
             // 
-            chartArea13.Name = "ChartArea1";
-            chartVentasPorCliente.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            chartVentasPorCliente.Legends.Add(legend13);
+            chartArea5.Name = "ChartArea1";
+            chartVentasPorCliente.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            chartVentasPorCliente.Legends.Add(legend5);
             chartVentasPorCliente.Location = new Point(3, 3);
             chartVentasPorCliente.Name = "chartVentasPorCliente";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Series1";
-            chartVentasPorCliente.Series.Add(series13);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            chartVentasPorCliente.Series.Add(series5);
             chartVentasPorCliente.Size = new Size(886, 246);
             chartVentasPorCliente.TabIndex = 0;
             chartVentasPorCliente.Text = "chart1";
@@ -675,7 +691,6 @@
             // tabControl3
             // 
             tabControl3.Controls.Add(tabPage7);
-            tabControl3.Controls.Add(tabPage8);
             tabControl3.Location = new Point(6, 40);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
@@ -695,6 +710,7 @@
             // 
             // dgvVentas
             // 
+            dgvVentas.BackgroundColor = SystemColors.ButtonHighlight;
             dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVentas.Dock = DockStyle.Fill;
             dgvVentas.Location = new Point(3, 3);
@@ -703,19 +719,8 @@
             dgvVentas.TabIndex = 0;
             dgvVentas.CellContentClick += dgvVentas_CellContentClick;
             // 
-            // tabPage8
-            // 
-            tabPage8.Location = new Point(4, 24);
-            tabPage8.Name = "tabPage8";
-            tabPage8.Padding = new Padding(3);
-            tabPage8.Size = new Size(893, 239);
-            tabPage8.TabIndex = 1;
-            tabPage8.Text = "Por Usuarios";
-            tabPage8.UseVisualStyleBackColor = true;
-            // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(flowLayoutPanel1);
             tabPage3.Controls.Add(tabControl2);
             tabPage3.Controls.Add(dgvCompras);
             tabPage3.Location = new Point(4, 24);
@@ -725,93 +730,6 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Compras";
             tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Controls.Add(button2);
-            flowLayoutPanel1.Controls.Add(dateTimePicker5);
-            flowLayoutPanel1.Controls.Add(button3);
-            flowLayoutPanel1.Controls.Add(dateTimePicker6);
-            flowLayoutPanel1.Controls.Add(comboBox3);
-            flowLayoutPanel1.Controls.Add(comboBox4);
-            flowLayoutPanel1.Controls.Add(button6);
-            flowLayoutPanel1.Location = new Point(10, 4);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(901, 39);
-            flowLayoutPanel1.TabIndex = 31;
-            // 
-            // button2
-            // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button2.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(3, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(50, 23);
-            button2.TabIndex = 0;
-            button2.Text = "Desde:";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker5
-            // 
-            dateTimePicker5.Location = new Point(59, 3);
-            dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(240, 23);
-            dateTimePicker5.TabIndex = 16;
-            // 
-            // button3
-            // 
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button3.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(305, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(50, 23);
-            button3.TabIndex = 17;
-            button3.Text = "Desde:";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker6
-            // 
-            dateTimePicker6.CalendarMonthBackground = SystemColors.ControlLightLight;
-            dateTimePicker6.Location = new Point(361, 3);
-            dateTimePicker6.Name = "dateTimePicker6";
-            dateTimePicker6.Size = new Size(215, 23);
-            dateTimePicker6.TabIndex = 15;
-            dateTimePicker6.Value = new DateTime(2025, 11, 8, 9, 18, 28, 0);
-            // 
-            // comboBox3
-            // 
-            comboBox3.BackColor = SystemColors.ButtonFace;
-            comboBox3.FlatStyle = FlatStyle.Popup;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox3.Location = new Point(582, 3);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(118, 23);
-            comboBox3.TabIndex = 19;
-            // 
-            // comboBox4
-            // 
-            comboBox4.BackColor = SystemColors.Menu;
-            comboBox4.FlatStyle = FlatStyle.Popup;
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "Teclados", "Mouses", "Laptos", "Celurares", "Auriculares", "Cargadores", "Cables", "Monitores", "Gpu", "Cpu", "Motherboard", "RAM", "Memoria", "Mouse pad" });
-            comboBox4.Location = new Point(706, 3);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(118, 23);
-            comboBox4.TabIndex = 20;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(830, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(61, 25);
-            button6.TabIndex = 26;
-            button6.Text = "Buscar";
-            button6.UseVisualStyleBackColor = true;
             // 
             // tabControl2
             // 
@@ -836,16 +754,16 @@
             // 
             // chartComprasPorProveedores
             // 
-            chartArea14.Name = "ChartArea1";
-            chartComprasPorProveedores.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            chartComprasPorProveedores.Legends.Add(legend14);
+            chartArea6.Name = "ChartArea1";
+            chartComprasPorProveedores.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            chartComprasPorProveedores.Legends.Add(legend6);
             chartComprasPorProveedores.Location = new Point(3, 6);
             chartComprasPorProveedores.Name = "chartComprasPorProveedores";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Series1";
-            chartComprasPorProveedores.Series.Add(series14);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            chartComprasPorProveedores.Series.Add(series6);
             chartComprasPorProveedores.Size = new Size(884, 317);
             chartComprasPorProveedores.TabIndex = 29;
             chartComprasPorProveedores.Text = "chart2";
@@ -863,17 +781,17 @@
             // 
             // chartComprasUser
             // 
-            chartArea15.Name = "ChartArea1";
-            chartComprasUser.ChartAreas.Add(chartArea15);
-            legend15.Name = "Legend1";
-            chartComprasUser.Legends.Add(legend15);
+            chartArea7.Name = "ChartArea1";
+            chartComprasUser.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            chartComprasUser.Legends.Add(legend7);
             chartComprasUser.Location = new Point(3, 6);
             chartComprasUser.Name = "chartComprasUser";
             chartComprasUser.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series15.ChartArea = "ChartArea1";
-            series15.Legend = "Legend1";
-            series15.Name = "Series1";
-            chartComprasUser.Series.Add(series15);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            chartComprasUser.Series.Add(series7);
             chartComprasUser.Size = new Size(884, 317);
             chartComprasUser.TabIndex = 28;
             chartComprasUser.Text = "chart1";
@@ -883,9 +801,9 @@
             dgvCompras.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCompras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCompras.Location = new Point(6, 49);
+            dgvCompras.Location = new Point(6, 6);
             dgvCompras.Name = "dgvCompras";
-            dgvCompras.Size = new Size(901, 175);
+            dgvCompras.Size = new Size(901, 218);
             dgvCompras.TabIndex = 22;
             dgvCompras.CellClick += dgvCompras_CellContentClick;
             // 
@@ -903,16 +821,16 @@
             // 
             // chartCompraProveedores
             // 
-            chartArea16.Name = "ChartArea1";
-            chartCompraProveedores.ChartAreas.Add(chartArea16);
-            legend16.Name = "Legend1";
-            chartCompraProveedores.Legends.Add(legend16);
+            chartArea8.Name = "ChartArea1";
+            chartCompraProveedores.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            chartCompraProveedores.Legends.Add(legend8);
             chartCompraProveedores.Location = new Point(6, 276);
             chartCompraProveedores.Name = "chartCompraProveedores";
-            series16.ChartArea = "ChartArea1";
-            series16.Legend = "Legend1";
-            series16.Name = "Series1";
-            chartCompraProveedores.Series.Add(series16);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            chartCompraProveedores.Series.Add(series8);
             chartCompraProveedores.Size = new Size(867, 311);
             chartCompraProveedores.TabIndex = 30;
             chartCompraProveedores.Text = "chart2";
@@ -934,12 +852,10 @@
             ClientSize = new Size(945, 645);
             Controls.Add(tabControl1);
             Name = "ReportesForm";
-            Text = "ReportesForm";
+            Text = "Reportes";
             Load += ReportesForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -956,6 +872,7 @@
             ((System.ComponentModel.ISupportInitialize)chartVentas).EndInit();
             tabPage2.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             tabControl4.ResumeLayout(false);
             tabPage9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartVentasMensuales).EndInit();
@@ -969,7 +886,6 @@
             tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             tabPage3.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
             tabControl2.ResumeLayout(false);
             tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartComprasPorProveedores).EndInit();
@@ -984,39 +900,30 @@
 
         #endregion
 
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker fechaDesde;
+        private DateTimePicker fechaHasta;
         private Label label1;
         private Label label2;
         private GroupBox groupBox1;
         private Label VentasCount;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private GroupBox groupBox6;
         private Label CantidadClientes;
-        private Label TotalDinero;
+        private Label lblTotalVentas;
         private Label GananciaNeta;
         private Label TotalInvertido;
-        private Button button1;
-        private ComboBox comboBox1;
-        private Label label8;
         private GroupBox groupBox5;
         private Label CantidadProductos;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TabPage tabPage3;
-        private DateTimePicker dateTimePicker5;
-        private DateTimePicker dateTimePicker6;
-        private ComboBox comboBox3;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private DataGridView dgvCompras;
-        private Button button4;
-        private Button button6;
+        private Button btnFiltrarGanancia;
         private TabPage tabPage4;
         private DataGridView dgvProductosProveedores;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartComprasUser;
@@ -1028,23 +935,17 @@
         private TabPage tabPage6;
         private TabControl tabControl3;
         private TabPage tabPage7;
-        private TabPage tabPage8;
         private DataGridView dgvVentas;
         private TabControl tabControl4;
         private TabPage tabPage9;
         private TabPage tabPage10;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button button2;
-        private Button button3;
-        private ComboBox comboBox4;
         private FlowLayoutPanel flowLayoutPanel2;
         private Button button5;
-        private DateTimePicker dateTimePicker3;
+        private DateTimePicker fechaDesdeVentas;
         private Button button7;
-        private DateTimePicker dateTimePicker4;
-        private ComboBox comboBox2;
-        private ComboBox comboBox5;
-        private Button button8;
+        private DateTimePicker fechaHastaVentas;
+        private ComboBox FiltroCategoria;
+        private ComboBox FiltroVendedor;
         private TabPage tabPage11;
         private TabPage tabPage12;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasPorUsuario;
@@ -1052,6 +953,13 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentasCategoria;
         private Label VentasCountLabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentas;
+        private Button btnFiltrar;
+        private Button btnLimpiarFiltros;
+        private TextBox txtBuscarCliente;
+        private Button btnExportarExcel;
+        private Button btnExportarPdf;
+        private Button btnFiltrarGanancias;
+        private Button btnLimpiarFiltroGeneral;
         // private ScottPlot.FormsPlot formsPlot1;
         // private ScottPlot.FormsPlot formsPlot1;
     }

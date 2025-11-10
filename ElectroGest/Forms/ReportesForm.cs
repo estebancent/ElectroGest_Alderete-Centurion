@@ -1,5 +1,10 @@
-﻿using ElectroGest.Datas;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.InkML;
+using ElectroGest.Datas;
+using ElectroGest.Models;
 using ElectroGest.Repositorios;
+using iTextSharp.text.pdf;
+using Microsoft.EntityFrameworkCore;
 using ScottPlot;
 using ScottPlot.WinForms;
 using System;
@@ -7,14 +12,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Globalization;
-using ElectroGest.Models;
-using Microsoft.EntityFrameworkCore;
+
+
 
 
 
@@ -27,6 +34,8 @@ namespace ElectroGest.Forms
         private readonly RepositorioProductos _repoProductos2;
         private readonly RepositorioClientes _repoClientes;
         private readonly RepositorioVentas _repoVentas;
+        private readonly SistemaVentasContext _context = new SistemaVentasContext();
+
         public ReportesForm()
         {
             InitializeComponent();
@@ -39,6 +48,7 @@ namespace ElectroGest.Forms
 
         private void ReportesForm_Load(object sender, EventArgs e)
         {
+         
             CargarProductosProveedores();
             CargarCompras();
             GraficarComprasPorProveedor();
@@ -46,15 +56,21 @@ namespace ElectroGest.Forms
             CargarCantidadClientes();
             CargarCantidadVentas();
             CargarCantidadProductos();
-            CargarTotalDinero();
-            CargarTotalInvertidoYGanancia();
+            // CargarTotalDinero();
+            //   CargarTotalInvertidoYGanancia();
+            CargarTotalesVentasYGanancias(null, null);
+            CargarCantidadVentas(null, null);
+            CargarCantidadProductos(null, null);
+            CargarCantidadClientes(null, null);
             GraficarVentasPrincipal();
+
 
             GraficarProductosPorProveedorConChart();
             GraficarProductosPorProveedorConChartEstadistica();
 
 
             CargarVentas();
+            CargarFiltros();
             dgvCompras.CellContentClick -= dgvCompras_CellContentClick;
             GraficarVentasPorMes();
             GraficarVentasPorUsuario();
@@ -74,16 +90,27 @@ namespace ElectroGest.Forms
                 dgvCompras.Columns.Add(btnDetalle);
             }
         }
-        private void CargarCantidadClientes()
+        private void CargarCantidadClientes(DateTime? fechaDesde = null, DateTime? fechaHasta = null)
         {
             try
             {
-                // Trae la lista de clientes y cuenta los registros
-                var clientes = _repoClientes.ObtenerClientes();
-                int totalClientes = clientes.Count;
+                using (var context = new SistemaVentasContext())
+                {
+                    var query = context.Ventas.AsQueryable();
 
-                // Muestra el número en el label
-                CantidadClientes.Text = totalClientes.ToString("N0");
+                    if (fechaDesde.HasValue && fechaHasta.HasValue)
+                    {
+                        query = query.Where(v => v.FechaVenta >= fechaDesde.Value && v.FechaVenta <= fechaHasta.Value);
+                    }
+
+                    // Contar clientes distintos que compraron en ese rango
+                    int totalClientes = query
+                        .Select(v => v.ClienteId)
+                        .Distinct()
+                        .Count();
+
+                    CantidadClientes.Text = totalClientes.ToString("N0");
+                }
             }
             catch (Exception ex)
             {
@@ -91,19 +118,59 @@ namespace ElectroGest.Forms
             }
         }
 
-        private void CargarCantidadVentas()
+
+        private void CargarCantidadProductos(DateTime? fechaDesde = null, DateTime? fechaHasta = null)
         {
             try
             {
-                var ventas = _repoVentas.ObtenerVentas();
-                int totalVentas = ventas.Count;
-                VentasCountLabel.Text = totalVentas.ToString("N0");
+                using (var context = new SistemaVentasContext())
+                {
+                    var query = context.DetalleVenta
+                        .Include(d => d.IdVentaNavigation)
+                        .AsQueryable();
+
+                    if (fechaDesde.HasValue && fechaHasta.HasValue)
+                    {
+                        query = query.Where(d =>
+                            d.IdVentaNavigation.FechaVenta >= fechaDesde.Value &&
+                            d.IdVentaNavigation.FechaVenta <= fechaHasta.Value);
+                    }
+
+                    // Contamos productos vendidos (sumando cantidades)
+                    int totalProductosVendidos = query.Sum(d => d.Cantidad);
+
+                    CantidadProductos.Text = totalProductosVendidos.ToString("N0");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al contar los productos vendidos: " + ex.Message);
+            }
+        }
+        private void CargarCantidadVentas(DateTime? fechaDesde = null, DateTime? fechaHasta = null)
+        {
+            try
+            {
+                using (var context = new SistemaVentasContext())
+                {
+                    var query = context.Ventas.AsQueryable();
+
+                    // Filtro opcional por fecha
+                    if (fechaDesde.HasValue && fechaHasta.HasValue)
+                    {
+                        query = query.Where(v => v.FechaVenta >= fechaDesde.Value && v.FechaVenta <= fechaHasta.Value);
+                    }
+
+                    int totalVentas = query.Count();
+                    VentasCountLabel.Text = totalVentas.ToString("N0");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al contar las ventas: " + ex.Message);
             }
         }
+
 
         private void CargarCantidadProductos()
         {
@@ -132,8 +199,66 @@ namespace ElectroGest.Forms
                 MessageBox.Show("Error al calcular el total de dinero: " + ex.Message);
             }
         }
+        private void btnFiltrarGanancias_Click(object sender, EventArgs e)
+        {
+            DateTime desde = fechaDesde.Value.Date;
+            DateTime hasta = fechaHasta.Value.Date.AddDays(1).AddTicks(-1); // incluir todo el día
+            CargarTotalesVentasYGanancias(desde, hasta);
+            CargarCantidadVentas(desde, hasta);
+            CargarCantidadProductos(desde, hasta);
+            CargarCantidadClientes(desde, hasta);
+        }
 
-        private void CargarTotalInvertidoYGanancia()
+        private void CargarTotalesVentasYGanancias(DateTime? fechaDesde = null, DateTime? fechaHasta = null)
+        {
+            try
+            {
+                // Traemos los detalles de venta junto con la fecha de la venta
+                var detallesQuery = _context.DetalleVenta
+                    .Include(d => d.IdProductoNavigation)
+                    .Include(d => d.IdVentaNavigation)
+                    .AsQueryable();
+
+                // Si el usuario seleccionó fechas, filtramos
+                if (fechaDesde.HasValue && fechaHasta.HasValue)
+                {
+                    detallesQuery = detallesQuery.Where(d =>
+                        d.IdVentaNavigation.FechaVenta >= fechaDesde.Value &&
+                        d.IdVentaNavigation.FechaVenta <= fechaHasta.Value);
+                }
+
+                var detalles = detallesQuery.Select(d => new
+                {
+                    Cantidad = d.Cantidad,
+                    PrecioCompra = d.IdProductoNavigation.PrecioCompra ?? 0,
+                    PrecioVenta = d.IdProductoNavigation.PrecioVenta ?? 0
+                }).ToList();
+
+                // Total invertido = precio de compra * cantidad
+                decimal totalInvertido = detalles.Sum(d => d.PrecioCompra * d.Cantidad);
+
+                // Total de ventas = precio de venta * cantidad
+                decimal totalVentas = detalles.Sum(d => d.PrecioVenta * d.Cantidad);
+
+                // Ganancia neta
+                decimal gananciaNeta = totalVentas - totalInvertido;
+
+                // Mostrar resultados
+                CultureInfo culturaAR = new CultureInfo("es-AR");
+
+
+                // pesos argentinos
+                TotalInvertido.Text = totalInvertido.ToString("C2", culturaAR);
+                lblTotalVentas.Text = totalVentas.ToString("C2", culturaAR);
+                GananciaNeta.Text = gananciaNeta.ToString("C2", culturaAR);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular los totales: " + ex.Message);
+            }
+        }
+
+        private void CargarTotalInvertidoYGanancias()
         {
             try
             {
@@ -583,7 +708,7 @@ namespace ElectroGest.Forms
             chartComprasUser.Titles.Add(new Title(
                 "Compras registradas por Usuario",
                 Docking.Left,
-              
+
                 new Font("Segoe UI", 10, FontStyle.Bold),
                 Color.FromArgb(40, 40, 40)
             ));
@@ -753,10 +878,11 @@ namespace ElectroGest.Forms
                     c.Observaciones
                 })
                 .ToList();
-
+          
             dgvCompras.AutoGenerateColumns = true;
             dgvCompras.DataSource = compras;
-
+            if (dgvCompras.Columns.Contains("IdCompra"))
+                dgvCompras.Columns["IdCompra"].Visible = false;
             // Evitar agregar la columna del botón varias veces
             if (!dgvCompras.Columns.Contains("btnVerDetalle"))
             {
@@ -796,10 +922,11 @@ namespace ElectroGest.Forms
                         e.PaintBackground(e.CellBounds, true);
 
                         Rectangle buttonRect = new Rectangle(e.CellBounds.Left + 5, e.CellBounds.Top + 5, e.CellBounds.Width - 10, e.CellBounds.Height - 10);
-                        using (Brush b = new SolidBrush(Color.FromArgb(0, 153, 51))) // Azul moderno
+                        using (System.Drawing.Brush b = new System.Drawing.SolidBrush(Color.FromArgb(0, 153, 51)))
+
                         {
-                          //  Color.FromArgb(0, 153, 51) // verde
-                          //Color.FromArgb(60, 63, 65) // gris oscuro
+                            //  Color.FromArgb(0, 153, 51) // verde
+                            //Color.FromArgb(60, 63, 65) // gris oscuro
                             e.Graphics.FillRectangle(b, buttonRect);
                         }
 
@@ -863,104 +990,425 @@ namespace ElectroGest.Forms
             }
         }
 
-        private void CargarVentas()
+
+        private void CargarVentas(DateTime? fechaDesde = null, DateTime? fechaHasta = null, int? categoriaId = null, int? vendedorId = null)
         {
-            var ventas = _repoVentas.ObtenerTodas()
-     .Select(v => new
-     {
-         v.Id,
-         v.NumeroFactura,
-         // 👇 Cliente: viene desde Cliente.IdNavigation (Persona)
-         Cliente = v.Cliente != null && v.Cliente.IdNavigation != null
-             ? $"{v.Cliente.IdNavigation.Nombre}"
-             : "Sin cliente",
-
-         // 👇 Vendedor: viene desde Usuario.IdNavigation (Persona)
-         Vendedor = v.Vendedor != null && v.Vendedor.IdNavigation != null
-             ? $"{v.Vendedor.IdNavigation.Nombre}"
-             : "Sin vendedor",
-
-         // 👇 Rol del vendedor (opcional)
-         RolVendedor = v.Vendedor?.Rol?.Nombre ?? "Sin rol",
-
-         // 👇 Supervisor: también desde Usuario.IdNavigation (Persona)
-        // Supervisor = v.Supervisor != null && v.Supervisor.IdNavigation != null
-          //   ? $"{v.Supervisor.IdNavigation.Nombre}"
-            // : "—",
-
-         Fecha = v.FechaVenta?.ToString("dd/MM/yyyy HH:mm") ?? "—",
-         MetodoPago = v.MetodoPago ?? "—",
-         Descuento = v.Descuento,
-         Recargo = v.Recargo,
-         Total = v.Total,
-         TotalFinal = v.TotalFinal,
-         v.Observaciones,
-         Estado = v.Estado ?? "—"
-     })
-     .ToList();
-
-
-            dgvVentas.AutoGenerateColumns = true;
-            dgvVentas.DataSource = ventas;
-
-            // Evitar agregar la columna del botón varias veces
-            if (!dgvVentas.Columns.Contains("btnVerDetalle"))
+            using (var context = new SistemaVentasContext())
             {
-                // Crear la columna de botón
-                DataGridViewButtonColumn btnVerDetalle = new DataGridViewButtonColumn();
-                btnVerDetalle.Name = "btnVerDetalle";
-                btnVerDetalle.HeaderText = "";
-                btnVerDetalle.Text = "🔍 Ver Detalle";
-                btnVerDetalle.UseColumnTextForButtonValue = true;
-                btnVerDetalle.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                dgvVentas.Columns.Add(btnVerDetalle);
-            }
+                var query = context.Ventas
+                    .Include(v => v.Cliente).ThenInclude(c => c.IdNavigation)
+                    .Include(v => v.Vendedor).ThenInclude(u => u.IdNavigation)
+                    .Include(v => v.Vendedor).ThenInclude(u => u.Rol)
+                    .Include(v => v.DetalleVenta).ThenInclude(dv => dv.IdProductoNavigation)
+                    .ThenInclude(p => p.IdCategoriaNavigation)
+                    .AsQueryable();
 
-            // 🎨 Estilos del DataGridView (mismo estilo que Compras)
-            dgvVentas.EnableHeadersVisualStyles = false;
-            dgvVentas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
-            dgvVentas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvVentas.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                // 🧩 Aplicar filtros dinámicamente
+                if (fechaDesde.HasValue)
+                    query = query.Where(v => v.FechaVenta >= fechaDesde.Value);
 
-            dgvVentas.DefaultCellStyle.Font = new Font("Segoe UI", 9);
-            dgvVentas.DefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 144, 255);
-            dgvVentas.DefaultCellStyle.SelectionForeColor = Color.White;
+                if (fechaHasta.HasValue)
+                    query = query.Where(v => v.FechaVenta <= fechaHasta.Value);
 
-            dgvVentas.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            dgvVentas.RowsDefaultCellStyle.BackColor = Color.White;
-            dgvVentas.Columns["Id"].Visible = false;
-            // 🎨 Botón personalizado
-            var btnColumn = dgvVentas.Columns["btnVerDetalle"] as DataGridViewButtonColumn;
-            if (btnColumn != null)
-            {
-                dgvVentas.CellPainting += (s, e) =>
-                {
-                    if (e.ColumnIndex == btnColumn.Index && e.RowIndex >= 0)
+                if (categoriaId.HasValue)
+                    query = query.Where(v => v.DetalleVenta
+                        .Any(dv => dv.IdProductoNavigation.IdCategoriaNavigation.IdCategoria == categoriaId.Value));
+
+                if (vendedorId.HasValue)
+                    query = query.Where(v => v.VendedorId == vendedorId.Value);
+
+                var ventas = query
+                    .ToList()
+                    .Select(v => new
                     {
-                        e.PaintBackground(e.CellBounds, true);
+                        v.Id,
+                        v.NumeroFactura,
+                        Cliente = v.Cliente != null && v.Cliente.IdNavigation != null
+                            ? $"{v.Cliente.IdNavigation.Nombre}"
+                            : "Sin cliente",
 
-                        Rectangle buttonRect = new Rectangle(e.CellBounds.Left + 5, e.CellBounds.Top + 5,
-                            e.CellBounds.Width - 10, e.CellBounds.Height - 10);
+                        Vendedor = v.Vendedor != null && v.Vendedor.IdNavigation != null
+                            ? $"{v.Vendedor.IdNavigation.Nombre}"
+                            : "Sin vendedor",
 
-                        using (Brush b = new SolidBrush(Color.FromArgb(0, 153, 51))) // Verde moderno
+                        RolVendedor = v.Vendedor != null && v.Vendedor.Rol != null
+                            ? v.Vendedor.Rol.Nombre
+                            : "Sin rol",
+
+                        Fecha = v.FechaVenta.HasValue ? v.FechaVenta.Value.ToString("dd/MM/yyyy HH:mm") : "—",
+                        MetodoPago = v.MetodoPago ?? "—",
+                        Descuento = v.Descuento,
+                        Recargo = v.Recargo,
+                        Total = v.Total,
+                        TotalFinal = v.TotalFinal,
+                        v.Observaciones,
+                        Estado = v.Estado ?? "—"
+                    })
+                    .ToList();
+
+                dgvVentas.AutoGenerateColumns = true;
+                dgvVentas.DataSource = ventas;
+
+                // Evitar agregar el botón varias veces
+                if (!dgvVentas.Columns.Contains("btnVerDetalle"))
+                {
+                    DataGridViewButtonColumn btnVerDetalle = new DataGridViewButtonColumn();
+                    btnVerDetalle.Name = "btnVerDetalle";
+                    btnVerDetalle.HeaderText = "";
+                    btnVerDetalle.Text = "🔍 Ver Detalle";
+                    btnVerDetalle.UseColumnTextForButtonValue = true;
+                    btnVerDetalle.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    dgvVentas.Columns.Add(btnVerDetalle);
+                }
+
+                // 🎨 Mantener estilos
+                dgvVentas.EnableHeadersVisualStyles = false;
+                dgvVentas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
+                dgvVentas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvVentas.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+                dgvVentas.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+                dgvVentas.DefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 144, 255);
+                dgvVentas.DefaultCellStyle.SelectionForeColor = Color.White;
+
+                dgvVentas.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+                dgvVentas.RowsDefaultCellStyle.BackColor = Color.White;
+                dgvVentas.Columns["Id"].Visible = false;
+
+                // 🎨 Botón personalizado
+                var btnColumn = dgvVentas.Columns["btnVerDetalle"] as DataGridViewButtonColumn;
+                if (btnColumn != null)
+                {
+                    dgvVentas.CellPainting += (s, e) =>
+                    {
+                        if (e.ColumnIndex == btnColumn.Index && e.RowIndex >= 0)
                         {
-                            e.Graphics.FillRectangle(b, buttonRect);
+                            e.PaintBackground(e.CellBounds, true);
+
+                            Rectangle buttonRect = new Rectangle(e.CellBounds.Left + 5, e.CellBounds.Top + 5,
+                                e.CellBounds.Width - 10, e.CellBounds.Height - 10);
+
+                            using (System.Drawing.Brush b = new System.Drawing.SolidBrush(Color.FromArgb(0, 153, 51)))
+
+                            {
+                                e.Graphics.FillRectangle(b, buttonRect);
+                            }
+
+                            TextRenderer.DrawText(
+                                e.Graphics,
+                                "Ver Detalle",
+                                new Font("Segoe UI", 9, FontStyle.Bold),
+                                buttonRect,
+                                Color.White,
+                                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+                            );
+
+                            e.Handled = true;
                         }
-
-                        TextRenderer.DrawText(
-                            e.Graphics,
-                            "Ver Detalle",
-                            new Font("Segoe UI", 9, FontStyle.Bold),
-                            buttonRect,
-                            Color.White,
-                            TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
-                        );
-
-                        e.Handled = true;
-                    }
-                };
+                    };
+                }
             }
         }
+
+        private void btnFiltrarr_Click(object sender, EventArgs e)
+        {
+            DateTime? desde = fechaDesdeVentas.Value.Date;
+            DateTime? hasta = fechaHastaVentas.Value.Date.AddDays(1).AddSeconds(-1);
+            int? categoriaId = FiltroCategoria.SelectedIndex >= 0 ? (int?)FiltroCategoria.SelectedValue : null;
+            int? vendedorId = FiltroVendedor.SelectedIndex >= 0 ? (int?)FiltroVendedor.SelectedValue : null;
+
+            CargarVentas(desde, hasta, categoriaId, vendedorId);
+        }
+        private void btnFiltrar2_Click(object sender, EventArgs e)
+        {
+            DateTime? desde = fechaDesdeVentas.Value.Date;
+            DateTime? hasta = fechaHastaVentas.Value.Date.AddDays(1).AddSeconds(-1);
+
+            int? categoriaId = (int)FiltroCategoria.SelectedValue != 0 ? (int?)FiltroCategoria.SelectedValue : null;
+            int? vendedorId = (int)FiltroVendedor.SelectedValue != 0 ? (int?)FiltroVendedor.SelectedValue : null;
+
+            CargarVentas(desde, hasta, categoriaId, vendedorId);
+        }
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            DateTime? desde = fechaDesdeVentas.Value.Date;
+            DateTime? hasta = fechaHastaVentas.Value.Date.AddDays(1).AddSeconds(-1);
+
+            int? categoriaId = null;
+            int? vendedorId = null;
+
+            if (FiltroCategoria != null && FiltroCategoria.SelectedValue != null && (int)FiltroCategoria.SelectedValue != 0)
+                categoriaId = (int)FiltroCategoria.SelectedValue;
+
+            if (FiltroVendedor != null && FiltroVendedor.SelectedValue != null && (int)FiltroVendedor.SelectedValue != 0)
+                vendedorId = (int)FiltroVendedor.SelectedValue;
+
+            CargarVentas(desde, hasta, categoriaId, vendedorId);
+        }
+
+
+
+        private void CargarFiltros()
+        {
+            using (var context = new SistemaVentasContext())
+            {
+                //FILTRO DE CATEGORÍA
+                var categorias = context.Categorias
+                    .OrderBy(c => c.Nombre)
+                    .Select(c => new { c.IdCategoria, c.Nombre })
+                    .ToList();
+
+                // "Todos"
+                categorias.Insert(0, new { IdCategoria = 0, Nombre = "Todas las categorías" });
+
+                FiltroCategoria.DataSource = categorias;
+                FiltroCategoria.DisplayMember = "Nombre";
+                FiltroCategoria.ValueMember = "IdCategoria";
+                FiltroCategoria.SelectedIndex = 0; // Por defecto "Todas"
+
+                // === FILTRO DE VENDEDORES ===
+                var vendedores = context.Usuarios
+                    .Include(u => u.IdNavigation)
+                    .Where(u => u.Rol.Nombre == "Vendedor")
+                    .Select(u => new { u.Id, Nombre = u.IdNavigation.Nombre })
+                    .ToList();
+
+                // Todos"
+                vendedores.Insert(0, new { Id = 0, Nombre = "Todos los vendedores" });
+
+                FiltroVendedor.DataSource = vendedores;
+                FiltroVendedor.DisplayMember = "Nombre";
+                FiltroVendedor.ValueMember = "Id";
+                FiltroVendedor.SelectedIndex = 0; // Por defecto "Todos"
+
+                // === FECHAS PREDETERMINADAS ===
+                fechaDesdeVentas.Value = DateTime.Today.AddMonths(-3);
+                fechaHastaVentas.Value = DateTime.Today;
+            }
+        }
+
+
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            fechaDesdeVentas.Value = DateTime.Today.AddMonths(-3);
+            fechaHastaVentas.Value = DateTime.Today;
+            FiltroCategoria.SelectedIndex = -1;
+            FiltroVendedor.SelectedIndex = -1;
+
+            CargarVentas(); // recarga todo sin filtros
+        }
+        private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+            string termino = txtBuscarCliente.Text.Trim();
+
+            // Si el usuario borra todo, mostrar todas las ventas
+            if (string.IsNullOrEmpty(termino))
+            {
+                CargarVentas();
+                return;
+            }
+
+            // Aplicar filtro de búsqueda (por nombre o DNI)
+            BuscarVentasPorCliente(termino);
+        }
+
+        private void BuscarVentasPorCliente(string termino)
+        {
+            using (var context = new SistemaVentasContext())
+            {
+                var query = context.Ventas
+                    .Include(v => v.Cliente).ThenInclude(c => c.IdNavigation)
+                    .Include(v => v.Vendedor).ThenInclude(u => u.IdNavigation)
+                    .Include(v => v.Vendedor).ThenInclude(u => u.Rol)
+                    .Include(v => v.DetalleVenta).ThenInclude(dv => dv.IdProductoNavigation)
+                    .ThenInclude(p => p.IdCategoriaNavigation)
+                    .AsQueryable();
+
+                // Filtrar por coincidencia de nombre o DNI
+                query = query.Where(v =>
+                    v.Cliente.IdNavigation.Nombre.Contains(termino) ||
+                    (v.Cliente.IdNavigation.Dni.HasValue &&
+                     v.Cliente.IdNavigation.Dni.ToString().Contains(termino)));
+
+                var ventas = query
+                    .ToList()
+                    .Select(v => new
+                    {
+                        v.Id,
+                        v.NumeroFactura,
+                        Cliente = v.Cliente != null && v.Cliente.IdNavigation != null
+                            ? $"{v.Cliente.IdNavigation.Nombre}"
+                            : "Sin cliente",
+
+                        Vendedor = v.Vendedor != null && v.Vendedor.IdNavigation != null
+                            ? $"{v.Vendedor.IdNavigation.Nombre}"
+                            : "Sin vendedor",
+
+                        RolVendedor = v.Vendedor != null && v.Vendedor.Rol != null
+                            ? v.Vendedor.Rol.Nombre
+                            : "Sin rol",
+
+                        Fecha = v.FechaVenta.HasValue ? v.FechaVenta.Value.ToString("dd/MM/yyyy HH:mm") : "—",
+                        MetodoPago = v.MetodoPago ?? "—",
+                        Descuento = v.Descuento,
+                        Recargo = v.Recargo,
+                        Total = v.Total,
+                        TotalFinal = v.TotalFinal,
+                        v.Observaciones,
+                        Estado = v.Estado ?? "—"
+                    })
+                    .ToList();
+
+                dgvVentas.DataSource = ventas;
+            }
+        }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            var datos = ObtenerDatosVentasActuales();
+
+            if (datos.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (var workbook = new ClosedXML.Excel.XLWorkbook())
+            {
+                var ws = workbook.Worksheets.Add("Ventas");
+
+                // 🟦 Encabezado de empresa
+                ws.Cell("A1").Value = "ELECTROGEST";
+                ws.Cell("A1").Style.Font.SetBold();
+                ws.Cell("A1").Style.Font.FontSize = 18;
+                ws.Cell("A1").Style.Font.FontColor = XLColor.White;
+                ws.Range("A1:K1").Merge();
+                ws.Range("A1:K1").Style.Fill.BackgroundColor = XLColor.FromHtml("#0078D7"); // Azul corporativo
+                ws.Range("A1:K1").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                ws.Range("A1:K1").Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+
+                // 🕒 Fecha de exportación
+                ws.Cell("A2").Value = $"Fecha de exportación: {DateTime.Now:dd/MM/yyyy HH:mm}";
+                ws.Range("A2:K2").Merge();
+                ws.Cell("A2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
+                ws.Cell("A2").Style.Font.Italic = true;
+                ws.Cell("A2").Style.Font.FontSize = 10;
+                ws.Row(2).Height = 20;
+
+                // 📋 Encabezados de la tabla
+                string[] headers = {
+            "ID Venta", "Cliente", "Vendedor", "Fecha Venta", "Estado",
+            "Forma de Pago", "Descuento (%)", "Recargo (%)",
+            "Total", "Total Final", "Observaciones"
+        };
+
+                for (int i = 0; i < headers.Length; i++)
+                {
+                    ws.Cell(4, i + 1).Value = headers[i];
+                }
+
+                // 🎨 Estilo del encabezado de tabla
+                var headerRange = ws.Range(4, 1, 4, headers.Length);
+                headerRange.Style.Font.Bold = true;
+                headerRange.Style.Fill.BackgroundColor = XLColor.FromHtml("#1E1E1E");
+                headerRange.Style.Font.FontColor = XLColor.White;
+                headerRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                headerRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                headerRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                headerRange.Style.Border.OutsideBorderColor = XLColor.Black;
+                headerRange.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                headerRange.Style.Border.InsideBorderColor = XLColor.Black;
+
+                // 📊 Cargar datos
+                int fila = 5;
+                foreach (var item in datos)
+                {
+                    ws.Cell(fila, 1).Value = item.Id;
+                    ws.Cell(fila, 2).Value = item.Cliente;
+                    ws.Cell(fila, 3).Value = item.Vendedor;
+                    ws.Cell(fila, 4).Value = item.Fecha;
+                    ws.Cell(fila, 5).Value = item.Estado;
+                    ws.Cell(fila, 6).Value = item.FormaPago;
+                    ws.Cell(fila, 7).Value = item.Descuento;
+                    ws.Cell(fila, 8).Value = item.Recargo;
+                    ws.Cell(fila, 9).Value = item.Total;
+                    ws.Cell(fila, 10).Value = item.TotalFinal;
+                    ws.Cell(fila, 11).Value = item.Observaciones;
+                    fila++;
+                }
+
+                // Formatos numéricos
+                ws.Column(9).Style.NumberFormat.Format = "$ #,##0.00";
+                ws.Column(10).Style.NumberFormat.Format = "$ #,##0.00";
+
+                // Bordes para toda la tabla
+                var dataRange = ws.Range(4, 1, fila - 1, headers.Length);
+                dataRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                dataRange.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                dataRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+
+                // Ajustar ancho de columnas
+                ws.Columns().AdjustToContents();
+
+                // Pie de página
+                ws.Cell(fila + 2, 1).Value = "Reporte generado automáticamente por ElectroGest";
+                ws.Range(fila + 2, 1, fila + 2, headers.Length).Merge();
+                ws.Cell(fila + 2, 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                ws.Cell(fila + 2, 1).Style.Font.Italic = true;
+                ws.Cell(fila + 2, 1).Style.Font.FontColor = XLColor.Gray;
+
+                // Guardar archivo
+                SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Filter = "Archivos Excel (*.xlsx)|*.xlsx",
+                    Title = "Guardar reporte de ventas"
+                };
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    workbook.SaveAs(sfd.FileName);
+                    MessageBox.Show("Reporte exportado correctamente a Excel.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
+        private List<dynamic> ObtenerDatosVentasActuales()
+        {
+            var lista = new List<dynamic>();
+
+            if (dgvVentas.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return lista;
+            }
+
+            foreach (DataGridViewRow row in dgvVentas.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                lista.Add(new
+                {
+                    Id = row.Cells["Id"].Value,
+                    Cliente = row.Cells["Cliente"].Value,
+                    Vendedor = row.Cells["Vendedor"].Value,
+                    Fecha = row.Cells["Fecha"].Value,
+                    Estado = row.Cells["Estado"].Value,
+                    FormaPago = row.Cells["MetodoPago"].Value,
+                    Descuento = row.Cells["Descuento"].Value,
+                    Recargo = row.Cells["Recargo"].Value,
+                    Total = row.Cells["Total"].Value,
+                    TotalFinal = row.Cells["TotalFinal"].Value,
+                    Observaciones = row.Cells["Observaciones"].Value
+                });
+            }
+
+            return lista;
+        }
+
+
+
+
 
         private void dgvVentass_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -997,9 +1445,9 @@ namespace ElectroGest.Forms
                 }
 
                 // Abrir el formulario de detalle
-              //  using (var frm = new FormFactura(idVenta))
+                //  using (var frm = new FormFactura(idVenta))
                 //{
-                  //  frm.ShowDialog();
+                //  frm.ShowDialog();
                 //}
             }
         }
@@ -1903,12 +2351,33 @@ namespace ElectroGest.Forms
             }
         }
 
+        private void TotalDinero_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void btnLimpiarFiltroGeneral_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 🧭 Restaurar fechas por defecto
+                fechaDesde.Value = DateTime.Today.AddMonths(-3);
+                fechaHasta.Value = DateTime.Today;
 
+                // 🔄 Recargar todos los datos completos
+                CargarTotalesVentasYGanancias(); // sin parámetros => todas las ventas
+                CargarCantidadVentas();
+                CargarCantidadProductos();
+                CargarCantidadClientes();
 
-
-
+                MessageBox.Show("Filtros limpiados correctamente.", "Información",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al limpiar los filtros: " + ex.Message);
+            }
+        }
     }
 }
 

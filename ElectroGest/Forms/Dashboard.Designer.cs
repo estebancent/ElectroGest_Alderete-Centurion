@@ -62,6 +62,7 @@
             // btnCerrarSesion
             // 
             btnCerrarSesion.BackColor = Color.FromArgb(100, 192, 60, 100);
+            btnCerrarSesion.Cursor = Cursors.Hand;
             btnCerrarSesion.FlatAppearance.BorderSize = 0;
             btnCerrarSesion.FlatAppearance.MouseDownBackColor = Color.FromArgb(100, 192, 60, 130);
             btnCerrarSesion.FlatStyle = FlatStyle.Flat;
@@ -80,6 +81,7 @@
             // btnUsuarios
             // 
             btnUsuarios.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnUsuarios.Cursor = Cursors.Hand;
             btnUsuarios.FlatAppearance.BorderSize = 0;
             btnUsuarios.FlatStyle = FlatStyle.Flat;
             btnUsuarios.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -199,6 +201,7 @@
             // btnInicio
             // 
             btnInicio.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnInicio.Cursor = Cursors.Hand;
             btnInicio.FlatAppearance.BorderSize = 0;
             btnInicio.FlatStyle = FlatStyle.Flat;
             btnInicio.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -216,6 +219,7 @@
             // btnReportes
             // 
             btnReportes.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnReportes.Cursor = Cursors.Hand;
             btnReportes.FlatAppearance.BorderSize = 0;
             btnReportes.FlatStyle = FlatStyle.Flat;
             btnReportes.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -233,6 +237,7 @@
             // btnBackup
             // 
             btnBackup.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnBackup.Cursor = Cursors.Hand;
             btnBackup.FlatAppearance.BorderSize = 0;
             btnBackup.FlatStyle = FlatStyle.Flat;
             btnBackup.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -250,6 +255,7 @@
             // btnProductos
             // 
             btnProductos.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnProductos.Cursor = Cursors.Hand;
             btnProductos.FlatAppearance.BorderSize = 0;
             btnProductos.FlatStyle = FlatStyle.Flat;
             btnProductos.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -267,6 +273,7 @@
             // btnProveedor
             // 
             btnProveedor.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnProveedor.Cursor = Cursors.Hand;
             btnProveedor.FlatAppearance.BorderSize = 0;
             btnProveedor.FlatStyle = FlatStyle.Flat;
             btnProveedor.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -284,6 +291,7 @@
             // btnVentas
             // 
             btnVentas.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnVentas.Cursor = Cursors.Hand;
             btnVentas.FlatAppearance.BorderSize = 0;
             btnVentas.FlatStyle = FlatStyle.Flat;
             btnVentas.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -301,6 +309,7 @@
             // btnClientes
             // 
             btnClientes.BackColor = Color.FromArgb(100, 80, 80, 100);
+            btnClientes.Cursor = Cursors.Hand;
             btnClientes.FlatAppearance.BorderSize = 0;
             btnClientes.FlatStyle = FlatStyle.Flat;
             btnClientes.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);

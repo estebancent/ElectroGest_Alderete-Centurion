@@ -345,7 +345,7 @@
             Controls.Add(label1);
             Name = "ProveedoresForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ProveedoresForm";
+            Text = "Proveedores";
             Load += ProveedoresForm_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

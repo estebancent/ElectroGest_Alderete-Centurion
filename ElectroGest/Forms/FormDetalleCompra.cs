@@ -60,6 +60,36 @@ namespace ElectroGest.Forms
                 dgvDetalles.DataSource = detalles;
 
                 dgvDetalles.ClearSelection();
+                dgvDetalles.DataSource = detalles;
+                dgvDetalles.ClearSelection();
+
+                // Estilo simple, sobrio y profesional
+                dgvDetalles.BorderStyle = BorderStyle.None;
+                dgvDetalles.BackgroundColor = Color.White;
+                dgvDetalles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvDetalles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvDetalles.MultiSelect = false;
+                dgvDetalles.AllowUserToAddRows = false;
+                dgvDetalles.AllowUserToResizeRows = false;
+                dgvDetalles.RowHeadersVisible = false;
+
+                // Encabezados (negros)
+                dgvDetalles.EnableHeadersVisualStyles = false;
+                dgvDetalles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+                dgvDetalles.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                dgvDetalles.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvDetalles.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                dgvDetalles.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                // Celdas
+                dgvDetalles.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+                dgvDetalles.DefaultCellStyle.BackColor = Color.White;
+                dgvDetalles.DefaultCellStyle.ForeColor = Color.Black;
+                dgvDetalles.DefaultCellStyle.SelectionBackColor = Color.LightGray;
+                dgvDetalles.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+                // Filas alternadas
+                dgvDetalles.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
             }
             catch (Exception ex)
             {

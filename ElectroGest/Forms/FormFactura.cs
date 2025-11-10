@@ -79,17 +79,36 @@ namespace ElectroGest.Forms
                 Subtotal = d.Subtotal.ToString("C", culturaAR)
             }).ToList();
 
-            // Ajustar estilo visual del DataGridView
+
+            // Estilo simple, sobrio y uniforme para el DataGridView
+            dgvDetalleVentas.BorderStyle = BorderStyle.None;
+            dgvDetalleVentas.BackgroundColor = Color.White;
+            dgvDetalleVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetalleVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDetalleVentas.MultiSelect = false;
+            dgvDetalleVentas.AllowUserToAddRows = false;
+            dgvDetalleVentas.AllowUserToResizeRows = false;
+            dgvDetalleVentas.RowHeadersVisible = false;
+
+            // Encabezados (todos negros)
             dgvDetalleVentas.EnableHeadersVisualStyles = false;
-            dgvDetalleVentas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
+            dgvDetalleVentas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvDetalleVentas.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             dgvDetalleVentas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvDetalleVentas.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10, FontStyle.Bold);
+            dgvDetalleVentas.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            // Celdas
             dgvDetalleVentas.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9);
-            dgvDetalleVentas.DefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 144, 255);
-            dgvDetalleVentas.DefaultCellStyle.SelectionForeColor = Color.White;
-            dgvDetalleVentas.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            dgvDetalleVentas.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvDetalleVentas.DefaultCellStyle.BackColor = Color.White;
+            dgvDetalleVentas.DefaultCellStyle.ForeColor = Color.Black;
+            dgvDetalleVentas.DefaultCellStyle.SelectionBackColor = Color.LightGray;
+            dgvDetalleVentas.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // Filas alternadas (ligeramente diferenciadas)
+            dgvDetalleVentas.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+
+
         }
 
         private void BtnExportarPDF_Click(object sender, EventArgs e)
