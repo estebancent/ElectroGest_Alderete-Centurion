@@ -71,8 +71,6 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             picProducto = new PictureBox();
             btnCargarImagen = new Button();
-            btnExportarPdf = new Button();
-            btnExportarExcel = new Button();
             flowLayoutPanel3 = new FlowLayoutPanel();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -513,32 +511,6 @@
             btnCargarImagen.UseVisualStyleBackColor = false;
             btnCargarImagen.Click += btnCargarImagen_Click;
             // 
-            // btnExportarPdf
-            // 
-            btnExportarPdf.Cursor = Cursors.Hand;
-            btnExportarPdf.FlatAppearance.BorderSize = 0;
-            btnExportarPdf.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            btnExportarPdf.FlatStyle = FlatStyle.Flat;
-            btnExportarPdf.Image = Properties.Resources.icons8_pdf_32;
-            btnExportarPdf.Location = new Point(830, 340);
-            btnExportarPdf.Name = "btnExportarPdf";
-            btnExportarPdf.Size = new Size(30, 29);
-            btnExportarPdf.TabIndex = 31;
-            btnExportarPdf.UseVisualStyleBackColor = true;
-            // 
-            // btnExportarExcel
-            // 
-            btnExportarExcel.Cursor = Cursors.Hand;
-            btnExportarExcel.FlatAppearance.BorderSize = 0;
-            btnExportarExcel.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            btnExportarExcel.FlatStyle = FlatStyle.Flat;
-            btnExportarExcel.Image = Properties.Resources.icons8_ms_excel_26;
-            btnExportarExcel.Location = new Point(866, 341);
-            btnExportarExcel.Name = "btnExportarExcel";
-            btnExportarExcel.Size = new Size(31, 29);
-            btnExportarExcel.TabIndex = 30;
-            btnExportarExcel.UseVisualStyleBackColor = true;
-            // 
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.Controls.Add(txtBusquedaProducto);
@@ -675,8 +647,6 @@
             Controls.Add(tabControl1);
             Controls.Add(flowLayoutPanel3);
             Controls.Add(picProducto);
-            Controls.Add(btnExportarPdf);
-            Controls.Add(btnExportarExcel);
             Controls.Add(btnCargarImagen);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(groupBox1);
@@ -734,8 +704,6 @@
         private Button btnCompras;
         private PictureBox picProducto;
         private Button btnCargarImagen;
-        private Button btnExportarPdf;
-        private Button btnExportarExcel;
         private FlowLayoutPanel flowLayoutPanel3;
         private CheckBox checkActivo;
         private Label label6;
